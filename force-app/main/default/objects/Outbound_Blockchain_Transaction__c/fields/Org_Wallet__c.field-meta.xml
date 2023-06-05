@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Org_Wallet__c</fullName>
+    <description>Wallet belonging to the Org that the transaction departs from.</description>
+    <externalId>false</externalId>
+    <label>Org Wallet (From)</label>
+    <referenceTo>Org_Wallet__c</referenceTo>
+    <relationshipLabel>Outbound Blockchain Transactions</relationshipLabel>
+    <relationshipName>Outbound_Blockchain_Transactions</relationshipName>
+    <relationshipOrder>1</relationshipOrder>
+    <reparentableMasterDetail>true</reparentableMasterDetail>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

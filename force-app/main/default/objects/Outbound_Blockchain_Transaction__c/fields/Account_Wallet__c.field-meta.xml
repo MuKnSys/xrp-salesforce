@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Wallet__c</fullName>
+    <description>Account Wallet that the transaction is sent to.</description>
+    <externalId>false</externalId>
+    <label>Account Wallet (To)</label>
+    <referenceTo>Account_Wallet__c</referenceTo>
+    <relationshipLabel>Outbound Blockchain Transactions</relationshipLabel>
+    <relationshipName>Outbound_Blockchain_Transactions</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

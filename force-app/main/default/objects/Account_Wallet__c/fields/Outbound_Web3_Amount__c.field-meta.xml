@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Outbound_Web3_Amount__c</fullName>
+    <externalId>false</externalId>
+    <label>Outbound Web3 Amount</label>
+    <summarizedField>Outbound_Blockchain_Transaction__c.Transaction_Value__c</summarizedField>
+    <summaryFilterItems>
+        <field>Outbound_Blockchain_Transaction__c.Test_Transaction__c</field>
+        <operation>equals</operation>
+        <value>False</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Outbound_Blockchain_Transaction__c.Account_Wallet__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>
