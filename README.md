@@ -23,7 +23,7 @@ https://developer.salesforce.com/signup
 1. Push the code to the Scratch Org: `sf project deploy start`
 1. Connect to the Salesforce Scratch Org `sf org open`
 
-## Submitting changes to Github
+## Submitting changes to GitHub
 
 1. Create a feature / change branch - you will need to fork the project
 1. Pull changes from Salesforce `sf project retrieve start`
