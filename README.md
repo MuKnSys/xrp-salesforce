@@ -1,6 +1,6 @@
 # XRP-Salesforce Project
 
-This is a basic demonstration Salesforce DX Project. Using the SF CLI tools, you can deploy to a Developer Edition Scratch Org.
+This is a basic demonstration Salesforce DX Project. Using the [SF CLI](https://developer.salesforce.com/tools/sfdxcli) tools, you can deploy to a Developer Edition Scratch Org.
 
 Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
 
@@ -10,7 +10,7 @@ You can get a free Salesforce Developer Edition account from Salesforce. Sign up
 
 https://developer.salesforce.com/signup
 
-## How Do Test the App
+## How To Test the App
 
 1. Checkout the Main Branch
 1. Create a scratch org by running `sf org create scratch -f ./config/project-scratch-def.json -a dev -d -y 30`
@@ -23,7 +23,7 @@ https://developer.salesforce.com/signup
 1. Push the code to the Scratch Org: `sf project deploy start`
 1. Connect to the Salesforce Scratch Org `sf org open`
 
-## Submitting changes to Github
+## Submitting changes to GitHub
 
 1. Create a feature / change branch - you will need to fork the project
 1. Pull changes from Salesforce `sf project retrieve start`
