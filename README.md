@@ -1,6 +1,6 @@
 # XRP-Salesforce Project
 
-This is a basic demonstration Salesforce DX Project. Using the SF CLI tools, you can deploy to a Developer Edition Scratch Org.
+This is a basic demonstration Salesforce DX Project. Using the [SF CLI](https://developer.salesforce.com/tools/sfdxcli) tools, you can deploy to a Developer Edition Scratch Org.
 
 Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
 
