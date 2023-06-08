@@ -10,7 +10,7 @@ You can get a free Salesforce Developer Edition account from Salesforce. Sign up
 
 https://developer.salesforce.com/signup
 
-## How Do Test the App
+## How To Test the App
 
 1. Checkout the Main Branch
 1. Create a scratch org by running `sf org create scratch -f ./config/project-scratch-def.json -a dev -d -y 30`
