@@ -13,6 +13,7 @@ https://developer.salesforce.com/signup
 ## How To Test the App
 
 1. Checkout the Main Branch
+1. Log into the dev hub org by running `sf org login web --set-default-dev-hub --alias DevHub --instance-url https://login.salesforce.com`
 1. Create a scratch org by running `sf org create scratch -f ./config/project-scratch-def.json -a dev -d -y 30`
     - flag `-f` is a path to config file (no need to change it)
     - flag `-a` is an alias of the scratch org, if you create multiple scratch orgs you can give them unique aliases to easier refer to them
