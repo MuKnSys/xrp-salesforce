@@ -32,9 +32,9 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Account_Wallet__c.Wallet_Address__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -142,9 +142,9 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Org_Wallet__c.Wallet_Address__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -222,7 +222,21 @@
         <readable>false</readable>
     </fieldPermissions>
     <layoutAssignments>
+        <layout>Account_Wallet__c-Account Wallet Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Account_Wallet__c-Account Wallet Layout</layout>
+        <recordType>Account_Wallet__c.XRP</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Asset_Token__c-Asset-Token Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Org_Wallet__c-Org Wallet Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Org_Wallet__c-Org Wallet Layout</layout>
+        <recordType>Org_Wallet__c.XRP</recordType>
     </layoutAssignments>
     <objectPermissions>
         <allowCreate>true</allowCreate>
