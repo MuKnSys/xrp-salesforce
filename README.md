@@ -32,5 +32,5 @@ https://developer.salesforce.com/signup
 1. Create a pull request
 
 
-## Notes - Convert these to sfdx
-sfdx force:org:create -f config/project-scratch-def.json --setalias xrpsalesforce1 --durationdays 30 --setdefaultusername --json --loglevel fatal
+## Notes - Convert sf scratch org creation command to sfdx
+`sfdx force:org:create -f config/project-scratch-def.json --setalias xrpsalesforce1 --durationdays 30 --setdefaultusername --json --loglevel fatal`
