@@ -9,5 +9,10 @@
     <columns>Transaction_Value__c</columns>
     <columns>CURRENCY_ISO_CODE</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterThan</operation>
+        <value>6/1/2023 12:00 AM</value>
+    </filters>
     <label>All</label>
 </ListView>

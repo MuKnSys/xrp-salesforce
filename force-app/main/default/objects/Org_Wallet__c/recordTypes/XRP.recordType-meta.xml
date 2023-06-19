@@ -2,8 +2,8 @@
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>XRP</fullName>
     <active>true</active>
-    <description>XRP Wallets</description>
-    <label>XRP (Ripple)</label>
+    <description>XRP Wallets for XRPL Ledger</description>
+    <label>XRP</label>
     <picklistValues>
         <picklist>Networks__c</picklist>
         <values>
