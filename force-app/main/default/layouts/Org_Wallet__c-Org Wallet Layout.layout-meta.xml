@@ -11,10 +11,12 @@
                 <behavior>Required</behavior>
                 <field>Name</field>
             </layoutItems>
+<!--
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>CurrencyIsoCode</field>
             </layoutItems>
+-->
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Wallet_Address__c</field>

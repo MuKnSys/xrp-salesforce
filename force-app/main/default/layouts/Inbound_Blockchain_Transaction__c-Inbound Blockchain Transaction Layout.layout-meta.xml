@@ -19,10 +19,12 @@
                 <behavior>Edit</behavior>
                 <field>Transaction_Value__c</field>
             </layoutItems>
+<!-- 
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>CurrencyIsoCode</field>
             </layoutItems>
+-->
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Asset_Token__c</field>

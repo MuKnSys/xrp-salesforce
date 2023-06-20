@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>Update Account Action</description>
+    <description>Allow update to Org Wallet.</description>
     <optionsCreateFeedItem>false</optionsCreateFeedItem>
     <quickActionLayout>
         <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
@@ -12,39 +12,28 @@
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>ParentId</field>
+                <field>Wallet_Address__c</field>
                 <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Networks__c</field>
+                <uiBehavior>Required</uiBehavior>
             </quickActionLayoutItems>
 <!--
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>CurrencyIsoCode</field>
-                <uiBehavior>Required</uiBehavior>
+                <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
 -->
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Phone</field>
+                <field>Test_Networks__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>
-        <quickActionLayoutColumns>
-            <quickActionLayoutItems>
-                <emptySpace>false</emptySpace>
-                <field>Type</field>
-                <uiBehavior>Edit</uiBehavior>
-            </quickActionLayoutItems>
-            <quickActionLayoutItems>
-                <emptySpace>false</emptySpace>
-                <field>Website</field>
-                <uiBehavior>Edit</uiBehavior>
-            </quickActionLayoutItems>
-            <quickActionLayoutItems>
-                <emptySpace>false</emptySpace>
-                <field>Industry</field>
-                <uiBehavior>Edit</uiBehavior>
-            </quickActionLayoutItems>
-        </quickActionLayoutColumns>
+        <quickActionLayoutColumns/>
     </quickActionLayout>
     <standardLabel>Update</standardLabel>
     <type>Update</type>

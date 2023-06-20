@@ -4,7 +4,9 @@
     <columns>NAME</columns>
     <columns>Asset__c</columns>
     <columns>ConversionRate__c</columns>
+<!--
     <columns>CURRENCY_ISO_CODE</columns>
+-->
     <columns>ConversionRateLastSet__c</columns>
     <columns>Active__c</columns>
     <filterScope>Everything</filterScope>

@@ -51,6 +51,7 @@
                 <identifier>RecordWallet_Address_cField</identifier>
             </fieldInstance>
         </itemInstances>
+<!--
         <itemInstances>
             <fieldInstance>
                 <fieldInstanceProperties>
@@ -61,6 +62,7 @@
                 <identifier>RecordCurrencyIsoCodeField</identifier>
             </fieldInstance>
         </itemInstances>
+-->
         <itemInstances>
             <fieldInstance>
                 <fieldInstanceProperties>
