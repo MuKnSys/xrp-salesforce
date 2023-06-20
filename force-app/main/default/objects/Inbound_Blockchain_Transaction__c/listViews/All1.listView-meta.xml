@@ -7,7 +7,9 @@
     <columns>Asset_Token__c</columns>
     <columns>Network__c</columns>
     <columns>Transaction_Value__c</columns>
+<!--
     <columns>CURRENCY_ISO_CODE</columns>
+-->
     <filterScope>Everything</filterScope>
     <filters>
         <field>CREATED_DATE</field>

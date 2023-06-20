@@ -67,6 +67,7 @@
                 </visibilityRule>
             </fieldInstance>
         </itemInstances>
+<!--
         <itemInstances>
             <fieldInstance>
                 <fieldInstanceProperties>
@@ -83,6 +84,7 @@
                 </visibilityRule>
             </fieldInstance>
         </itemInstances>
+-->
         <itemInstances>
             <fieldInstance>
                 <fieldInstanceProperties>

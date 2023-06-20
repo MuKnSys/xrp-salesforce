@@ -25,11 +25,13 @@
                 <field>Wallet_Address__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
+<!--
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>CurrencyIsoCode</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
+-->
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>Test_Wallet__c</field>

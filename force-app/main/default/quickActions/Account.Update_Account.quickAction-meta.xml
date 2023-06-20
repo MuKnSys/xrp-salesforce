@@ -15,11 +15,13 @@
                 <field>ParentId</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
+<!--
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>CurrencyIsoCode</field>
                 <uiBehavior>Required</uiBehavior>
             </quickActionLayoutItems>
+-->
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>Phone</field>
