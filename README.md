@@ -31,6 +31,10 @@ https://developer.salesforce.com/signup
 1. Push changes to GitHub
 1. Create a pull request
 
-
 ## Notes - Convert sf scratch org creation command to sfdx
+
 `sfdx force:org:create -f config/project-scratch-def.json --setalias xrpsalesforce1 --durationdays 30 --setdefaultusername --json --loglevel fatal`
+
+## Copyright and License
+
+Copyright 2023 Mutual Knowledge Systems, Inc.  XRP Salesforce is distributed under the GPL licence, version 3.0.
