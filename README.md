@@ -37,4 +37,4 @@ https://developer.salesforce.com/signup
 
 ## Copyright and License
 
-Copyright 2023 Mutual Knowledge Systems, Inc.  XRP Salesforce is distributed under the GPL licence, version 3.0.
+Copyright 2023 Mutual Knowledge Systems, Inc.  XRP Salesforce is distributed under the GPL licence, version 3.0.  For more information, see the [LICENSEfile](LICENSE).
