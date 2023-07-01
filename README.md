@@ -23,7 +23,8 @@ https://developer.salesforce.com/signup
     - For more details: [developer docs scratch orgs create](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_create.htm).
 1. Push the code to the Scratch Org: `sf project deploy start`
 1. Connect to the Salesforce Scratch Org: `sf org open`
-You can learn more by watching ths [demo](https://www.youtube.com/watch?v=lkAp2vqQVTA) of Web3 Enabler on Salesforce.
+
+Once you've set up your Scratch Org, you can proceed with the next steps outlined in this [demo](https://www.youtube.com/watch?v=lkAp2vqQVTA) of Web3 Enabler on Salesforce.
 
 ## Submitting changes to GitHub
 
