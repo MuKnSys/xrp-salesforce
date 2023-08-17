@@ -26,7 +26,7 @@ https://developer.salesforce.com/signup
 
 Once you've set up your Salesforce Scratch Org, you can follow the steps outlined in our [user manual](https://mukn.com/wp-content/uploads/2023/07/Web3-Enabler-for-Salesforce-User-Guide.pdf) to make and receive payments using Web3 Enabler on Salesforce. You can also use our [demo](https://www.youtube.com/watch?v=lkAp2vqQVTA) as a guide.  
 
-We launched Web3 Enabler on the Salesforce App Exchange in July, 2023.  See our AppExchange listing](https://appexchange.salesforce.com/appxListingDetail?listingId=ee4c011b-7a5b-4a50-91fb-f28049390858) for further details.
+We launched Web3 Enabler on the Salesforce App Exchange in July, 2023.  See our [AppExchange listing](https://appexchange.salesforce.com/appxListingDetail?listingId=ee4c011b-7a5b-4a50-91fb-f28049390858) for further details.
 
 ## Submitting changes to GitHub
 
