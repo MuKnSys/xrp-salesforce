@@ -1,114 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
-<actionOverrides>
-<actionName>View</actionName>
-<comment>Action override created by Lightning App Builder during activation.</comment>
-<content>Inbound_Blockchain_Transaction_Page</content>
-<formFactor>Small</formFactor>
-<skipRecordTypeSelect>false</skipRecordTypeSelect>
-<type>Flexipage</type>
-<pageOrSobjectType>Inbound_Blockchain_Transaction__c</pageOrSobjectType>
-</actionOverrides>
-<actionOverrides>
-<actionName>View</actionName>
-<comment>Action override created by Lightning App Builder during activation.</comment>
-<content>Inbound_Blockchain_Transaction_Page</content>
-<formFactor>Large</formFactor>
-<skipRecordTypeSelect>false</skipRecordTypeSelect>
-<type>Flexipage</type>
-<pageOrSobjectType>Inbound_Blockchain_Transaction__c</pageOrSobjectType>
-</actionOverrides>
-<actionOverrides>
-<actionName>View</actionName>
-<comment>Action override created by Lightning App Builder during activation.</comment>
-<content>Outbound_Blockchain_Transaction_Page</content>
-<formFactor>Small</formFactor>
-<skipRecordTypeSelect>false</skipRecordTypeSelect>
-<type>Flexipage</type>
-<pageOrSobjectType>Outbound_Blockchain_Transaction__c</pageOrSobjectType>
-</actionOverrides>
-<actionOverrides>
-<actionName>View</actionName>
-<comment>Action override created by Lightning App Builder during activation.</comment>
-<content>Outbound_Blockchain_Transaction_Page</content>
-<formFactor>Large</formFactor>
-<skipRecordTypeSelect>false</skipRecordTypeSelect>
-<type>Flexipage</type>
-<pageOrSobjectType>Outbound_Blockchain_Transaction__c</pageOrSobjectType>
-</actionOverrides>
-<actionOverrides>
-<actionName>View</actionName>
-<comment>Action override created by Lightning App Builder during activation.</comment>
-<content>Account_Wallet_Page</content>
-<formFactor>Small</formFactor>
-<skipRecordTypeSelect>false</skipRecordTypeSelect>
-<type>Flexipage</type>
-<pageOrSobjectType>Account_Wallet__c</pageOrSobjectType>
-</actionOverrides>
-<actionOverrides>
-<actionName>View</actionName>
-<comment>Action override created by Lightning App Builder during activation.</comment>
-<content>Account_Wallet_Page</content>
-<formFactor>Large</formFactor>
-<skipRecordTypeSelect>false</skipRecordTypeSelect>
-<type>Flexipage</type>
-<pageOrSobjectType>Account_Wallet__c</pageOrSobjectType>
-</actionOverrides>
-<actionOverrides>
-<actionName>View</actionName>
-<comment>Action override created by Lightning App Builder during activation.</comment>
-<content>Org_Wallet_Page</content>
-<formFactor>Small</formFactor>
-<skipRecordTypeSelect>false</skipRecordTypeSelect>
-<type>Flexipage</type>
-<pageOrSobjectType>Org_Wallet__c</pageOrSobjectType>
-</actionOverrides>
-<actionOverrides>
-<actionName>View</actionName>
-<comment>Action override created by Lightning App Builder during activation.</comment>
-<content>Org_Wallet_Page</content>
-<formFactor>Large</formFactor>
-<skipRecordTypeSelect>false</skipRecordTypeSelect>
-<type>Flexipage</type>
-<pageOrSobjectType>Org_Wallet__c</pageOrSobjectType>
-</actionOverrides>
-<actionOverrides>
-<actionName>View</actionName>
-<comment>Action override created by Lightning App Builder during activation.</comment>
-<content>Asset_Token_Record_Page</content>
-<formFactor>Small</formFactor>
-<skipRecordTypeSelect>false</skipRecordTypeSelect>
-<type>Flexipage</type>
-<pageOrSobjectType>Asset_Token__c</pageOrSobjectType>
-</actionOverrides>
-<actionOverrides>
-<actionName>View</actionName>
-<comment>Action override created by Lightning App Builder during activation.</comment>
-<content>Asset_Token_Record_Page</content>
-<formFactor>Large</formFactor>
-<skipRecordTypeSelect>false</skipRecordTypeSelect>
-<type>Flexipage</type>
-<pageOrSobjectType>Asset_Token__c</pageOrSobjectType>
-</actionOverrides>
-<brand>
-<headerColor>#000000</headerColor>
-<logo>xrplogo</logo>
-<logoVersion>1</logoVersion>
-<shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
-</brand>
-<description>Mutual Knowledge Demo App</description>
-<formFactors>Small</formFactors>
-<formFactors>Large</formFactors>
-<isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
-<isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
-<isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
-<label>XRP for Salesforce</label>
-<navType>Standard</navType>
-<tabs>standard-Account</tabs>
-<tabs>Org_Wallet__c</tabs>
-<tabs>Account_Wallet__c</tabs>
-<tabs>Asset_Token__c</tabs>
-<tabs>Inbound_Blockchain_Transaction__c</tabs>
-<tabs>Outbound_Blockchain_Transaction__c</tabs>
-<uiType>Lightning</uiType>
-<utilityBar>XRP_for_Salesforce_UtilityBar</utilityBar>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Inbound_Blockchain_Transaction_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Inbound_Blockchain_Transaction__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Inbound_Blockchain_Transaction_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Inbound_Blockchain_Transaction__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Outbound_Blockchain_Transaction_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Outbound_Blockchain_Transaction__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Outbound_Blockchain_Transaction_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Outbound_Blockchain_Transaction__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Account_Wallet_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Account_Wallet__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Account_Wallet_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Account_Wallet__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Org_Wallet_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Org_Wallet__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Org_Wallet_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Org_Wallet__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Asset_Token_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Asset_Token__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Asset_Token_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Asset_Token__c</pageOrSobjectType>
+    </actionOverrides>
+    <brand>
+        <headerColor>#000000</headerColor>
+        <logo>xrplogo</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
+    </brand>
+    <description>Mutual Knowledge Demo App</description>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>XRP for Salesforce</label>
+    <navType>Standard</navType>
+    <tabs>standard-Account</tabs>
+    <tabs>Org_Wallet__c</tabs>
+    <tabs>Account_Wallet__c</tabs>
+    <tabs>Asset_Token__c</tabs>
+    <tabs>Inbound_Blockchain_Transaction__c</tabs>
+    <tabs>Outbound_Blockchain_Transaction__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>XRP_for_Salesforce_UtilityBar</utilityBar>
 </CustomApplication>
