@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>XRP</fullName>
+        <default>false</default>
+        <label>XRP</label>
+    </customValue>
+    <description>Blockchain enabled Cryptocurrency</description>
+    <masterLabel>Crypto Currency</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>
