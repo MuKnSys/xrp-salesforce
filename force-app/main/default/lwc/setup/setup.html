@@ -1,3 +1,42 @@
 <template>
-    
+    <section class="slds-card">
+        <div class="slds-card__body slds-card__body_inner">
+            <div class="slds-text-heading_medium">{labels.title}</div>
+            <lightning-layout multiple-rows class="slds-var-p-top_medium">
+                <lightning-layout-item size="4">
+                    <lightning-input
+                        class="slds-var-p-left_medium"
+                        label={labels.apiKey}
+                        value={apiKey}
+                        type="password"
+                        onchange={handleApiKey}
+                    ></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="8"><!-- skip to next row -->
+                </lightning-layout-item>
+
+                <lightning-layout-item size="4" class="slds-var-p-top_medium">
+                    <lightning-input
+                        class="slds-var-p-left_medium"
+                        label={labels.apiSecret}
+                        value={apiSecret}
+                        type="password"
+                        onchange={handleApiSecret}
+                    ></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="8"><!-- skip to next row -->
+                </lightning-layout-item>
+
+                <lightning-layout-item size="1" class="slds-var-p-top_medium">
+                    <lightning-button
+                        variant="brand"
+                        label={labels.save}
+                        title={labels.save}
+                        onclick={handleSave}
+                        class="slds-var-p-left_medium"
+                    ></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </section>
 </template>

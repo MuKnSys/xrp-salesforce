@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>setup_api_key</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup_api_key</shortDescription>
+        <value>API Key</value>
+    </labels>
+    <labels>
+        <fullName>setup_api_secret</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup_api_secret</shortDescription>
+        <value>API Secret</value>
+    </labels>
+    <labels>
+        <fullName>setup_error_message</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup_error_message</shortDescription>
+        <value>Please provide Api Key and Api Secret</value>
+    </labels>
+    <labels>
+        <fullName>setup_error_title</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup_error_title</shortDescription>
+        <value>Something went wrong</value>
+    </labels>
+    <labels>
+        <fullName>setup_save</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup_save</shortDescription>
+        <value>Save</value>
+    </labels>
+    <labels>
+        <fullName>setup_title</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup_title</shortDescription>
+        <value>XRP Webhooks Credentials</value>
+    </labels>
+</CustomLabels>
