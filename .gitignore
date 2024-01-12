@@ -1,3 +1,4 @@
 .sfdx/
+.sf/
 .husky/
 .vscode/
