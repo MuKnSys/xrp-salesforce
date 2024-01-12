@@ -1,6 +1,8 @@
 import { LightningElement } from 'lwc';
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
+import save from "@salesforce/apex/SetupCtrl.save";
+
 import { labels } from './setupLabels';
 
 export default class Setup extends LightningElement {
@@ -17,13 +19,16 @@ export default class Setup extends LightningElement {
         this.apiSecret = event.target.value;
     }
 
-    handleSave() {
+    async handleSave() {
         if(this.apiKey == null || this.apiSecret == null){
             this.showToastNotification(labels.errorMessage);
             return;
         }
 
-        // Call apex
+        const result = await save({
+            apiKey : this.apiKey,
+            apiSecret : this.apiSecret
+        });
     }
 
     showToastNotification(message, title=labels.errorTitle, variant='error') {
