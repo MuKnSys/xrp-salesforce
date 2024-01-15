@@ -7,20 +7,16 @@ import saveSettings from "@salesforce/apex/SetupCtrl.saveSettings";
 import { labels } from './setupLabels';
 
 export default class Setup extends LightningElement {
+    @track settings = {};
+
+    isLoading = true;
     apiKey = null;
     apiSecret = null;
-    @track placeholders = {};
-
     labels = labels;
 
-    async processSettings() {
-        const settings = await getSettings();
-        if(settings.apiKey) {
-            this.placeholders['apiKey'] = 'API Key is setted up';
-        }
-        if(settings.apiSecret) {
-            this.placeholders['apiSecret'] = 'API Secret is setted up';
-        }
+    resetState() {
+        this.apiKey = null;
+        this.apiSecret = null;
     }
 
     showToastNotification(message, title=labels.errorTitle, variant='error') {
@@ -41,19 +37,38 @@ export default class Setup extends LightningElement {
         this.apiSecret = event.target.value;
     }
 
-    async handleSave() {
-        if(this.apiKey == null || this.apiSecret == null){
-            this.showToastNotification(labels.errorMessage);
-            return;
-        }
+    handleExcpetion(excp) {
+        const errorMessage = excp.body?.message || excp.message;
+        this.showToastNotification(errorMessage);
+    }
 
-        await saveSettings({
-            apiKey : this.apiKey,
-            apiSecret : this.apiSecret
-        });
+    async handleSave() {
+        try {
+            if(this.apiKey == null || this.apiSecret == null){
+                this.showToastNotification(labels.errorMessage);
+                return;
+            }
+    
+            this.isLoading = true;
+            this.settings = await saveSettings({
+                apiKey : this.apiKey,
+                apiSecret : this.apiSecret
+            });
+            this.resetState();
+        } catch (excp) {
+            this.handleExcpetion(excp);
+        } finally {
+            this.isLoading = false;
+        }
     }
 
     async connectedCallback() {
-        await this.processSettings();
+        try {
+            this.settings = await getSettings();
+        } catch (excp) {
+            this.handleExcpetion(excp);
+        } finally {
+            this.isLoading = false;
+        }
     }
 }

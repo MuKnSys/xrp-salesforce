@@ -1,5 +1,6 @@
 <template>
     <section class="slds-card">
+        <lightning-spinner alternative-text={labels.loading} lwc:if={isLoading} size="x-small"></lightning-spinner>
         <div class="slds-card__body slds-card__body_inner">
             <div class="slds-text-heading_medium">{labels.title}</div>
             <lightning-layout multiple-rows class="slds-var-p-top_medium">
@@ -9,7 +10,7 @@
                         label={labels.apiKey}
                         value={apiKey}
                         type="password"
-                        placeholder={placeholders.apiKey}
+                        placeholder={settings.apiKey}
                         onchange={handleApiKey}
                     ></lightning-input>
                 </lightning-layout-item>
@@ -22,7 +23,7 @@
                         label={labels.apiSecret}
                         value={apiSecret}
                         type="password"
-                        placeholder={placeholders.apiSecret}
+                        placeholder={settings.apiSecret}
                         onchange={handleApiSecret}
                     ></lightning-input>
                 </lightning-layout-item>
