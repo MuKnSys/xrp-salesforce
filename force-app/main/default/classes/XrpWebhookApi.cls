@@ -6,7 +6,7 @@ public with sharing class XrpWebhookApi {
     public XrpWebhookApi(String urlSuffix) {
         XRPForSalesforceSettings__c settings = XRPForSalesforceSettingsService.settings;
         if (settings.XRPWebhookApiKey__c == null || settings.XRPWebhookApiSecret__c == null) {
-            // TODO: Handle error - app is not cofigured correctly
+            throw new XrpWebhookAPIException(System.Label.api_app_not_correctly_configred);
         }
 
         request = new HttpRequest();

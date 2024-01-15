@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
+        <fullName>api_app_not_correctly_configred</fullName>
+        <categories>apex, webhook api</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>api_app_not_correctly_configred</shortDescription>
+        <value>XRP For Salesforce App is not correctly configred</value>
+    </labels>
+    <labels>
         <fullName>settings_api_key_setted</fullName>
         <categories>apex, settings</categories>
         <language>en_US</language>
