@@ -4,6 +4,18 @@
         <application>XRP_for_Salesforce</application>
         <visible>true</visible>
     </applicationVisibilities>
+    <applicationVisibilities>
+        <application>XRP_for_Salesforce_Setup</application>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <classAccesses>
+        <apexClass>SetupCtrl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <customSettingAccesses>
+        <enabled>true</enabled>
+        <name>XRPForSalesforceSettings__c</name>
+    </customSettingAccesses>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account_Wallet__c.Account__c</field>
@@ -291,6 +303,10 @@
     </tabSettings>
     <tabSettings>
         <tab>Outbound_Blockchain_Transaction__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>XRP_for_Salesforce_Setup</tab>
         <visibility>Visible</visibility>
     </tabSettings>
 </PermissionSet>
