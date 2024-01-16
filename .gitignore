@@ -3,3 +3,5 @@
 .husky/
 .vscode/
 .vim-force.com
+**/jsconfig.json
+**/.eslintrc.json
