@@ -3,6 +3,8 @@ import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
 import getSettings from "@salesforce/apex/SetupCtrl.getSettings";
 import saveSettings from "@salesforce/apex/SetupCtrl.saveSettings";
+import subscribeWebhook from "@salesforce/apex/SetupCtrl.subscribeWebhook";
+import deleteWebhook from "@salesforce/apex/SetupCtrl.deleteWebhook";
 
 import { labels } from './setupLabels';
 
@@ -13,6 +15,24 @@ export default class Setup extends LightningElement {
     apiKey = null;
     apiSecret = null;
     labels = labels;
+
+    get registerWebhookDisabled() {
+        return !(this.settings.apiKey && this.settings.apiSecret && !this.settings.webhookId);
+    }
+
+    get deleteWebhookDisabled() {
+        return !(this.settings.apiKey && this.settings.apiSecret && this.settings.webhookId);
+    }
+
+    async refreshSettings() {
+        try {
+            this.settings = await getSettings();
+        } catch (excp) {
+            this.handleExcpetion(excp);
+        } finally {
+            this.isLoading = false;
+        }
+    }
 
     resetState() {
         this.apiKey = null;
@@ -62,13 +82,33 @@ export default class Setup extends LightningElement {
         }
     }
 
-    async connectedCallback() {
+    async handleRegisterWebhook() {
         try {
-            this.settings = await getSettings();
+            this.isLoading = true;
+
+            await subscribeWebhook();
+            await this.refreshSettings();
         } catch (excp) {
             this.handleExcpetion(excp);
         } finally {
             this.isLoading = false;
         }
+    }
+
+    async handleDeleteWebhook() {
+        try {
+            this.isLoading = true;
+
+            await deleteWebhook();
+            await this.refreshSettings();
+        } catch (excp) {
+            this.handleExcpetion(excp);
+        } finally {
+            this.isLoading = false;
+        }
+    }
+
+    async connectedCallback() {
+        await this.refreshSettings();
     }
 }

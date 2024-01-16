@@ -25,6 +25,14 @@
         <value>API Secret has been set</value>
     </labels>
     <labels>
+        <fullName>settings_webhook_id_setted</fullName>
+        <categories>apex, settings</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>settings_webhook_id_setted</shortDescription>
+        <value>Webhook Id has been set</value>
+    </labels>
+    <labels>
         <fullName>setup_api_key</fullName>
         <categories>lwc, setup</categories>
         <language>en_US</language>
@@ -39,6 +47,14 @@
         <protected>true</protected>
         <shortDescription>setup_api_secret</shortDescription>
         <value>API Secret</value>
+    </labels>
+    <labels>
+        <fullName>setup_delete_webhook</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup_delete_webhook</shortDescription>
+        <value>Delete Webhook</value>
     </labels>
     <labels>
         <fullName>setup_error_message</fullName>
@@ -65,12 +81,36 @@
         <value>Loading</value>
     </labels>
     <labels>
+        <fullName>setup_register_webhook</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup_register_webhook</shortDescription>
+        <value>Register Webhook</value>
+    </labels>
+    <labels>
         <fullName>setup_save</fullName>
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>setup_save</shortDescription>
         <value>Save</value>
+    </labels>
+    <labels>
+        <fullName>setup_success</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup_success</shortDescription>
+        <value>Success</value>
+    </labels>
+    <labels>
+        <fullName>setup_success_message</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup_success_message</shortDescription>
+        <value>XRP Payment Webhook Registered</value>
     </labels>
     <labels>
         <fullName>setup_title</fullName>

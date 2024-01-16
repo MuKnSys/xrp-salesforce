@@ -8,10 +8,10 @@
                     <lightning-input
                         class="slds-var-p-left_medium"
                         label={labels.apiKey}
-                        value={apiKey}
-                        type="password"
-                        placeholder={settings.apiKey}
                         onchange={handleApiKey}
+                        placeholder={settings.apiKey}
+                        type="password"
+                        value={apiKey}
                     ></lightning-input>
                 </lightning-layout-item>
                 <lightning-layout-item size="8"><!-- skip to next row -->
@@ -21,10 +21,10 @@
                     <lightning-input
                         class="slds-var-p-left_medium"
                         label={labels.apiSecret}
-                        value={apiSecret}
-                        type="password"
-                        placeholder={settings.apiSecret}
                         onchange={handleApiSecret}
+                        placeholder={settings.apiSecret}
+                        type="password"
+                        value={apiSecret}
                     ></lightning-input>
                 </lightning-layout-item>
                 <lightning-layout-item size="8"><!-- skip to next row -->
@@ -38,6 +38,45 @@
                         onclick={handleSave}
                         class="slds-var-p-left_medium"
                     ></lightning-button>
+                </lightning-layout-item>
+                <lightning-layout-item size="11"><!-- skip to next row -->
+                </lightning-layout-item>
+
+                <lightning-layout-item size="11" class="slds-var-p-top_medium" lwc:if={registerWebhookDisabled}>
+                    <lightning-icon
+                        alternative-text={labels.success}
+                        class="slds-var-m-left_medium"
+                        icon-name="action:approval"
+                        size="x-small"
+                        title={labels.success}
+                    ></lightning-icon>
+                    <lightning-formatted-text
+                        class="slds-var-m-left_small"
+                        value={labels.successMessage}
+                    ></lightning-formatted-text>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="2" class="slds-var-p-top_medium">
+                    <lightning-button
+                        class="slds-var-p-left_medium"
+                        disabled={registerWebhookDisabled}
+                        label={labels.registerWebhook}
+                        onclick={handleRegisterWebhook}
+                        title={labels.registerWebhook}
+                        variant="brand"
+                    ></lightning-button>
+                </lightning-layout-item>
+                <lightning-layout-item size="2" class="slds-var-p-top_medium">
+                    <lightning-button
+                        class="slds-var-p-left_medium"
+                        disabled={deleteWebhookDisabled}
+                        label={labels.deleteWebhook}
+                        onclick={handleDeleteWebhook}
+                        title={labels.deleteWebhook}
+                        variant="brand"
+                    ></lightning-button>
+                </lightning-layout-item>
+                <lightning-layout-item size="10"><!-- skip to next row -->
                 </lightning-layout-item>
             </lightning-layout>
         </div>

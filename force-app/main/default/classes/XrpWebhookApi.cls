@@ -1,6 +1,9 @@
 public with sharing class XrpWebhookApi {
     private final static String XRP_WEBHOOK_ENDPOINT = 'https://webhook.xrpayments.co';
-    private final static Integer SUCCESS_CODE = 200;
+    private final static Map<String, Integer> HTTP_METHOD_BY_HTTP_CODE = new Map<String, Integer> {
+        'POST' => 200,
+        'DELETE' => 204
+    };
     private HttpRequest request;
 
     public XrpWebhookApi(String urlSuffix) {
@@ -16,8 +19,13 @@ public with sharing class XrpWebhookApi {
         request.setHeader('x-api-secret', settings.XRPWebhookApiSecret__c);
     }
 
-    public XrpWebhookApi post() {
+    public XrpWebhookApi doPost() {
         request.setMethod('POST');
+        return this;
+    }
+
+    public XrpWebhookApi doDelete() {
+        request.setMethod('DELETE');
         return this;
     }
 
@@ -31,7 +39,7 @@ public with sharing class XrpWebhookApi {
 
         try {
             response = new Http().send(request);
-            if(response.getStatusCode() != SUCCESS_CODE) {
+            if(response.getStatusCode() != HTTP_METHOD_BY_HTTP_CODE.get(request.getMethod())) {
                 throw new XrpWebhookAPIException('Code: ' + response.getStatusCode() + ', Message: ' + response.getBody() + '.');
             }
         } 

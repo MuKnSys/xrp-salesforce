@@ -1,24 +1,36 @@
 public with sharing class XrpWebhookService {
     public static final String PAYMENT_PROCESSING_ENDPOINT = '';
     public static final String REGISTER_WEBHOOK_SUFFIX = '/api/v1/webhooks';
+    public static final String DELETE_WEBHOOK_SUFFIX = '/api/v1/webhooks/{0}';
     public static final String REGISTER_SUBSCRIPTION_SUFFIX = '/api/v1/subscriptions';
+    public static final String DELETE_SUBSCRIPTION_SUFFIX = '/api/v1/subscriptions/{0}';
 
     public static RegisterWebhookResponse registerWebhook() {
         RegisterWebhookPayload payload = new RegisterWebhookPayload(URL.getOrgDomainUrl().toExternalForm() + PAYMENT_PROCESSING_ENDPOINT);
-        XrpWebhookApi request = new XrpWebhookApi(REGISTER_WEBHOOK_SUFFIX).post().body(payload);
+        XrpWebhookApi request = new XrpWebhookApi(REGISTER_WEBHOOK_SUFFIX).doPost().body(payload);
         HttpResponse response = request.callout();
 
-        RegisterWebhookResponse result = (RegisterWebhookResponse) JSON.deserialize(response.getBody(), RegisterWebhookResponse.class); 
-        return result;
+        return (RegisterWebhookResponse) JSON.deserialize(response.getBody(), RegisterWebhookResponse.class); 
     }
 
-    public static RegisterSubscriptionResponse registerSubscription(String address) {
+    public static void deleteWebhook(String webhookId) {
+        XrpWebhookApi request = new XrpWebhookApi(String.format(DELETE_WEBHOOK_SUFFIX, new List<Object>{webhookId})).doDelete();
+        HttpResponse response = request.callout();
+    }
+
+    public static RegisterSubscriptionResponse subscribeToAddress(String address) {
         RegisterSubscriptionPayload payload = new RegisterSubscriptionPayload(address);
-        XrpWebhookApi request = new XrpWebhookApi(REGISTER_SUBSCRIPTION_SUFFIX).post().body(payload);
+        XrpWebhookApi request = new XrpWebhookApi(REGISTER_SUBSCRIPTION_SUFFIX).doPost().body(payload);
         HttpResponse response = request.callout();
 
-        RegisterSubscriptionResponse result = (RegisterSubscriptionResponse) JSON.deserialize(response.getBody(), RegisterSubscriptionResponse.class); 
-        return result;
+        return (RegisterSubscriptionResponse) JSON.deserialize(response.getBody(), RegisterSubscriptionResponse.class);
+    }
+
+    public static DeleteSubscriptionResponse removeSubscriptionToAddress(String address) {
+        XrpWebhookApi request = new XrpWebhookApi(String.format(DELETE_SUBSCRIPTION_SUFFIX, new List<Object>{address})).doDelete();
+        HttpResponse response = request.callout();
+
+        return (DeleteSubscriptionResponse) JSON.deserialize(response.getBody(), DeleteSubscriptionResponse.class);
     }
 
     public class RegisterWebhookPayload {
@@ -48,6 +60,10 @@ public with sharing class XrpWebhookService {
 
     public class RegisterSubscriptionResponse {
         public String subscription_id;
+        public Boolean success;
+    }
+
+    public class DeleteSubscriptionResponse {
         public Boolean success;
     }
 }
