@@ -148,6 +148,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Org_Wallet__c.XRPWebhookSubscriptionId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Outbound_Blockchain_Transaction__c.Asset_Token__c</field>
         <readable>true</readable>
     </fieldPermissions>

@@ -1,5 +1,5 @@
 public with sharing class XrpWebhookService {
-    public static final String PAYMENT_PROCESSING_ENDPOINT = '';
+    public static final String PAYMENT_PROCESSING_ENDPOINT = '/services/apexrest/api/XrpPayments';
     public static final String REGISTER_WEBHOOK_SUFFIX = '/api/v1/webhooks';
     public static final String DELETE_WEBHOOK_SUFFIX = '/api/v1/webhooks/{0}';
     public static final String REGISTER_SUBSCRIPTION_SUFFIX = '/api/v1/subscriptions';
