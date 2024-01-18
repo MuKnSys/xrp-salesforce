@@ -9,6 +9,62 @@
         <value>XRP For Salesforce App is not correctly configred</value>
     </labels>
     <labels>
+        <fullName>connect_org_wallet_cancel_text</fullName>
+        <categories>lwc, connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>reconnect org wallet cancel text</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>connect_org_wallet_error_icon_text</fullName>
+        <categories>lwc, connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>connect org wallet error icon text</shortDescription>
+        <value>Error</value>
+    </labels>
+    <labels>
+        <fullName>connect_org_wallet_error_text</fullName>
+        <categories>lwc, connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>connect org wallet error text</shortDescription>
+        <value>Wallet not correctly connected.</value>
+    </labels>
+    <labels>
+        <fullName>connect_org_wallet_spinner_text</fullName>
+        <categories>lwc, connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>connect org wallet spinner text</shortDescription>
+        <value>Loading</value>
+    </labels>
+    <labels>
+        <fullName>connect_org_wallet_success_icon_text</fullName>
+        <categories>lwc, connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>connect org wallet success icon text</shortDescription>
+        <value>Success</value>
+    </labels>
+    <labels>
+        <fullName>connect_org_wallet_success_text</fullName>
+        <categories>lwc, connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>connect org wallet success text</shortDescription>
+        <value>Wallet correctly connected.</value>
+    </labels>
+    <labels>
+        <fullName>connectorg_wallet_title</fullName>
+        <categories>lwc, connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>connect org wallet title</shortDescription>
+        <value>Connecting your Wallet</value>
+    </labels>
+    <labels>
         <fullName>settings_api_key_setted</fullName>
         <categories>apex, settings</categories>
         <language>en_US</language>
