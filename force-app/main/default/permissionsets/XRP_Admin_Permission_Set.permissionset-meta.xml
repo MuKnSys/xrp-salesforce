@@ -147,6 +147,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Org_Wallet__c.Wallet_Connected__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Org_Wallet__c.XRPWebhookSubscriptionId__c</field>
         <readable>true</readable>
