@@ -2,9 +2,9 @@ import { LightningElement, api } from 'lwc';
 import { CloseActionScreenEvent } from 'lightning/actions';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
-import connectWallet from "@salesforce/apex/ConnectionOrgWalletCtrl.connectWallet";
+import disConnectWallet from "@salesforce/apex/ConnectionOrgWalletCtrl.disConnectWallet";
 
-import { labels } from './connectOrgWalletLabels';
+import { labels } from './disConnectOrgWalletLabels';
 
 export default class ConnectOrgWallet extends LightningElement {
     _recordId;
@@ -23,13 +23,13 @@ export default class ConnectOrgWallet extends LightningElement {
         this._recordId = value;
 
         if (this._recordId != null && recordIdChanged) {
-            this.connectOrgWallet();
+            this.disConnectOrgWallet();
         }
     }
 
-    async connectOrgWallet() {
+    async disConnectOrgWallet() {
         try {
-            await connectWallet({ recordId: this._recordId });
+            await disConnectWallet({ recordId: this._recordId });
             this.isSuccess = true;
         } catch (error) {
             const erroMessage = error.body ? error.body.message : error.message;

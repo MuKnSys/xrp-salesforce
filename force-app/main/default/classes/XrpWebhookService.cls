@@ -26,11 +26,9 @@ public with sharing class XrpWebhookService {
         return (RegisterSubscriptionResponse) JSON.deserialize(response.getBody(), RegisterSubscriptionResponse.class);
     }
 
-    public static DeleteSubscriptionResponse removeSubscriptionToAddress(String address) {
-        XrpWebhookApi request = new XrpWebhookApi(String.format(DELETE_SUBSCRIPTION_SUFFIX, new List<Object>{address})).doDelete();
+    public static void removeSubscriptionToAddress(String subscriptionId) {
+        XrpWebhookApi request = new XrpWebhookApi(String.format(DELETE_SUBSCRIPTION_SUFFIX, new List<Object>{subscriptionId})).doDelete();
         HttpResponse response = request.callout();
-
-        return (DeleteSubscriptionResponse) JSON.deserialize(response.getBody(), DeleteSubscriptionResponse.class);
     }
 
     public class RegisterWebhookPayload {
@@ -60,10 +58,6 @@ public with sharing class XrpWebhookService {
 
     public class RegisterSubscriptionResponse {
         public String subscription_id;
-        public Boolean success;
-    }
-
-    public class DeleteSubscriptionResponse {
         public Boolean success;
     }
 }

@@ -57,12 +57,36 @@
         <value>Wallet correctly connected.</value>
     </labels>
     <labels>
-        <fullName>connectorg_wallet_title</fullName>
+        <fullName>connect_org_wallet_title</fullName>
         <categories>lwc, connect_org_wallet</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>connect org wallet title</shortDescription>
         <value>Connecting your Wallet</value>
+    </labels>
+    <labels>
+        <fullName>dis_connect_org_wallet_error_text</fullName>
+        <categories>lwc, dis_connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>dis connect org wallet error text</shortDescription>
+        <value>Wallet not correctly disconnected.</value>
+    </labels>
+    <labels>
+        <fullName>dis_connect_org_wallet_success_text</fullName>
+        <categories>lwc, dis_connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>dis connect org wallet success text</shortDescription>
+        <value>Wallet correctly disconnected.</value>
+    </labels>
+    <labels>
+        <fullName>dis_connect_org_wallet_title</fullName>
+        <categories>lwc, dis_connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>dis connect org wallet title</shortDescription>
+        <value>Disconnecting your Wallet</value>
     </labels>
     <labels>
         <fullName>settings_api_key_setted</fullName>
