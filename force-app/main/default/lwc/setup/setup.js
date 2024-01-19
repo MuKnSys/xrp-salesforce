@@ -15,6 +15,7 @@ export default class Setup extends LightningElement {
     apiKey = null;
     apiSecret = null;
     labels = labels;
+    activeSections = [labels.credentials, labels.webhook];
 
     get registerWebhookDisabled() {
         return !(this.settings.apiKey && this.settings.apiSecret && !this.settings.webhookId);

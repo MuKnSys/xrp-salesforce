@@ -169,11 +169,19 @@
         <value>XRP Payment Webhook Registered</value>
     </labels>
     <labels>
-        <fullName>setup_title</fullName>
+        <fullName>setup_subtitle_credentials</fullName>
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>setup_title</shortDescription>
-        <value>XRP Webhooks Credentials</value>
+        <shortDescription>setup_subtitle_credentials</shortDescription>
+        <value>Credentials</value>
+    </labels>
+    <labels>
+        <fullName>setup_subtitle_webhooks</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup_subtitle_webhooks</shortDescription>
+        <value>Webhook Registration</value>
     </labels>
 </CustomLabels>

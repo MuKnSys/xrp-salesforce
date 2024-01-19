@@ -8,7 +8,8 @@ import setup_register_webhook from '@salesforce/label/c.setup_register_webhook';
 import setup_save from '@salesforce/label/c.setup_save';
 import setup_success from '@salesforce/label/c.setup_success';
 import setup_success_message from '@salesforce/label/c.setup_success_message';
-import setup_title from '@salesforce/label/c.setup_title';
+import setup_subtitle_credentials from '@salesforce/label/c.setup_subtitle_credentials';
+import setup_subtitle_webhooks from '@salesforce/label/c.setup_subtitle_webhooks';
 
 export const labels = {
     apiKey: setup_api_key,
@@ -21,5 +22,6 @@ export const labels = {
     save: setup_save,
     success: setup_success,
     successMessage: setup_success_message,
-    title: setup_title
+    credentials: setup_subtitle_credentials,
+    webhook: setup_subtitle_webhooks
 };
