@@ -31,26 +31,29 @@ export default class ConnectOrgWallet extends LightningElement {
         try {
             await connectWallet({ recordId: this._recordId });
             this.isSuccess = true;
-        } catch (error) {
-            const erroMessage = error.body ? error.body.message : error.message;
-            this.showToast(erroMessage);
+        } catch (excp) {
+            this.handleExcpetion(excp);
         } finally {
             this.isLoading = false;
         }
+    }
+
+    showToastNotification(message, title=labels.errorTitle, variant='error') {
+        const toast = new ShowToastEvent({
+            title: title,
+            message: message,
+            variant: variant,
+        });
+
+        this.dispatchEvent(toast);
     }
 
     handleClose() {
         this.dispatchEvent(new CloseActionScreenEvent());
     }
 
-    showToast(title, message, type = TOAST_VARIANT.ERROR, mode = TOAST_MODE.ERROR) {
-        this.dispatchEvent(
-            new ShowToastEvent({
-                title: title,
-                message: message,
-                variant: type,
-                mode: mode
-            })
-        );
+    handleExcpetion(excp) {
+        const errorMessage = excp.body?.message || excp.message;
+        this.showToastNotification(errorMessage);
     }
 }
