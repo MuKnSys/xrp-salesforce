@@ -40,10 +40,11 @@ public with sharing class OrgWalletService {
         }
 
         List<Org_Wallet__c> wallets = new List<Org_Wallet__c>();
-        for(Org_Wallet__c wallet : [SELECT Id, Wallet_Address__c FROM Org_Wallet__c WHERE Wallet_Address__c IN :subscriptionIdByAddress.keySet()]){
+        for(Org_Wallet__c wallet : OrgWalletSelector.getOrgWalletByWalletAddresses(subscriptionIdByAddress.keySet())){
             wallet.XRPWebhookSubscriptionId__c = subscriptionIdByAddress.get(wallet.Wallet_Address__c);
             wallets.add(wallet);
         }
+
         update as user wallets;
     }
 }
