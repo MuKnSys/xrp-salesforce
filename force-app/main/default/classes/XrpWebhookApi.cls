@@ -6,9 +6,9 @@ public with sharing class XrpWebhookApi {
     };
     private HttpRequest request;
 
-    public XrpWebhookApi(String urlSuffix) {
+    public XrpWebhookApi(String urlSuffix, Boolean checkWebhookId) {
         XRPForSalesforceSettings__c settings = XRPForSalesforceSettingsService.settings;
-        if (settings.XRPWebhookApiKey__c == null || settings.XRPWebhookApiSecret__c == null) {
+        if (settings.XRPWebhookApiKey__c == null || settings.XRPWebhookApiSecret__c == null || checkWebhookId ? settings.XRPWebhookId__c == null : false) {
             throw new XrpWebhookAPIException(System.Label.api_app_not_correctly_configred);
         }
 
