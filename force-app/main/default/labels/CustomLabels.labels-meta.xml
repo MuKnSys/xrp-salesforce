@@ -121,14 +121,6 @@
         <value>Webhook Id has been set</value>
     </labels>
     <labels>
-        <fullName>setup_register_web_hook_error</fullName>
-        <categories>apex, setup</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>setup register web hook error</shortDescription>
-        <value>Error during registering a XRP Webhook occured.</value>
-    </labels>
-    <labels>
         <fullName>setup_api_key</fullName>
         <categories>lwc, setup</categories>
         <language>en_US</language>
@@ -177,6 +169,14 @@
         <value>Loading</value>
     </labels>
     <labels>
+        <fullName>setup_register_web_hook_error</fullName>
+        <categories>apex, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup register web hook error</shortDescription>
+        <value>Error during registering a XRP Webhook occured.</value>
+    </labels>
+    <labels>
         <fullName>setup_register_webhook</fullName>
         <categories>lwc, setup</categories>
         <language>en_US</language>
@@ -193,22 +193,6 @@
         <value>Save</value>
     </labels>
     <labels>
-        <fullName>setup_success</fullName>
-        <categories>lwc, setup</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>setup success</shortDescription>
-        <value>Success</value>
-    </labels>
-    <labels>
-        <fullName>setup_success_message</fullName>
-        <categories>lwc, setup</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>setup success message</shortDescription>
-        <value>XRP Payment Webhook Registered</value>
-    </labels>
-    <labels>
         <fullName>setup_subtitle_credentials</fullName>
         <categories>lwc, setup</categories>
         <language>en_US</language>
@@ -223,5 +207,21 @@
         <protected>true</protected>
         <shortDescription>setup subtitle webhooks</shortDescription>
         <value>Webhook Registration</value>
+    </labels>
+    <labels>
+        <fullName>setup_success</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup success</shortDescription>
+        <value>Success</value>
+    </labels>
+    <labels>
+        <fullName>setup_success_message</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup success message</shortDescription>
+        <value>XRP Payment Webhook Registered</value>
     </labels>
 </CustomLabels>
