@@ -3,10 +3,12 @@ public with sharing class ConnectionOrgWalletCtrl {
     public static void connectWallet(Id recordId){
         try {
             Org_Wallet__c orgWallet = OrgWalletSelector.getOrgWalletById(recordId);
-            XrpWebhookService.RegisterSubscriptionResponse response = XrpWebhookService.subscribeToAddress(orgWallet.Wallet_Address__c);
+            if(orgWallet.XRPWebhookSubscriptionId__c == null) {
+                XrpWebhookService.RegisterSubscriptionResponse response = XrpWebhookService.subscribeToAddress(orgWallet.Wallet_Address__c);
 
-            orgWallet.XRPWebhookSubscriptionId__c = response.subscription_id;
-            update as user orgWallet;
+                orgWallet.XRPWebhookSubscriptionId__c = response.subscription_id;
+                update as user orgWallet;
+            }
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
