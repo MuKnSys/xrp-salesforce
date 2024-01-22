@@ -1,11 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
+        <fullName>api_app_not_correctly_configred</fullName>
+        <categories>apex, webhook api</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>api app not correctly configred</shortDescription>
+        <value>XRP For Salesforce App is not correctly configred</value>
+    </labels>
+    <labels>
+        <fullName>connect_org_wallet_cancel_text</fullName>
+        <categories>lwc, connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>connect org wallet cancel text</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>connect_org_wallet_error_icon_text</fullName>
+        <categories>lwc, connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>connect org wallet error icon text</shortDescription>
+        <value>Error</value>
+    </labels>
+    <labels>
+        <fullName>connect_org_wallet_error_text</fullName>
+        <categories>lwc, connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>connect org wallet error text</shortDescription>
+        <value>Wallet not correctly connected.</value>
+    </labels>
+    <labels>
+        <fullName>connect_org_wallet_spinner_text</fullName>
+        <categories>lwc, connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>connect org wallet spinner text</shortDescription>
+        <value>Loading</value>
+    </labels>
+    <labels>
+        <fullName>connect_org_wallet_success_icon_text</fullName>
+        <categories>lwc, connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>connect org wallet success icon text</shortDescription>
+        <value>Success</value>
+    </labels>
+    <labels>
+        <fullName>connect_org_wallet_success_text</fullName>
+        <categories>lwc, connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>connect org wallet success text</shortDescription>
+        <value>Wallet correctly connected.</value>
+    </labels>
+    <labels>
+        <fullName>connect_org_wallet_title</fullName>
+        <categories>lwc, connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>connect org wallet title</shortDescription>
+        <value>Connecting your Wallet</value>
+    </labels>
+    <labels>
+        <fullName>dis_connect_org_wallet_error_not_connected</fullName>
+        <categories>apex, dis_connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>dis connect org wallet error not connected</shortDescription>
+        <value>Org Wallet is not connected</value>
+    </labels>
+    <labels>
+        <fullName>dis_connect_org_wallet_error_text</fullName>
+        <categories>lwc, dis_connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>dis connect org wallet error text</shortDescription>
+        <value>Wallet not correctly disconnected.</value>
+    </labels>
+    <labels>
+        <fullName>dis_connect_org_wallet_success_text</fullName>
+        <categories>lwc, dis_connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>dis connect org wallet success text</shortDescription>
+        <value>Wallet correctly disconnected.</value>
+    </labels>
+    <labels>
+        <fullName>dis_connect_org_wallet_title</fullName>
+        <categories>lwc, dis_connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>dis connect org wallet title</shortDescription>
+        <value>Disconnecting your Wallet</value>
+    </labels>
+    <labels>
         <fullName>settings_api_key_setted</fullName>
         <categories>apex, settings</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>settings_api_key_setted</shortDescription>
+        <shortDescription>settings api key setted</shortDescription>
         <value>API Key has been set</value>
     </labels>
     <labels>
@@ -13,15 +109,23 @@
         <categories>apex, settings</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>settings_api_secret_setted</shortDescription>
+        <shortDescription>settings api secret setted</shortDescription>
         <value>API Secret has been set</value>
+    </labels>
+    <labels>
+        <fullName>settings_webhook_id_setted</fullName>
+        <categories>apex, settings</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>settings webhook id setted</shortDescription>
+        <value>Webhook Id has been set</value>
     </labels>
     <labels>
         <fullName>setup_api_key</fullName>
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>setup_api_key</shortDescription>
+        <shortDescription>setup api key</shortDescription>
         <value>API Key</value>
     </labels>
     <labels>
@@ -29,15 +133,23 @@
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>setup_api_secret</shortDescription>
+        <shortDescription>setup api secret</shortDescription>
         <value>API Secret</value>
+    </labels>
+    <labels>
+        <fullName>setup_delete_webhook</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup delete webhook</shortDescription>
+        <value>Delete Webhook</value>
     </labels>
     <labels>
         <fullName>setup_error_message</fullName>
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>setup_error_message</shortDescription>
+        <shortDescription>setup error message</shortDescription>
         <value>Please provide Api Key and Api Secret</value>
     </labels>
     <labels>
@@ -45,7 +157,7 @@
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>setup_error_title</shortDescription>
+        <shortDescription>setup error title</shortDescription>
         <value>Something went wrong</value>
     </labels>
     <labels>
@@ -53,23 +165,63 @@
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>setup_loading</shortDescription>
+        <shortDescription>setup loading</shortDescription>
         <value>Loading</value>
+    </labels>
+    <labels>
+        <fullName>setup_register_web_hook_error</fullName>
+        <categories>apex, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup register web hook error</shortDescription>
+        <value>Error during registering a XRP Webhook occured.</value>
+    </labels>
+    <labels>
+        <fullName>setup_register_webhook</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup register webhook</shortDescription>
+        <value>Register Webhook</value>
     </labels>
     <labels>
         <fullName>setup_save</fullName>
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>setup_save</shortDescription>
+        <shortDescription>setup save</shortDescription>
         <value>Save</value>
     </labels>
     <labels>
-        <fullName>setup_title</fullName>
+        <fullName>setup_subtitle_credentials</fullName>
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>setup_title</shortDescription>
-        <value>XRP Webhooks Credentials</value>
+        <shortDescription>setup subtitle credentials</shortDescription>
+        <value>Credentials</value>
+    </labels>
+    <labels>
+        <fullName>setup_subtitle_webhooks</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup subtitle webhooks</shortDescription>
+        <value>Webhook Registration</value>
+    </labels>
+    <labels>
+        <fullName>setup_success</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup success</shortDescription>
+        <value>Success</value>
+    </labels>
+    <labels>
+        <fullName>setup_success_message</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup success message</shortDescription>
+        <value>XRP Payment Webhook Registered</value>
     </labels>
 </CustomLabels>

@@ -12,10 +12,6 @@
         <apexClass>SetupCtrl</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <customSettingAccesses>
-        <enabled>true</enabled>
-        <name>XRPForSalesforceSettings__c</name>
-    </customSettingAccesses>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account_Wallet__c.Account__c</field>
@@ -144,6 +140,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Org_Wallet__c.Wallet_Address__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Org_Wallet__c.Wallet_Connected__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Org_Wallet__c.XRPWebhookSubscriptionId__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

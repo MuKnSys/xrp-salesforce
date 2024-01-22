@@ -1,0 +1,46 @@
+<template>
+    <lightning-modal-header label={labels.title}></lightning-modal-header>
+    <lightning-modal-body>
+        <template lwc:if={isLoading}>
+            <div class="spinner slds-is-relative">
+                <lightning-spinner
+                    alternative-text={labels.spinnerText}
+                    size="large"
+                    variant="brand"
+                ></lightning-spinner>
+            </div>
+        </template>
+        <template lwc:else>
+            <template lwc:if={isSuccess}>
+                <div class="slds-align_absolute-center">
+                    <lightning-icon
+                        class="slds-var-m-right_small"
+                        icon-name="action:approval"
+                        alternative-text={labels.successIconText}
+                        title={labels.successIconText}
+                    ></lightning-icon>
+                    {labels.successText}
+                </div>
+            </template>
+            <template lwc:else>
+                <div class="slds-align_absolute-center">
+                    <lightning-icon
+                        class="slds-var-m-right_small"
+                        icon-name="action:reject"
+                        alternative-text={labels.errorIconText}
+                        title={labels.errorIconText}
+                    ></lightning-icon>
+                    {labels.errorText}
+                </div>
+            </template>
+        </template>
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <lightning-button
+            class="slds-button"
+            variant="neutral"
+            label={labels.cancelText}
+            onclick={handleClose}
+        ></lightning-button>
+    </lightning-modal-footer>
+</template>
