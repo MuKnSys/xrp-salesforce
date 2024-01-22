@@ -5,7 +5,7 @@
         <categories>apex, webhook api</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>api_app_not_correctly_configred</shortDescription>
+        <shortDescription>api app not correctly configred</shortDescription>
         <value>XRP For Salesforce App is not correctly configred</value>
     </labels>
     <labels>
@@ -13,7 +13,7 @@
         <categories>lwc, connect_org_wallet</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>reconnect org wallet cancel text</shortDescription>
+        <shortDescription>connect org wallet cancel text</shortDescription>
         <value>Cancel</value>
     </labels>
     <labels>
@@ -23,14 +23,6 @@
         <protected>true</protected>
         <shortDescription>connect org wallet error icon text</shortDescription>
         <value>Error</value>
-    </labels>
-    <labels>
-        <fullName>dis_connect_org_wallet_error_not_connected</fullName>
-        <categories>apex, dis_connect_org_wallet</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>dis connect org wallet error not connected</shortDescription>
-        <value>Org Wallet is not connected</value>
     </labels>
     <labels>
         <fullName>connect_org_wallet_error_text</fullName>
@@ -73,6 +65,14 @@
         <value>Connecting your Wallet</value>
     </labels>
     <labels>
+        <fullName>dis_connect_org_wallet_error_not_connected</fullName>
+        <categories>apex, dis_connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>dis connect org wallet error not connected</shortDescription>
+        <value>Org Wallet is not connected</value>
+    </labels>
+    <labels>
         <fullName>dis_connect_org_wallet_error_text</fullName>
         <categories>lwc, dis_connect_org_wallet</categories>
         <language>en_US</language>
@@ -101,7 +101,7 @@
         <categories>apex, settings</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>settings_api_key_setted</shortDescription>
+        <shortDescription>settings api key setted</shortDescription>
         <value>API Key has been set</value>
     </labels>
     <labels>
@@ -109,7 +109,7 @@
         <categories>apex, settings</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>settings_api_secret_setted</shortDescription>
+        <shortDescription>settings api secret setted</shortDescription>
         <value>API Secret has been set</value>
     </labels>
     <labels>
@@ -117,7 +117,7 @@
         <categories>apex, settings</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>settings_webhook_id_setted</shortDescription>
+        <shortDescription>settings webhook id setted</shortDescription>
         <value>Webhook Id has been set</value>
     </labels>
     <labels>
@@ -125,7 +125,7 @@
         <categories>apex, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>setup_register_web_hook_error</shortDescription>
+        <shortDescription>setup register web hook error</shortDescription>
         <value>Error during registering a XRP Webhook occured.</value>
     </labels>
     <labels>
@@ -133,7 +133,7 @@
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>setup_api_key</shortDescription>
+        <shortDescription>setup api key</shortDescription>
         <value>API Key</value>
     </labels>
     <labels>
@@ -141,7 +141,7 @@
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>setup_api_secret</shortDescription>
+        <shortDescription>setup api secret</shortDescription>
         <value>API Secret</value>
     </labels>
     <labels>
@@ -149,7 +149,7 @@
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>setup_delete_webhook</shortDescription>
+        <shortDescription>setup delete webhook</shortDescription>
         <value>Delete Webhook</value>
     </labels>
     <labels>
@@ -157,7 +157,7 @@
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>setup_error_message</shortDescription>
+        <shortDescription>setup error message</shortDescription>
         <value>Please provide Api Key and Api Secret</value>
     </labels>
     <labels>
@@ -165,7 +165,7 @@
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>setup_error_title</shortDescription>
+        <shortDescription>setup error title</shortDescription>
         <value>Something went wrong</value>
     </labels>
     <labels>
@@ -173,7 +173,7 @@
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>setup_loading</shortDescription>
+        <shortDescription>setup loading</shortDescription>
         <value>Loading</value>
     </labels>
     <labels>
@@ -181,7 +181,7 @@
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>setup_register_webhook</shortDescription>
+        <shortDescription>setup register webhook</shortDescription>
         <value>Register Webhook</value>
     </labels>
     <labels>
@@ -189,7 +189,7 @@
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>setup_save</shortDescription>
+        <shortDescription>setup save</shortDescription>
         <value>Save</value>
     </labels>
     <labels>
@@ -197,7 +197,7 @@
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>setup_success</shortDescription>
+        <shortDescription>setup success</shortDescription>
         <value>Success</value>
     </labels>
     <labels>
@@ -205,7 +205,7 @@
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>setup_success_message</shortDescription>
+        <shortDescription>setup success message</shortDescription>
         <value>XRP Payment Webhook Registered</value>
     </labels>
     <labels>
@@ -213,7 +213,7 @@
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>setup_subtitle_credentials</shortDescription>
+        <shortDescription>setup subtitle credentials</shortDescription>
         <value>Credentials</value>
     </labels>
     <labels>
@@ -221,7 +221,7 @@
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>setup_subtitle_webhooks</shortDescription>
+        <shortDescription>setup subtitle webhooks</shortDescription>
         <value>Webhook Registration</value>
     </labels>
 </CustomLabels>
