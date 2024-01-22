@@ -40,7 +40,7 @@ export default class ConnectOrgWallet extends LightningElement {
         }
     }
 
-    showToastNotification(message, title=labels.ERROR_TITLE, variant='error') {
+    showToastNotification(message, title=labels.errorTitle, variant='error') {
         const toast = new ShowToastEvent({
             title: title,
             message: message,

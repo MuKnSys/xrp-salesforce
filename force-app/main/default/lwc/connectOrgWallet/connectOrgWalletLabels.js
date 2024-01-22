@@ -9,12 +9,12 @@ import setup_error_title from '@salesforce/label/c.setup_error_title';
 
 
 export const labels = {
-    CANCEL_TEXT: connect_org_wallet_cancel_text,
-    ERROR_ICON_TEXT: connect_org_wallet_error_icon_text,
-    ERROR_TEXT: connect_org_wallet_error_text,
-    SPINNER_TEXT: connect_org_wallet_spinner_text,
-    SUCCESS_ICON_TEXT: connect_org_wallet_success_icon_text,
-    SUCCESS_TEXT: connect_org_wallet_success_text,
-    TITLE: connect_org_wallet_title,
-    ERROR_TITLE: setup_error_title,
+    cancelText: connect_org_wallet_cancel_text,
+    errorIconText: connect_org_wallet_error_icon_text,
+    errorText: connect_org_wallet_error_text,
+    spinnerText: connect_org_wallet_spinner_text,
+    successIconText: connect_org_wallet_success_icon_text,
+    successText: connect_org_wallet_success_text,
+    title: connect_org_wallet_title,
+    errorTitle: setup_error_title
 };
