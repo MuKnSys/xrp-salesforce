@@ -5,6 +5,7 @@ private class OrgWalletService_Test {
         XRPForSalesforceSettings__c settings = new XRPForSalesforceSettings__c();
         settings.XRPWebhookApiKey__c = 'test_webhook_api_key';
         settings.XRPWebhookApiSecret__c = 'test_webhook_api_secret';
+        settings.XRPWebhookId__c = 'test_webhook_id';
         XRPForSalesforceSettingsService.settings = settings;
 
         XrpWebhookService.RegisterSubscriptionResponse body = new XrpWebhookService.RegisterSubscriptionResponse();
