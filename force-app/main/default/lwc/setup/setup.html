@@ -50,7 +50,7 @@
 
             <lightning-accordion-section name={labels.webhook} label={labels.webhook}>
                 <lightning-layout multiple-rows class="slds-var-p-top_medium">
-                    <lightning-layout-item size="11" class="slds-var-p-top_medium" lwc:if={registerWebhookDisabled}>
+                    <lightning-layout-item size="11" class="slds-var-p-top_medium" lwc:if={registerWebhookSuccess}>
                         <lightning-icon
                             alternative-text={labels.success}
                             class="slds-var-m-left_medium"

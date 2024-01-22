@@ -25,6 +25,10 @@ export default class Setup extends LightningElement {
         return !(this.settings.apiKey && this.settings.apiSecret && this.settings.webhookId);
     }
 
+    get registerWebhookSuccess() {
+        return this.settings.webhookId;
+    }
+
     async refreshSettings() {
         try {
             this.settings = await getSettings();
