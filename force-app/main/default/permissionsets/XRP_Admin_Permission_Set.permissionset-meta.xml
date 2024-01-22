@@ -12,10 +12,6 @@
         <apexClass>SetupCtrl</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <customSettingAccesses>
-        <enabled>true</enabled>
-        <name>XRPForSalesforceSettings__c</name>
-    </customSettingAccesses>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account_Wallet__c.Account__c</field>
