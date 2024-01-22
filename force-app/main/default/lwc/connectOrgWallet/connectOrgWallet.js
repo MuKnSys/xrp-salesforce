@@ -1,6 +1,7 @@
 import { LightningElement, api } from 'lwc';
 import { CloseActionScreenEvent } from 'lightning/actions';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { updateRecord } from 'lightning/uiRecordApi';
 
 import connectWallet from "@salesforce/apex/ConnectionOrgWalletCtrl.connectWallet";
 
@@ -34,6 +35,7 @@ export default class ConnectOrgWallet extends LightningElement {
         } catch (excp) {
             this.handleExcpetion(excp);
         } finally {
+            await updateRecord({ fields: { Id: this._recordId }});
             this.isLoading = false;
         }
     }
