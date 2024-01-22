@@ -113,6 +113,14 @@
         <value>Webhook Id has been set</value>
     </labels>
     <labels>
+        <fullName>setup_register_web_hook_error</fullName>
+        <categories>apex, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup_register_web_hook_error</shortDescription>
+        <value>Error during registering a XRP Webhook occured.</value>
+    </labels>
+    <labels>
         <fullName>setup_api_key</fullName>
         <categories>lwc, setup</categories>
         <language>en_US</language>

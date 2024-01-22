@@ -1,8 +1,12 @@
 public with sharing class OrgWalletService {
     public static final Integer MAXIMUM_AMOUNT_OF_CALLOUTS = 90; 
 
+    public static Boolean triggerOn = true;
+
     public static void execute(List<Org_Wallet__c> wallets){
-        processXRPWebhooks(wallets);
+        if (triggerOn) {
+            processXRPWebhooks(wallets);
+        }
     }
 
     private static void processXRPWebhooks(List<Org_Wallet__c> wallets) {

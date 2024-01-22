@@ -31,13 +31,14 @@ public with sharing class SetupCtrl {
             XrpWebhookService.RegisterWebhookResponse result = XrpWebhookService.registerWebhook();
 
             if (!result.success) {
-                throw new XrpWebhookApi.XrpWebhookAPIException('Error during registering a XRP Webhook occured.');
+                throw new XrpWebhookApi.XrpWebhookAPIException(System.Label.setup_register_web_hook_error);
             }
 
             XRPForSalesforceSettings__c settings = XRPForSalesforceSettingsService.settings;
             settings.XRPWebhookId__c = result.webhook_id;
 
-            // False Positive - Only Admin can perform this
+            // False Positive - Custom Settings need to be hidden
+            // but need to be accessible through Apex - action performed only by Admin on Setup Stage
             update as system settings;
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
@@ -51,7 +52,8 @@ public with sharing class SetupCtrl {
             XrpWebhookService.deleteWebhook(settings.XRPWebhookId__c);
             settings.XRPWebhookId__c = null;
 
-            // False Positive - Only Admin can perform this
+            // False Positive - Custom Settings need to be hidden
+            // but need to be accessible through Apex - action performed only by Admin on Setup Stage
             update as system settings;
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());

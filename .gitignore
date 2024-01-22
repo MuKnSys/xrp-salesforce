@@ -5,3 +5,4 @@
 .vim-force.com
 **/jsconfig.json
 **/.eslintrc.json
+.DS_Store
