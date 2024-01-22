@@ -25,6 +25,14 @@
         <value>Error</value>
     </labels>
     <labels>
+        <fullName>dis_connect_org_wallet_error_not_connected</fullName>
+        <categories>apex, dis_connect_org_wallet</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>dis connect org wallet error not connected</shortDescription>
+        <value>Org Wallet is not connected</value>
+    </labels>
+    <labels>
         <fullName>connect_org_wallet_error_text</fullName>
         <categories>lwc, connect_org_wallet</categories>
         <language>en_US</language>

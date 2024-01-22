@@ -39,12 +39,14 @@ public with sharing class XrpWebhookApi {
 
         try {
             response = new Http().send(request);
-            if(response.getStatusCode() != HTTP_METHOD_BY_HTTP_CODE.get(request.getMethod())) {
-                throw new XrpWebhookAPIException('Code: ' + response.getStatusCode() + ', Message: ' + response.getBody() + '.');
-            }
         } 
         catch(Exception error) {
             throw new XrpWebhookAPIException('Failed calling ' + request.getEndpoint() + ' :' + error.getMessage(), error);
+        }
+
+        if(response.getStatusCode() != HTTP_METHOD_BY_HTTP_CODE.get(request.getMethod())) {
+            Map<String, String> message = (Map<String, String>) JSON.deserialize(response.getBody(), Map<String, String>.class);
+            throw new XrpWebhookAPIException('Code: ' + response.getStatusCode() + ', Message: ' + message.get('error') + '.');
         }
 
         return response;
