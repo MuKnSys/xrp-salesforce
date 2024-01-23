@@ -1,6 +1,6 @@
 public with sharing class XrpWebhookApi {
     private final static String XRP_WEBHOOK_ENDPOINT = 'https://webhook.xrpayments.co';
-    private final static Map<String, Integer> HTTP_METHOD_BY_HTTP_CODE = new Map<String, Integer> {
+    private final static Map<String, Integer> HTTP_METHOD_BY_HTTP_CODE = new Map<String, Integer>{
         'POST' => 200,
         'DELETE' => 204
     };
@@ -8,8 +8,16 @@ public with sharing class XrpWebhookApi {
 
     public XrpWebhookApi(String urlSuffix, Boolean checkWebhookId) {
         XRPForSalesforceSettings__c settings = XRPForSalesforceSettingsService.settings;
-        if (settings.XRPWebhookApiKey__c == null || settings.XRPWebhookApiSecret__c == null || checkWebhookId ? settings.XRPWebhookId__c == null : false) {
-            throw new XrpWebhookAPIException(System.Label.api_app_not_correctly_configred);
+        if (
+            settings.XRPWebhookApiKey__c == null ||
+                settings.XRPWebhookApiSecret__c == null ||
+                checkWebhookId
+                ? settings.XRPWebhookId__c == null
+                : false
+        ) {
+            throw new XrpWebhookAPIException(
+                System.Label.api_app_not_correctly_configred
+            );
         }
 
         request = new HttpRequest();
@@ -39,18 +47,36 @@ public with sharing class XrpWebhookApi {
 
         try {
             response = new Http().send(request);
-        } 
-        catch(Exception error) {
-            throw new XrpWebhookAPIException('Failed calling ' + request.getEndpoint() + ' :' + error.getMessage(), error);
+        } catch (Exception error) {
+            throw new XrpWebhookAPIException(
+                'Failed calling ' +
+                    request.getEndpoint() +
+                    ' :' +
+                    error.getMessage(),
+                error
+            );
         }
 
-        if(response.getStatusCode() != HTTP_METHOD_BY_HTTP_CODE.get(request.getMethod())) {
-            Map<String, String> message = (Map<String, String>) JSON.deserialize(response.getBody(), Map<String, String>.class);
-            throw new XrpWebhookAPIException('Code: ' + response.getStatusCode() + ', Message: ' + message.get('error') + '.');
+        if (
+            response.getStatusCode() !=
+            HTTP_METHOD_BY_HTTP_CODE.get(request.getMethod())
+        ) {
+            Map<String, String> message = (Map<String, String>) JSON.deserialize(
+                response.getBody(),
+                Map<String, String>.class
+            );
+            throw new XrpWebhookAPIException(
+                'Code: ' +
+                    response.getStatusCode() +
+                    ', Message: ' +
+                    message.get('error') +
+                    '.'
+            );
         }
 
         return response;
     }
 
-    public class XrpWebhookAPIException extends Exception {}
+    public class XrpWebhookAPIException extends Exception {
+    }
 }

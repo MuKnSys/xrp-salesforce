@@ -1,6 +1,6 @@
 public with sharing class SetupCtrl {
     @AuraEnabled
-    public static Settings getSettings(){
+    public static Settings getSettings() {
         try {
             XRPForSalesforceSettings__c settings = XRPForSalesforceSettingsService.settings;
             return new Settings(settings);
@@ -31,7 +31,9 @@ public with sharing class SetupCtrl {
             XrpWebhookService.RegisterWebhookResponse result = XrpWebhookService.registerWebhook();
 
             if (!result.success) {
-                throw new XrpWebhookApi.XrpWebhookAPIException(System.Label.setup_register_web_hook_error);
+                throw new XrpWebhookApi.XrpWebhookAPIException(
+                    System.Label.setup_register_web_hook_error
+                );
             }
 
             XRPForSalesforceSettings__c settings = XRPForSalesforceSettingsService.settings;
@@ -61,16 +63,26 @@ public with sharing class SetupCtrl {
     }
 
     public class Settings {
-        @AuraEnabled public String apiKey;
-        @AuraEnabled public String apiSecret;
-        @AuraEnabled public String webhookId;
+        @AuraEnabled
+        public String apiKey;
+        @AuraEnabled
+        public String apiSecret;
+        @AuraEnabled
+        public String webhookId;
 
-        public Settings(){}
+        public Settings() {
+        }
 
-        public Settings(XRPForSalesforceSettings__c settings){
-            this.apiKey = isBlank(settings.XRPWebhookApiKey__c) ? null : System.Label.settings_api_key_setted;
-            this.apiSecret = isBlank(settings.XRPWebhookApiSecret__c) ? null :  System.Label.settings_api_secret_setted; 
-            this.webhookId = isBlank(settings.XRPWebhookId__c) ? null :  System.Label.settings_webhook_id_setted;
+        public Settings(XRPForSalesforceSettings__c settings) {
+            this.apiKey = isBlank(settings.XRPWebhookApiKey__c)
+                ? null
+                : System.Label.settings_api_key_setted;
+            this.apiSecret = isBlank(settings.XRPWebhookApiSecret__c)
+                ? null
+                : System.Label.settings_api_secret_setted;
+            this.webhookId = isBlank(settings.XRPWebhookId__c)
+                ? null
+                : System.Label.settings_webhook_id_setted;
         }
 
         private Boolean isBlank(String value) {

@@ -1,4 +1,4 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement, track } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
 import getSettings from "@salesforce/apex/SetupCtrl.getSettings";
@@ -6,7 +6,7 @@ import saveSettings from "@salesforce/apex/SetupCtrl.saveSettings";
 import subscribeWebhook from "@salesforce/apex/SetupCtrl.subscribeWebhook";
 import deleteWebhook from "@salesforce/apex/SetupCtrl.deleteWebhook";
 
-import { labels } from './setupLabels';
+import { labels } from "./setupLabels";
 
 export default class Setup extends LightningElement {
     @track settings = {};
@@ -18,11 +18,19 @@ export default class Setup extends LightningElement {
     activeSections = [labels.credentials, labels.webhook];
 
     get registerWebhookDisabled() {
-        return !(this.settings.apiKey && this.settings.apiSecret && !this.settings.webhookId);
+        return !(
+            this.settings.apiKey &&
+            this.settings.apiSecret &&
+            !this.settings.webhookId
+        );
     }
 
     get deleteWebhookDisabled() {
-        return !(this.settings.apiKey && this.settings.apiSecret && this.settings.webhookId);
+        return !(
+            this.settings.apiKey &&
+            this.settings.apiSecret &&
+            this.settings.webhookId
+        );
     }
 
     get registerWebhookSuccess() {
@@ -44,7 +52,11 @@ export default class Setup extends LightningElement {
         this.apiSecret = null;
     }
 
-    showToastNotification(message, title=labels.errorTitle, variant='error') {
+    showToastNotification(
+        message,
+        title = labels.errorTitle,
+        variant = "error"
+    ) {
         const toast = new ShowToastEvent({
             title: title,
             message: message,
@@ -69,15 +81,15 @@ export default class Setup extends LightningElement {
 
     async handleSave() {
         try {
-            if(this.apiKey == null || this.apiSecret == null){
+            if (this.apiKey == null || this.apiSecret == null) {
                 this.showToastNotification(labels.errorMessage);
                 return;
             }
-    
+
             this.isLoading = true;
             this.settings = await saveSettings({
-                apiKey : this.apiKey,
-                apiSecret : this.apiSecret
+                apiKey: this.apiKey,
+                apiSecret: this.apiSecret,
             });
             this.resetState();
         } catch (excp) {

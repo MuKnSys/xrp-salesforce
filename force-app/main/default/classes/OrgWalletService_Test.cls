@@ -11,8 +11,10 @@ private class OrgWalletService_Test {
         XrpWebhookService.RegisterSubscriptionResponse body = new XrpWebhookService.RegisterSubscriptionResponse();
         body.subscription_id = 'test_subscription_id';
         body.success = true;
-        
-        new HttpMock().post(XrpWebhookService.REGISTER_SUBSCRIPTION_SUFFIX, body, 200).mock();
+
+        new HttpMock()
+            .post(XrpWebhookService.REGISTER_SUBSCRIPTION_SUFFIX, body, 200)
+            .mock();
 
         Test.startTest();
         Org_Wallet__c wallet = new Org_Wallet__c();
@@ -22,7 +24,11 @@ private class OrgWalletService_Test {
         insert wallet;
         Test.stopTest();
 
-        Org_Wallet__c connectedWallet = [SELECT XRPWebhookSubscriptionId__c FROM Org_Wallet__c WHERE Id = :wallet.Id];
+        Org_Wallet__c connectedWallet = [
+            SELECT XRPWebhookSubscriptionId__c
+            FROM Org_Wallet__c
+            WHERE Id = :wallet.Id
+        ];
         Assert.isNotNull(connectedWallet.XRPWebhookSubscriptionId__c);
     }
 }

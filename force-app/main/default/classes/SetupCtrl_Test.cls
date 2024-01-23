@@ -12,7 +12,10 @@ private class SetupCtrl_Test {
         Test.stopTest();
 
         Assert.areEqual(result.apiKey, System.Label.settings_api_key_setted);
-        Assert.areEqual(result.apiSecret, System.Label.settings_api_secret_setted);
+        Assert.areEqual(
+            result.apiSecret,
+            System.Label.settings_api_secret_setted
+        );
     }
 
     @isTest
@@ -34,11 +37,17 @@ private class SetupCtrl_Test {
         XRPForSalesforceSettingsService.settings = settings;
 
         Test.startTest();
-        SetupCtrl.Settings result = SetupCtrl.saveSettings('test_new_API_Key', 'test_new_API_Secret');
+        SetupCtrl.Settings result = SetupCtrl.saveSettings(
+            'test_new_API_Key',
+            'test_new_API_Secret'
+        );
         Test.stopTest();
 
         Assert.areEqual(result.apiKey, System.Label.settings_api_key_setted);
-        Assert.areEqual(result.apiSecret, System.Label.settings_api_secret_setted);
+        Assert.areEqual(
+            result.apiSecret,
+            System.Label.settings_api_secret_setted
+        );
     }
 
     @isTest
@@ -52,7 +61,9 @@ private class SetupCtrl_Test {
         body.webhook_id = 'test_webhook_id';
         body.success = true;
 
-        new HttpMock().post(XrpWebhookService.REGISTER_WEBHOOK_SUFFIX, body, 200).mock();
+        new HttpMock()
+            .post(XrpWebhookService.REGISTER_WEBHOOK_SUFFIX, body, 200)
+            .mock();
 
         Test.startTest();
         SetupCtrl.subscribeWebhook();
@@ -70,12 +81,16 @@ private class SetupCtrl_Test {
         settings.XRPWebhookId__c = 'test_webhook_id';
         insert settings;
 
-        new HttpMock().doDelete(
-            String.format(
-                XrpWebhookService.DELETE_WEBHOOK_SUFFIX,
-                new List<Object>{settings.XRPWebhookId__c}
-            ), null, 204)
-        .mock();
+        new HttpMock()
+            .doDelete(
+                String.format(
+                    XrpWebhookService.DELETE_WEBHOOK_SUFFIX,
+                    new List<Object>{ settings.XRPWebhookId__c }
+                ),
+                null,
+                204
+            )
+            .mock();
 
         Test.startTest();
         SetupCtrl.deleteWebhook();
