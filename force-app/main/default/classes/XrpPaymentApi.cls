@@ -1,4 +1,4 @@
-@RestResource(urlMapping='/api/XrpPayments/*')
+@RestResource(urlMapping='/xrp/api/xrp/payments/*')
 global with sharing class XrpPaymentApi {
     @HttpPost
     global static void doPost() {
