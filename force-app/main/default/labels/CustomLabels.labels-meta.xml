@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
         <fullName>api_app_not_correctly_configred</fullName>
@@ -45,7 +45,8 @@
         <categories>lwc, connect_org_wallet</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>connect org wallet success icon text</shortDescription>
+        <shortDescription
+        >connect org wallet success icon text</shortDescription>
         <value>Success</value>
     </labels>
     <labels>
@@ -69,7 +70,8 @@
         <categories>apex, dis_connect_org_wallet</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>dis connect org wallet error not connected</shortDescription>
+        <shortDescription
+        >dis connect org wallet error not connected</shortDescription>
         <value>Org Wallet is not connected</value>
     </labels>
     <labels>
@@ -113,6 +115,14 @@
         <value>API Secret has been set</value>
     </labels>
     <labels>
+        <fullName>settings_site_domain_setted</fullName>
+        <categories>apex, settings</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>settings site domain setted</shortDescription>
+        <value>Site Domain has been set</value>
+    </labels>
+    <labels>
         <fullName>settings_webhook_id_setted</fullName>
         <categories>apex, settings</categories>
         <language>en_US</language>
@@ -143,14 +153,6 @@
         <protected>true</protected>
         <shortDescription>setup delete webhook</shortDescription>
         <value>Delete Webhook</value>
-    </labels>
-    <labels>
-        <fullName>setup_error_message</fullName>
-        <categories>lwc, setup</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>setup error message</shortDescription>
-        <value>Please provide Api Key and Api Secret</value>
     </labels>
     <labels>
         <fullName>setup_error_title</fullName>
@@ -191,6 +193,14 @@
         <protected>true</protected>
         <shortDescription>setup save</shortDescription>
         <value>Save</value>
+    </labels>
+    <labels>
+        <fullName>setup_site_domain</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup site domain</shortDescription>
+        <value>Site Domain</value>
     </labels>
     <labels>
         <fullName>setup_subtitle_credentials</fullName>
