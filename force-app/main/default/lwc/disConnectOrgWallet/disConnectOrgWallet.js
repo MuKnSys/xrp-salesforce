@@ -1,11 +1,11 @@
-import { LightningElement, api } from 'lwc';
-import { CloseActionScreenEvent } from 'lightning/actions';
-import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import { updateRecord } from 'lightning/uiRecordApi';
+import { LightningElement, api } from "lwc";
+import { CloseActionScreenEvent } from "lightning/actions";
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
+import { updateRecord } from "lightning/uiRecordApi";
 
 import disConnectWallet from "@salesforce/apex/ConnectionOrgWalletCtrl.disConnectWallet";
 
-import { labels } from './disConnectOrgWalletLabels';
+import { labels } from "./disConnectOrgWalletLabels";
 
 export default class ConnectOrgWallet extends LightningElement {
     _recordId;
@@ -35,12 +35,16 @@ export default class ConnectOrgWallet extends LightningElement {
         } catch (excp) {
             this.handleExcpetion(excp);
         } finally {
-            await updateRecord({ fields: { Id: this._recordId }});
+            await updateRecord({ fields: { Id: this._recordId } });
             this.isLoading = false;
         }
     }
 
-    showToastNotification(message, title=labels.errorTitle, variant='error') {
+    showToastNotification(
+        message,
+        title = labels.errorTitle,
+        variant = "error"
+    ) {
         const toast = new ShowToastEvent({
             title: title,
             message: message,
