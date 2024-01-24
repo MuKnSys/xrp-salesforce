@@ -1,5 +1,7 @@
 // False Positive: This class needs to work in System Mode - callback from Webhook App
 public without sharing class XrpPaymentService {
+    public static final Integer RIPPLE_EPOCH_TO_TIMESTAMP_ADJUSTMENT = 946684800;
+
     public static void processIncomingPayment(String requestBody) {
         Map<String, Object> paymentData = (Map<String, Object>) JSON.deserializeUntyped(
             requestBody
@@ -15,7 +17,7 @@ public without sharing class XrpPaymentService {
         };
 
         List<Org_Wallet__c> orgWallets = [
-            SELECT Id, Wallet_Address__c
+            SELECT Wallet_Address__c
             FROM Org_Wallet__c
             WHERE Wallet_Address__c IN :walletAddresses
             WITH SYSTEM_MODE
@@ -25,6 +27,15 @@ public without sharing class XrpPaymentService {
             // Not recognized Org Wallet - not tracking this payment
             return;
         }
+
+        Map<String, Account_Wallet__c> accountWallets = new Map<String, Account_Wallet__c>(
+            [
+                SELECT Wallet_Address__c
+                FROM Account_Wallet__c
+                WHERE Wallet_Address__c IN :walletAddresses
+                WITH SYSTEM_MODE
+            ]
+        );
 
         if (orgWallets.size() == 1) {
             Org_Wallet__c wallet = orgWallets[0];
@@ -39,10 +50,13 @@ public without sharing class XrpPaymentService {
                 outboundTransaction.BlockNum__c = (String) paymentData.get(
                     'ledger_index'
                 );
-                outboundTransaction.Transaction_Timestamp__c = Datetime.newInstance(
-                    946684800 + (Integer) transcationData.get('date')
+                outboundTransaction.Transaction_Timestamp__c = convertRippleTimestamptoDatetime(
+                    (Integer) transcationData.get('date')
                 );
-                outboundTransaction.Account_Wallet__c = null;
+                outboundTransaction.Account_Wallet__c = accountWallets.get(
+                        (String) transcationData.get('Destination')
+                    )
+                    .Id;
             } else if (
                 wallet.Wallet_Address__c == transcationData.get('Destination')
             ) {
@@ -55,11 +69,22 @@ public without sharing class XrpPaymentService {
                 inboundTransaction.BlockNum__c = (String) paymentData.get(
                     'ledger_index'
                 );
-                inboundTransaction.Transaction_Timestamp__c = Datetime.newInstance(
-                    946684800 + (Integer) transcationData.get('date')
+                inboundTransaction.Transaction_Timestamp__c = convertRippleTimestamptoDatetime(
+                    (Integer) transcationData.get('date')
                 );
-                inboundTransaction.Account_Wallet__c = null;
+                inboundTransaction.Account_Wallet__c = accountWallets.get(
+                        (String) transcationData.get('Account')
+                    )
+                    .Id;
             }
         }
+    }
+
+    private static Datetime convertRippleTimestamptoDatetime(
+        Integer rippleTimestamp
+    ) {
+        return Datetime.newInstance(
+            (RIPPLE_EPOCH_TO_TIMESTAMP_ADJUSTMENT + rippleTimestamp) * 1000
+        );
     }
 }
