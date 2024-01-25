@@ -43,6 +43,9 @@ public without sharing class XrpPaymentService {
             if (wallet.Wallet_Address__c == transcationData.get('Account')) {
                 Outbound_Blockchain_Transaction__c outboundTransaction = new Outbound_Blockchain_Transaction__c();
                 outboundTransaction.Org_Wallet__c = wallet.Id;
+                outboundTransaction.From_Address__c = (String) transcationData.get(
+                    'Account'
+                );
                 outboundTransaction.Network_Name__c = 'XRP_Mainnet';
                 outboundTransaction.Value__c = (Decimal) transcationData.get(
                     'Amount'
@@ -57,11 +60,17 @@ public without sharing class XrpPaymentService {
                         (String) transcationData.get('Destination')
                     )
                     .Id;
+                outboundTransaction.To_Address__c = (String) transcationData.get(
+                    'Destination'
+                );
             } else if (
                 wallet.Wallet_Address__c == transcationData.get('Destination')
             ) {
                 Inbound_Blockchain_Transaction__c inboundTransaction = new Inbound_Blockchain_Transaction__c();
                 inboundTransaction.Org_Wallet__c = wallet.Id;
+                inboundTransaction.From_Address__c = (String) transcationData.get(
+                    'Account'
+                );
                 inboundTransaction.Network_Name__c = 'XRP_Mainnet';
                 inboundTransaction.Value__c = (Decimal) transcationData.get(
                     'Amount'
@@ -76,6 +85,9 @@ public without sharing class XrpPaymentService {
                         (String) transcationData.get('Account')
                     )
                     .Id;
+                inboundTransaction.To_Address__c = (String) transcationData.get(
+                    'Destination'
+                );
             }
         }
     }
