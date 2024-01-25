@@ -16,27 +16,18 @@ public without sharing class XrpPaymentService {
             (String) transcationData.get('Destination')
         };
 
-        List<Org_Wallet__c> orgWallets = [
-            SELECT Wallet_Address__c
-            FROM Org_Wallet__c
-            WHERE Wallet_Address__c IN :walletAddresses
-            WITH SYSTEM_MODE
-        ];
+        List<Org_Wallet__c> orgWallets = OrgWalletSelectorSystem.getOrgWalletByWalletAddressesSystemMode(
+            walletAddresses
+        );
 
         if (orgWallets.isEmpty()) {
             // Not recognized Org Wallet - not tracking this payment
             return;
         }
 
-        Map<String, Account_Wallet__c> accountWallets = new Map<String, Account_Wallet__c>();
-        for (Account_Wallet__c wallet : [
-            SELECT Wallet_Address__c
-            FROM Account_Wallet__c
-            WHERE Wallet_Address__c IN :walletAddresses
-            WITH SYSTEM_MODE
-        ]) {
-            accountWallets.put(wallet.Wallet_Address__c, wallet);
-        }
+        Map<String, Account_Wallet__c> accountWalletsByWalletAddress = getAccountWalletsByWalletAddress(
+            walletAddresses
+        );
 
         if (orgWallets.size() == 1) {
             Org_Wallet__c wallet = orgWallets[0];
@@ -44,7 +35,7 @@ public without sharing class XrpPaymentService {
             if (wallet.Wallet_Address__c == transcationData.get('Account')) {
                 Outbound_Blockchain_Transaction__c outboundTransaction = new Outbound_Blockchain_Transaction__c();
                 outboundTransaction.Org_Wallet__c = wallet.Id;
-                outboundTransaction.Account_Wallet__c = accountWallets.get(
+                outboundTransaction.Account_Wallet__c = accountWalletsByWalletAddress.get(
                         (String) transcationData.get('Destination')
                     )
                     ?.Id;
@@ -61,7 +52,7 @@ public without sharing class XrpPaymentService {
             ) {
                 Inbound_Blockchain_Transaction__c inboundTransaction = new Inbound_Blockchain_Transaction__c();
                 inboundTransaction.Org_Wallet__c = wallet.Id;
-                inboundTransaction.Account_Wallet__c = accountWallets.get(
+                inboundTransaction.Account_Wallet__c = accountWalletsByWalletAddress.get(
                         (String) transcationData.get('Account')
                     )
                     .Id;
@@ -75,6 +66,20 @@ public without sharing class XrpPaymentService {
                 insert as system inboundTransaction;
             }
         }
+    }
+
+    private static Map<String, Account_Wallet__c> getAccountWalletsByWalletAddress(
+        Set<String> walletAddresses
+    ) {
+        Map<String, Account_Wallet__c> accountWalletsByWalletAddress = new Map<String, Account_Wallet__c>();
+        for (
+            Account_Wallet__c wallet : AccountWalletSelectorSystem.getOrgWalletByWalletAddressesSystemMode(
+                walletAddresses
+            )
+        ) {
+            accountWalletsByWalletAddress.put(wallet.Wallet_Address__c, wallet);
+        }
+        return accountWalletsByWalletAddress;
     }
 
     private static sObject setGeneralTransactionProperties(
