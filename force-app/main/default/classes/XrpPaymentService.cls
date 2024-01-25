@@ -1,6 +1,6 @@
 // False Positive: This class needs to work in System Mode - callback from Webhook App
 public without sharing class XrpPaymentService {
-    public static final Integer RIPPLE_EPOCH_TO_TIMESTAMP_ADJUSTMENT = 946684800;
+    public static final Long RIPPLE_EPOCH_TO_TIMESTAM_SECONDS_ADJUSTMENT = 946684800;
 
     public static void processIncomingPayment(String requestBody) {
         Map<String, Object> paymentData = (Map<String, Object>) JSON.deserializeUntyped(
@@ -28,14 +28,15 @@ public without sharing class XrpPaymentService {
             return;
         }
 
-        Map<String, Account_Wallet__c> accountWallets = new Map<String, Account_Wallet__c>(
-            [
-                SELECT Wallet_Address__c
-                FROM Account_Wallet__c
-                WHERE Wallet_Address__c IN :walletAddresses
-                WITH SYSTEM_MODE
-            ]
-        );
+        Map<String, Account_Wallet__c> accountWallets = new Map<String, Account_Wallet__c>();
+        for (Account_Wallet__c wallet : [
+            SELECT Wallet_Address__c
+            FROM Account_Wallet__c
+            WHERE Wallet_Address__c IN :walletAddresses
+            WITH SYSTEM_MODE
+        ]) {
+            accountWallets.put(wallet.Wallet_Address__c, wallet);
+        }
 
         if (orgWallets.size() == 1) {
             Org_Wallet__c wallet = orgWallets[0];
@@ -43,60 +44,74 @@ public without sharing class XrpPaymentService {
             if (wallet.Wallet_Address__c == transcationData.get('Account')) {
                 Outbound_Blockchain_Transaction__c outboundTransaction = new Outbound_Blockchain_Transaction__c();
                 outboundTransaction.Org_Wallet__c = wallet.Id;
-                outboundTransaction.From_Address__c = (String) transcationData.get(
-                    'Account'
-                );
-                outboundTransaction.Network_Name__c = 'XRP_Mainnet';
-                outboundTransaction.Value__c = (Decimal) transcationData.get(
-                    'Amount'
-                );
-                outboundTransaction.BlockNum__c = (String) paymentData.get(
-                    'ledger_index'
-                );
-                outboundTransaction.Transaction_Timestamp__c = convertRippleTimestamptoDatetime(
-                    (Integer) transcationData.get('date')
-                );
                 outboundTransaction.Account_Wallet__c = accountWallets.get(
                         (String) transcationData.get('Destination')
                     )
-                    .Id;
-                outboundTransaction.To_Address__c = (String) transcationData.get(
-                    'Destination'
+                    ?.Id;
+
+                outboundTransaction = (Outbound_Blockchain_Transaction__c) setGeneralTransactionProperties(
+                    outboundTransaction,
+                    paymentData,
+                    transcationData
                 );
+
+                insert as system outboundTransaction;
             } else if (
                 wallet.Wallet_Address__c == transcationData.get('Destination')
             ) {
                 Inbound_Blockchain_Transaction__c inboundTransaction = new Inbound_Blockchain_Transaction__c();
                 inboundTransaction.Org_Wallet__c = wallet.Id;
-                inboundTransaction.From_Address__c = (String) transcationData.get(
-                    'Account'
-                );
-                inboundTransaction.Network_Name__c = 'XRP_Mainnet';
-                inboundTransaction.Value__c = (Decimal) transcationData.get(
-                    'Amount'
-                );
-                inboundTransaction.BlockNum__c = (String) paymentData.get(
-                    'ledger_index'
-                );
-                inboundTransaction.Transaction_Timestamp__c = convertRippleTimestamptoDatetime(
-                    (Integer) transcationData.get('date')
-                );
                 inboundTransaction.Account_Wallet__c = accountWallets.get(
                         (String) transcationData.get('Account')
                     )
                     .Id;
-                inboundTransaction.To_Address__c = (String) transcationData.get(
-                    'Destination'
+
+                inboundTransaction = (Inbound_Blockchain_Transaction__c) setGeneralTransactionProperties(
+                    inboundTransaction,
+                    paymentData,
+                    transcationData
                 );
+
+                insert as system inboundTransaction;
             }
         }
     }
 
+    private static sObject setGeneralTransactionProperties(
+        sObject paymentTransaction,
+        Map<String, Object> paymentData,
+        Map<String, Object> transcationData
+    ) {
+        paymentTransaction.put(
+            'From_Address__c',
+            (String) transcationData.get('Account')
+        );
+        paymentTransaction.put('Network_Name__c', 'XRP_Mainnet');
+        paymentTransaction.put(
+            'Value__c',
+            Decimal.valueOf((String) transcationData.get('Amount'))
+        );
+        paymentTransaction.put(
+            'BlockNum__c',
+            String.valueOf((Integer) paymentData.get('ledger_index'))
+        );
+        paymentTransaction.put(
+            'Transaction_Timestamp__c',
+            convertRippleTimestamptoDatetime((Long) transcationData.get('date'))
+        );
+        paymentTransaction.put(
+            'To_Address__c',
+            (String) transcationData.get('Destination')
+        );
+        return paymentTransaction;
+    }
+
     private static Datetime convertRippleTimestamptoDatetime(
-        Integer rippleTimestamp
+        Long rippleTimestamp
     ) {
         return Datetime.newInstance(
-            (RIPPLE_EPOCH_TO_TIMESTAMP_ADJUSTMENT + rippleTimestamp) * 1000
+            (RIPPLE_EPOCH_TO_TIMESTAM_SECONDS_ADJUSTMENT + rippleTimestamp) *
+            1000
         );
     }
 }
