@@ -18,12 +18,24 @@ export default class Setup extends LightningElement {
         siteDomain: null,
     };
     labels = labels;
-    activeSections = [labels.credentials, labels.webhook];
+
+    get activeSections() {
+        if (
+            !this.settings.apiKey ||
+            !this.settings.apiSecret ||
+            !this.settings.siteDomain
+        ) {
+            return [labels.credentials];
+        } else {
+            return [labels.credentials, labels.webhook];
+        }
+    }
 
     get registerWebhookDisabled() {
         return !(
             this.settings.apiKey &&
             this.settings.apiSecret &&
+            this.settings.siteDomain &&
             !this.settings.webhookId
         );
     }
@@ -32,6 +44,7 @@ export default class Setup extends LightningElement {
         return !(
             this.settings.apiKey &&
             this.settings.apiSecret &&
+            this.settings.siteDomain &&
             this.settings.webhookId
         );
     }
