@@ -12,15 +12,30 @@ export default class Setup extends LightningElement {
     @track settings = {};
 
     isLoading = true;
-    apiKey = null;
-    apiSecret = null;
+    settingValues = {
+        apiKey: null,
+        apiSecret: null,
+        siteDomain: null,
+    };
     labels = labels;
-    activeSections = [labels.credentials, labels.webhook];
+
+    get activeSections() {
+        if (
+            !this.settings.apiKey ||
+            !this.settings.apiSecret ||
+            !this.settings.siteDomain
+        ) {
+            return [labels.credentials];
+        } else {
+            return [labels.credentials, labels.webhook];
+        }
+    }
 
     get registerWebhookDisabled() {
         return !(
             this.settings.apiKey &&
             this.settings.apiSecret &&
+            this.settings.siteDomain &&
             !this.settings.webhookId
         );
     }
@@ -29,6 +44,7 @@ export default class Setup extends LightningElement {
         return !(
             this.settings.apiKey &&
             this.settings.apiSecret &&
+            this.settings.siteDomain &&
             this.settings.webhookId
         );
     }
@@ -48,8 +64,11 @@ export default class Setup extends LightningElement {
     }
 
     resetState() {
-        this.apiKey = null;
-        this.apiSecret = null;
+        this.settingValues = {
+            apiKey: null,
+            apiSecret: null,
+            siteDomain: null,
+        };
     }
 
     showToastNotification(
@@ -67,11 +86,11 @@ export default class Setup extends LightningElement {
     }
 
     handleApiKey(event) {
-        this.apiKey = event.target.value;
+        this.settingValues.apiKey = event.target.value;
     }
 
     handleApiSecret(event) {
-        this.apiSecret = event.target.value;
+        this.settingValues.apiSecret = event.target.value;
     }
 
     handleExcpetion(excp) {
@@ -81,15 +100,9 @@ export default class Setup extends LightningElement {
 
     async handleSave() {
         try {
-            if (this.apiKey == null || this.apiSecret == null) {
-                this.showToastNotification(labels.errorMessage);
-                return;
-            }
-
             this.isLoading = true;
             this.settings = await saveSettings({
-                apiKey: this.apiKey,
-                apiSecret: this.apiSecret,
+                settingValues: this.settingValues,
             });
             this.resetState();
         } catch (excp) {
@@ -97,6 +110,10 @@ export default class Setup extends LightningElement {
         } finally {
             this.isLoading = false;
         }
+    }
+
+    handleSiteDomain(event) {
+        this.settingValues.siteDomain = event.target.value;
     }
 
     async handleRegisterWebhook() {

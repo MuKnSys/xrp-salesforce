@@ -11,6 +11,7 @@ public with sharing class XrpWebhookApi {
         if (
             settings.XRPWebhookApiKey__c == null ||
                 settings.XRPWebhookApiSecret__c == null ||
+                settings.XRPSiteDomainUrl__c == null ||
                 checkWebhookId
                 ? settings.XRPWebhookId__c == null
                 : false

@@ -1,14 +1,22 @@
 public with sharing class XrpWebhookService {
-    public static final String PAYMENT_PROCESSING_ENDPOINT = '/services/apexrest/api/XrpPayments';
+    public static final String PAYMENT_PROCESSING_ENDPOINT = '/services/apexrest/api/xrp/payments';
     public static final String REGISTER_WEBHOOK_SUFFIX = '/api/v1/webhooks';
     public static final String DELETE_WEBHOOK_SUFFIX = '/api/v1/webhooks/{0}';
     public static final String REGISTER_SUBSCRIPTION_SUFFIX = '/api/v1/subscriptions';
     public static final String DELETE_SUBSCRIPTION_SUFFIX = '/api/v1/subscriptions/{0}';
 
     public static RegisterWebhookResponse registerWebhook() {
+        XRPForSalesforceSettings__c settings = XRPForSalesforceSettingsService.settings;
+        if (settings.XRPSiteDomainUrl__c == null) {
+            throw new XrpWebhookApi.XrpWebhookAPIException(
+                System.Label.api_app_not_correctly_configred
+            );
+        }
+
         RegisterWebhookPayload payload = new RegisterWebhookPayload(
-            URL.getOrgDomainUrl().toExternalForm() + PAYMENT_PROCESSING_ENDPOINT
+            settings.XRPSiteDomainUrl__c + PAYMENT_PROCESSING_ENDPOINT
         );
+
         XrpWebhookApi request = new XrpWebhookApi(
                 REGISTER_WEBHOOK_SUFFIX,
                 false

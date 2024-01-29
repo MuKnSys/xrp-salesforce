@@ -9,6 +9,10 @@
         <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
+        <apexClass>ConnectionOrgWalletCtrl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>SetupCtrl</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -49,6 +53,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Inbound_Blockchain_Transaction__c.Account_Wallet__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Inbound_Blockchain_Transaction__c.Asset_Token__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -65,6 +74,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Inbound_Blockchain_Transaction__c.Contract_Address__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Inbound_Blockchain_Transaction__c.From_Address__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -95,6 +109,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Inbound_Blockchain_Transaction__c.Test_Transaction__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Inbound_Blockchain_Transaction__c.To_Address__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -145,6 +164,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Outbound_Blockchain_Transaction__c.Account_Wallet__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Outbound_Blockchain_Transaction__c.Asset_Token__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -161,6 +185,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Outbound_Blockchain_Transaction__c.Contract_Address__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Outbound_Blockchain_Transaction__c.From_Address__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -191,6 +220,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Outbound_Blockchain_Transaction__c.Test_Transaction__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Outbound_Blockchain_Transaction__c.To_Address__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

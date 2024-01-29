@@ -5,6 +5,7 @@ private class SetupCtrl_Test {
         XRPForSalesforceSettings__c settings = XRPForSalesforceSettingsService.settings;
         settings.XRPWebhookApiKey__c = 'test_API_Key';
         settings.XRPWebhookApiSecret__c = 'test_API_Secret';
+        settings.XRPSiteDomainUrl__c = 'test_Site_Domain';
         XRPForSalesforceSettingsService.settings = settings;
 
         Test.startTest();
@@ -15,6 +16,10 @@ private class SetupCtrl_Test {
         Assert.areEqual(
             result.apiSecret,
             System.Label.settings_api_secret_setted
+        );
+        Assert.areEqual(
+            result.siteDomain,
+            System.Label.settings_site_domain_setted
         );
     }
 
@@ -29,6 +34,7 @@ private class SetupCtrl_Test {
 
         Assert.areEqual(result.apiKey, null);
         Assert.areEqual(result.apiSecret, null);
+        Assert.areEqual(result.siteDomain, null);
     }
 
     @isTest
@@ -36,17 +42,23 @@ private class SetupCtrl_Test {
         XRPForSalesforceSettings__c settings = XRPForSalesforceSettingsService.settings;
         XRPForSalesforceSettingsService.settings = settings;
 
+        Map<String, String> settingValues = new Map<String, String>();
+        settingValues.put('apiKey', 'test_new_API_Key');
+        settingValues.put('apiSecret', 'test_new_API_Secret');
+        settingValues.put('siteDomain', 'test_new_Site_Domain');
+
         Test.startTest();
-        SetupCtrl.Settings result = SetupCtrl.saveSettings(
-            'test_new_API_Key',
-            'test_new_API_Secret'
-        );
+        SetupCtrl.Settings result = SetupCtrl.saveSettings(settingValues);
         Test.stopTest();
 
         Assert.areEqual(result.apiKey, System.Label.settings_api_key_setted);
         Assert.areEqual(
             result.apiSecret,
             System.Label.settings_api_secret_setted
+        );
+        Assert.areEqual(
+            result.siteDomain,
+            System.Label.settings_site_domain_setted
         );
     }
 
@@ -55,6 +67,7 @@ private class SetupCtrl_Test {
         XRPForSalesforceSettings__c settings = new XRPForSalesforceSettings__c();
         settings.XRPWebhookApiKey__c = 'test_webhook_api_key';
         settings.XRPWebhookApiSecret__c = 'test_webhook_api_secret';
+        settings.XRPSiteDomainUrl__c = 'test_site_domain';
         insert settings;
 
         XrpWebhookService.RegisterWebhookResponse body = new XrpWebhookService.RegisterWebhookResponse();
@@ -78,6 +91,7 @@ private class SetupCtrl_Test {
         XRPForSalesforceSettings__c settings = new XRPForSalesforceSettings__c();
         settings.XRPWebhookApiKey__c = 'test_webhook_api_key';
         settings.XRPWebhookApiSecret__c = 'test_webhook_api_secret';
+        settings.XRPSiteDomainUrl__c = 'test_site_domain';
         settings.XRPWebhookId__c = 'test_webhook_id';
         insert settings;
 
