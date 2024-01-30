@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Value__c</fullName>
-    <description>Value (Quantity) of Currency in Transaction on Blockchain</description>
+    <description>Value (Quantity) of Currency in Transaction on Blockchain. API name maintains compatibility with EVM software.</description>
     <externalId>false</externalId>
-    <label>Value</label>
+    <label>Chain Value</label>
     <precision>18</precision>
     <required>false</required>
     <scale>6</scale>

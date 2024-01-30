@@ -143,26 +143,24 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>Outbound Transactions on the Blockchain. From is an Account Wallet. To is an Org Wallet.</description>
+    <description>Stores the address on the blockchain that issues the token. This is used to verify asset transfers. The API name of TokenContract is to remain code-compatible with the EVM Salesforce Applications.</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>true</enableHistory>
+    <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
-    <enableSearch>true</enableSearch>
+    <enableReports>false</enableReports>
+    <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>ReadWrite</externalSharingModel>
-    <label>Outbound Blockchain Transaction</label>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Token Issuer</label>
     <nameField>
-        <displayFormat>OBC-TXN-{00000000}</displayFormat>
-        <label>Outbound Blockchain Transaction Id</label>
-        <trackHistory>false</trackHistory>
-        <type>AutoNumber</type>
+        <label>Token Issuer Name</label>
+        <type>Text</type>
     </nameField>
-    <pluralLabel>Outbound Blockchain Transactions</pluralLabel>
+    <pluralLabel>Token Issuers</pluralLabel>
     <searchLayouts></searchLayouts>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

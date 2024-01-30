@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contract_Detail__c</fullName>
+    <description>URL to view the Contract on the Block Explorer or similar. Field Name remains code-compatible with EVM based Salesforce Application.</description>
+    <externalId>false</externalId>
+    <label>Issuer Detail</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Url</type>
+</CustomField>

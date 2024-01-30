@@ -4,11 +4,4 @@
     <active>true</active>
     <description>XRP Wallets for XRPL Ledger</description>
     <label>XRP</label>
-    <picklistValues>
-        <picklist>Networks__c</picklist>
-        <values>
-            <fullName>XRP_LEDGER</fullName>
-            <default>true</default>
-        </values>
-    </picklistValues>
 </RecordType>

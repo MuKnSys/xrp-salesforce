@@ -17,17 +17,23 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>ConversionRate__c</field>
+                <field>Active__c</field>
             </layoutItems>
-<!-- 
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>CurrencyIsoCode</field>
+                <field>ConversionRate__c</field>
             </layoutItems>
--->
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>ConversionRateLastSet__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>TokenInformation__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Network__c</field>
             </layoutItems>
         </layoutColumns>
         <style>OneColumn</style>
@@ -38,10 +44,6 @@
         <editHeading>true</editHeading>
         <label>System Information</label>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Active__c</field>
-            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>OwnerId</field>
@@ -69,6 +71,10 @@
     </layoutSections>
     <relatedLists>
         <fields>NAME</fields>
+        <relatedList>TokenContract__c.AssetToken__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
         <fields>Org_Wallet__c</fields>
         <fields>Account_Wallet__c</fields>
         <fields>Transaction_Value__c</fields>
@@ -93,7 +99,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h530000034dcL</masterLabel>
+        <masterLabel>00hRt000001GorX</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
