@@ -19,7 +19,6 @@ private class OrgWalletService_Test {
         Test.startTest();
         Org_Wallet__c wallet = new Org_Wallet__c();
         wallet.Wallet_Address__c = 'test_wallet_address';
-        wallet.Networks__c = 'XRP_LEDGER';
 
         insert wallet;
         Test.stopTest();

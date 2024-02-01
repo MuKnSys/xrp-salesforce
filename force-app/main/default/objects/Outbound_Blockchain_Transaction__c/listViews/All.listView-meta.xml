@@ -5,7 +5,7 @@
     <columns>Org_Wallet__c</columns>
     <columns>Account_Wallet__c</columns>
     <columns>Network__c</columns>
-    <columns>Test_Networks__c</columns>
+    <columns>Test_Transaction__c</columns>
     <columns>Value__c</columns>
     <columns>Transaction_Timestamp__c</columns>
     <columns>Transaction_Hash__c</columns>

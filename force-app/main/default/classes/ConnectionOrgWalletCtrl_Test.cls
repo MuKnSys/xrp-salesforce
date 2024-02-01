@@ -12,7 +12,6 @@ private class ConnectionOrgWalletCtrl_Test {
 
         Org_Wallet__c wallet = new Org_Wallet__c();
         wallet.Wallet_Address__c = 'test_wallet_address';
-        wallet.Networks__c = 'XRP_LEDGER';
         insert wallet;
 
         XrpWebhookService.RegisterSubscriptionResponse body = new XrpWebhookService.RegisterSubscriptionResponse();
@@ -47,7 +46,6 @@ private class ConnectionOrgWalletCtrl_Test {
 
         Org_Wallet__c wallet = new Org_Wallet__c();
         wallet.Wallet_Address__c = 'test_wallet_address';
-        wallet.Networks__c = 'XRP_LEDGER';
         wallet.XRPWebhookSubscriptionId__c = 'test_webhook_subscription_id';
         insert wallet;
 

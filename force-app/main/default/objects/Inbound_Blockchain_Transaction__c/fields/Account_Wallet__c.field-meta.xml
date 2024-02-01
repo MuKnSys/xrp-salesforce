@@ -1,13 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Account_Wallet__c</fullName>
-    <description
-    >The external Account Wallet that sent the transaction.</description>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>The external Account Wallet that sent the transaction.</description>
     <externalId>false</externalId>
     <label>Account Wallet (From)</label>
     <referenceTo>Account_Wallet__c</referenceTo>
     <relationshipLabel>Inbound Blockchain Transactions</relationshipLabel>
     <relationshipName>Inbound_Blockchain_Transactions</relationshipName>
+    <required>false</required>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>
