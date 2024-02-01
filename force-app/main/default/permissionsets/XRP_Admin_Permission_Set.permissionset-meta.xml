@@ -1,9 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <applicationVisibilities>
         <application>XRP_for_Salesforce</application>
         <visible>true</visible>
     </applicationVisibilities>
+    <applicationVisibilities>
+        <application>XRP_for_Salesforce_Setup</application>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <classAccesses>
+        <apexClass>ConnectionOrgWalletCtrl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SetupCtrl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account_Wallet__c.Account__c</field>
@@ -12,16 +24,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account_Wallet__c.Contacts_text__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Account_Wallet__c.Inbound_Web3_Amount__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Account_Wallet__c.Outbound_Web3_Amount__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -51,6 +53,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Inbound_Blockchain_Transaction__c.Account_Wallet__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Inbound_Blockchain_Transaction__c.Asset_Token__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -71,6 +78,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Inbound_Blockchain_Transaction__c.From_Address__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Inbound_Blockchain_Transaction__c.Network_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -81,22 +93,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Inbound_Blockchain_Transaction__c.Opportunity__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Inbound_Blockchain_Transaction__c.System_Notes__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Inbound_Blockchain_Transaction__c.Test_Networks__c</field>
+        <field>Inbound_Blockchain_Transaction__c.Test_Transaction__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Inbound_Blockchain_Transaction__c.Test_Transaction__c</field>
+        <field>Inbound_Blockchain_Transaction__c.To_Address__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -111,7 +118,8 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Inbound_Blockchain_Transaction__c.Transaction_Timestamp__c</field>
+        <field
+        >Inbound_Blockchain_Transaction__c.Transaction_Timestamp__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -132,6 +140,21 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Org_Wallet__c.Wallet_Address__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Org_Wallet__c.Wallet_Connected__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Org_Wallet__c.XRPWebhookSubscriptionId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Outbound_Blockchain_Transaction__c.Account_Wallet__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -156,6 +179,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Outbound_Blockchain_Transaction__c.From_Address__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Outbound_Blockchain_Transaction__c.Network_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -166,22 +194,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Outbound_Blockchain_Transaction__c.Opportunity__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Outbound_Blockchain_Transaction__c.System_Notes__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Outbound_Blockchain_Transaction__c.Test_Networks__c</field>
+        <field>Outbound_Blockchain_Transaction__c.Test_Transaction__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Outbound_Blockchain_Transaction__c.Test_Transaction__c</field>
+        <field>Outbound_Blockchain_Transaction__c.To_Address__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -196,7 +219,8 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Outbound_Blockchain_Transaction__c.Transaction_Timestamp__c</field>
+        <field
+        >Outbound_Blockchain_Transaction__c.Transaction_Timestamp__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -291,6 +315,10 @@
     </tabSettings>
     <tabSettings>
         <tab>Outbound_Blockchain_Transaction__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>XRP_for_Salesforce_Setup</tab>
         <visibility>Visible</visibility>
     </tabSettings>
 </PermissionSet>

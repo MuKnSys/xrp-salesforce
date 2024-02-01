@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AssetToken__c</fullName>
+    <description>The token that this contract defines. The contract is specific to the underlying network. While economically, all of the tokens should be roughly the same, they are technically referenced on each blockchain with an underlying contract.</description>
+    <externalId>false</externalId>
+    <label>Token</label>
+    <referenceTo>Asset_Token__c</referenceTo>
+    <relationshipName>Token_Contracts</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

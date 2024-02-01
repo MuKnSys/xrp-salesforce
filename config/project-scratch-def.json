@@ -1,13 +1,7 @@
 {
-  "orgName": "Mutual Knowledge XRP Demo Company",
+  "orgName": "Web3Enabler - XRP for Salesforce",
   "edition": "Developer",
-  "features": ["EnableSetPasswordInApi"],
-  "settings": {
-    "lightningExperienceSettings": {
-      "enableS1DesktopEnabled": true
-    },
-    "mobileSettings": {
-      "enableS1EncryptedStoragePref2": false
-    }
-  }
+  "language": "en_US",
+  "features": [],
+  "settings": {}
 }

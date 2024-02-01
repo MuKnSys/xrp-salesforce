@@ -7,7 +7,7 @@
     <referenceTo>Org_Wallet__c</referenceTo>
     <relationshipLabel>Inbound Blockchain Transactions</relationshipLabel>
     <relationshipName>Inbound_Blockchain_Transactions</relationshipName>
-    <relationshipOrder>1</relationshipOrder>
+    <relationshipOrder>0</relationshipOrder>
     <reparentableMasterDetail>true</reparentableMasterDetail>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
