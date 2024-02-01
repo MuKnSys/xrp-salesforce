@@ -51,18 +51,6 @@
                 <identifier>RecordWallet_Address_cField</identifier>
             </fieldInstance>
         </itemInstances>
-<!--
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CurrencyIsoCode</fieldItem>
-                <identifier>RecordCurrencyIsoCodeField</identifier>
-            </fieldInstance>
-        </itemInstances>
--->
         <itemInstances>
             <fieldInstance>
                 <fieldInstanceProperties>
@@ -71,16 +59,6 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Test_Networks__c</fieldItem>
                 <identifier>RecordTest_Networks_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>required</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Networks__c</fieldItem>
-                <identifier>RecordNetworks_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-9ffa6ee3-1aa5-4d36-9b79-8f2712eda1d8</name>

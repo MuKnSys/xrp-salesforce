@@ -15,12 +15,6 @@
                 <behavior>Required</behavior>
                 <field>Name</field>
             </layoutItems>
-<!-- 
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>CurrencyIsoCode</field>
-            </layoutItems>
--->
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Wallet_Address__c</field>
@@ -34,6 +28,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>OwnerId</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Contacts_text__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -69,7 +67,6 @@
     </layoutSections>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Org_Wallet__c.NAME</fields>
         <fields>Transaction_Value__c</fields>
         <fields>Transaction_Timestamp__c</fields>
         <relatedList>Inbound_Blockchain_Transaction__c.Account_Wallet__c</relatedList>
@@ -78,7 +75,6 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Org_Wallet__c.NAME</fields>
         <fields>Transaction_Value__c</fields>
         <fields>Transaction_Timestamp__c</fields>
         <relatedList>Outbound_Blockchain_Transaction__c.Account_Wallet__c</relatedList>
@@ -91,7 +87,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h530000034dcK</masterLabel>
+        <masterLabel>00hRt000001IWQf</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

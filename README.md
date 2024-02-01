@@ -24,6 +24,13 @@ https://developer.salesforce.com/signup
 1. Push the code to the Scratch Org: `sf project deploy start`
 1. Connect to the Salesforce Scratch Org: `sf org open`
 
+## Configurating the App
+1. Give the User.User the XRP for Saleforce Admin Permissions
+1. Open the XRP for Salesforce Setup App
+1. On the [Webhooks page for XRPayments](https://webhook.xrpayments.co/),Create your Webhook User/Application, and enter your in your Salesforce Org.
+1. Go into XRP for Salesforce and setup Org Wallets and Account Wallets.
+1. Process payments and see results.
+
 Once you've set up your Salesforce Scratch Org, you can follow the steps outlined in our [user manual](https://mukn.com/wp-content/uploads/2023/07/Web3-Enabler-for-Salesforce-User-Guide.pdf) to make and receive payments using Web3 Enabler on Salesforce. You can also use our [demo](https://www.youtube.com/watch?v=lkAp2vqQVTA) as a guide.  
 
 We launched Web3 Enabler on the Salesforce App Exchange in July, 2023.  See our [AppExchange listing](https://appexchange.salesforce.com/appxListingDetail?listingId=ee4c011b-7a5b-4a50-91fb-f28049390858) for further details.
