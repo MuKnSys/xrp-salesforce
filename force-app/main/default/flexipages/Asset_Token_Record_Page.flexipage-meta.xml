@@ -81,16 +81,6 @@
                 <identifier>RecordTokenInformation_cField</identifier>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Network__c</fieldItem>
-                <identifier>RecordNetwork_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-80520800-c3a8-457b-b316-bad380047d94</name>
         <type>Facet</type>
     </flexiPageRegions>

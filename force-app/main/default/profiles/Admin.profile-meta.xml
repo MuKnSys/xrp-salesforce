@@ -116,11 +116,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Asset_Token__c.Network__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Asset_Token__c.TokenInformation__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -130,9 +125,9 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Inbound_Blockchain_Transaction__c.Asset_Quantity__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -240,6 +235,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Outbound_Blockchain_Transaction__c.Asset_Quantity__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Outbound_Blockchain_Transaction__c.Asset_Token__c</field>
         <readable>false</readable>
@@ -270,9 +270,9 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Outbound_Blockchain_Transaction__c.Network__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -335,6 +335,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>TokenContract__c.Issuer__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>TokenContract__c.Network__c</field>
         <readable>false</readable>
@@ -361,6 +366,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Outbound_Blockchain_Transaction__c-Outbound Blockchain Transaction Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>TokenContract__c-Token Issuer Layout</layout>
     </layoutAssignments>
     <objectPermissions>
         <allowCreate>true</allowCreate>
