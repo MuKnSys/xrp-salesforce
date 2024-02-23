@@ -113,4 +113,63 @@ private class SetupCtrl_Test {
         settings = XRPForSalesforceSettingsService.settings;
         Assert.isNull(settings.XRPWebhookId__c);
     }
+
+    @isTest
+    static void initializeAssetTokens_Success() {
+        XRPForSalesforceSettings__c settings = new XRPForSalesforceSettings__c();
+        settings.XRPWebhookApiKey__c = 'test_webhook_api_key';
+        settings.XRPWebhookApiSecret__c = 'test_webhook_api_secret';
+        settings.XRPSiteDomainUrl__c = 'test_site_domain';
+        settings.XRPWebhookId__c = 'test_webhook_id';
+        insert settings;
+
+        Decimal rate = 0.7;
+        String transactionCurrencyCode = 'usd';
+
+        CurrencyService.defaultCurrencyCode = transactionCurrencyCode;
+        InitializeAssetTokensBody body = new InitializeAssetTokensBody(rate);
+
+        new HttpMock()
+            .get(
+                String.format(
+                    CoinGeckoService.GET_EXCHANGE_RATE_ENDPOINT,
+                    new List<String>{
+                        SetupCtrl.RIPPLE_COIN_GECKO_API_NAME,
+                        transactionCurrencyCode
+                    }
+                ),
+                body,
+                200
+            )
+            .mock();
+
+        Test.startTest();
+        SetupCtrl.Settings result = SetupCtrl.initializeAssetTokens();
+        Test.stopTest();
+
+        List<Asset_Token__c> assetTokens = [
+            SELECT Id, ConversionRate__c
+            FROM Asset_Token__c
+        ];
+
+        Assert.areEqual(true, result.assetTokensInitialized);
+        Assert.isFalse(assetTokens.isEmpty());
+        Assert.areEqual(1, assetTokens.size());
+        Assert.areEqual(rate, assetTokens[0].ConversionRate__c);
+    }
+
+    public class InitializeAssetTokensBodyRipple {
+        public Decimal usd;
+    }
+
+    public class InitializeAssetTokensBody {
+        public InitializeAssetTokensBodyRipple ripple;
+
+        public InitializeAssetTokensBody(Decimal rate) {
+            InitializeAssetTokensBodyRipple ripple = new InitializeAssetTokensBodyRipple();
+            ripple.usd = rate;
+
+            this.ripple = ripple;
+        }
+    }
 }

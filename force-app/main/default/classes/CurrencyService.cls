@@ -1,6 +1,12 @@
 public with sharing class CurrencyService {
-    public static String getDefaultCurrencyCode() {
-        // Assumption: No Support for Multicurrency Orgs
-        return UserInfo.getDefaultCurrency();
+    // Assumption: No Support for Multicurrency Orgs
+    public static String defaultCurrencyCode {
+        get {
+            if (defaultCurrencyCode == null) {
+                defaultCurrencyCode = UserInfo.getDefaultCurrency();
+            }
+            return defaultCurrencyCode;
+        }
+        set;
     }
 }

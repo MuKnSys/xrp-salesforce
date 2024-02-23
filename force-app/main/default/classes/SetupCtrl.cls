@@ -1,6 +1,7 @@
 public with sharing class SetupCtrl {
     private static final String RIPPLE_NAME = 'XRP (FKA Ripple)';
     private static final String RIPPLE_ASSET = 'XRP';
+    @TestVisible
     private static final String RIPPLE_COIN_GECKO_API_NAME = 'ripple';
     private static final Decimal RIPPLE_DEFAULT_EXCHANGE_RATE = 0.50;
 
@@ -88,7 +89,7 @@ public with sharing class SetupCtrl {
                 exchangeRate = new CoinGeckoService()
                     .getExchangeRate(
                         RIPPLE_COIN_GECKO_API_NAME,
-                        CurrencyService.getDefaultCurrencyCode()
+                        CurrencyService.defaultCurrencyCode
                     );
             } catch (Exception error) {
                 exchangeRate = RIPPLE_DEFAULT_EXCHANGE_RATE;
