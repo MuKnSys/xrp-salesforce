@@ -39,6 +39,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Asset_Token__c.CoinGeckoAPIName__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Asset_Token__c.ConversionRateLastSet__c</field>
         <readable>true</readable>
     </fieldPermissions>

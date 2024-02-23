@@ -1,4 +1,9 @@
 public with sharing class SetupCtrl {
+    private static final String RIPPLE_NAME = 'XRP (FKA Ripple)';
+    private static final String RIPPLE_ASSET = 'XRP';
+    private static final String RIPPLE_COIN_GECKO_API_NAME = 'ripple';
+    private static final Decimal RIPPLE_DEFAULT_EXCHANGE_RATE = 0.50;
+
     @AuraEnabled
     public static Settings getSettings() {
         try {
@@ -28,7 +33,8 @@ public with sharing class SetupCtrl {
                 settings.XRPSiteDomainUrl__c = settingValues.get('siteDomain');
             }
 
-            // False Positive - Only Admin can perform this
+            // False Positive - Custom Settings need to be hidden
+            // but need to be accessible through Apex - action performed only by Admin on Setup Stage
             upsert as system settings;
 
             return new Settings(settings);
@@ -74,6 +80,42 @@ public with sharing class SetupCtrl {
         }
     }
 
+    @AuraEnabled
+    public static Settings initializeAssetTokens() {
+        try {
+            Decimal exchangeRate;
+            try {
+                exchangeRate = new CoinGeckoService()
+                    .getExchangeRate(
+                        RIPPLE_COIN_GECKO_API_NAME,
+                        CurrencyService.getDefaultCurrencyCode()
+                    );
+            } catch (Exception error) {
+                exchangeRate = RIPPLE_DEFAULT_EXCHANGE_RATE;
+            }
+
+            Asset_Token__c assetToken = new Asset_Token__c();
+            assetToken.Name = RIPPLE_NAME;
+            assetToken.Asset__c = RIPPLE_ASSET;
+            assetToken.Active__c = true;
+            assetToken.CoinGeckoAPIName__c = RIPPLE_COIN_GECKO_API_NAME;
+            assetToken.ConversionRate__c = exchangeRate;
+            assetToken.ConversionRateLastSet__c = Datetime.now();
+            insert as user assetToken;
+
+            XRPForSalesforceSettings__c settings = XRPForSalesforceSettingsService.settings;
+            settings.AssetTokensInitialized__c = true;
+
+            // False Positive - Custom Settings need to be hidden
+            // but need to be accessible through Apex - action performed only by Admin on Setup Stage
+            update as system settings;
+
+            return new Settings(settings);
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
     public class Settings {
         @AuraEnabled
         public String apiKey;
@@ -83,6 +125,8 @@ public with sharing class SetupCtrl {
         public String webhookId;
         @AuraEnabled
         public String siteDomain;
+        @AuraEnabled
+        public Boolean assetTokensInitialized;
 
         public Settings() {
         }
@@ -100,6 +144,9 @@ public with sharing class SetupCtrl {
             this.siteDomain = isBlank(settings.XRPSiteDomainUrl__c)
                 ? null
                 : System.Label.settings_site_domain_setted;
+            this.assetTokensInitialized = isBlank(settings.XRPSiteDomainUrl__c)
+                ? false
+                : settings.AssetTokensInitialized__c;
         }
 
         private Boolean isBlank(String value) {
