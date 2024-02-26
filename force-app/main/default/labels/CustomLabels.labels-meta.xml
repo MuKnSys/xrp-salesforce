@@ -147,6 +147,14 @@
         <value>API Secret</value>
     </labels>
     <labels>
+        <fullName>setup_asset_tokens</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup asset tokens</shortDescription>
+        <value>Asset Tokens</value>
+    </labels>
+    <labels>
         <fullName>setup_delete_webhook</fullName>
         <categories>lwc, setup</categories>
         <language>en_US</language>
@@ -161,6 +169,14 @@
         <protected>true</protected>
         <shortDescription>setup error title</shortDescription>
         <value>Something went wrong</value>
+    </labels>
+    <labels>
+        <fullName>setup_initialize_asset_tokens</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup initialize asset tokens</shortDescription>
+        <value>Initialize Asset Tokens</value>
     </labels>
     <labels>
         <fullName>setup_loading</fullName>
