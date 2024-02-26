@@ -1,8 +1,11 @@
 public with sharing class AssetTokenService {
+    @TestVisible
     private static final String RIPPLE_NAME = 'XRP (FKA Ripple)';
+    @TestVisible
     private static final String RIPPLE_ASSET = 'XRP';
     @TestVisible
     private static final String RIPPLE_COIN_GECKO_API_NAME = 'ripple';
+    @TestVisible
     private static final Decimal RIPPLE_DEFAULT_EXCHANGE_RATE = 0.50;
 
     @InvocableMethod(

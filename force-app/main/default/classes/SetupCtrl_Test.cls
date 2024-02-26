@@ -127,7 +127,9 @@ private class SetupCtrl_Test {
         String transactionCurrencyCode = 'usd';
 
         CurrencyService.defaultCurrencyCode = transactionCurrencyCode;
-        InitializeAssetTokensBody body = new InitializeAssetTokensBody(rate);
+        TestDataFactory.InitializeAssetTokensBody body = new TestDataFactory.InitializeAssetTokensBody(
+            rate
+        );
 
         new HttpMock()
             .get(
@@ -156,20 +158,5 @@ private class SetupCtrl_Test {
         Assert.isFalse(assetTokens.isEmpty());
         Assert.areEqual(1, assetTokens.size());
         Assert.areEqual(rate, assetTokens[0].ConversionRate__c);
-    }
-
-    public class InitializeAssetTokensBodyRipple {
-        public Decimal usd;
-    }
-
-    public class InitializeAssetTokensBody {
-        public InitializeAssetTokensBodyRipple ripple;
-
-        public InitializeAssetTokensBody(Decimal rate) {
-            InitializeAssetTokensBodyRipple ripple = new InitializeAssetTokensBodyRipple();
-            ripple.usd = rate;
-
-            this.ripple = ripple;
-        }
     }
 }
