@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>XRP_LEDGER</fullName>
+        <fullName>XRP_Mainnet</fullName>
         <default>true</default>
         <label>XRP Ledger</label>
+    </customValue>
+    <customValue>
+        <fullName>XRP_Testnet</fullName>
+        <default>false</default>
+        <label>XRP Testnet</label>
     </customValue>
     <description>Blockchains supported</description>
     <masterLabel>Blockchains</masterLabel>
