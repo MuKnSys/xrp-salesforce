@@ -15,12 +15,10 @@ private class XrpPaymentApi_Test {
         OrgWalletService.triggerOn = false;
 
         Org_Wallet__c orgWallet = new Org_Wallet__c();
-        orgWallet.Test_Networks__c = true;
         orgWallet.Wallet_Address__c = 'rNEygqkMv4Vnj8M2eWnYT1TDnV1Sc1X5SN';
         insert orgWallet;
 
         Account_Wallet__c accWallet = new Account_Wallet__c();
-        accWallet.Test_Wallet__c = true;
         accWallet.Wallet_Address__c = 'rP1afBEfikTz7hJh2ExCDni9W4Bx1dUMRk';
         insert accWallet;
 
