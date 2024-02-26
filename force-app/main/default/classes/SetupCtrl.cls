@@ -78,7 +78,7 @@ public with sharing class SetupCtrl {
     @AuraEnabled
     public static Settings initializeAssetTokens() {
         try {
-            new AssetTokenService().initializeAssetTokens();
+            AssetTokenService.initializeAssetTokens();
 
             XRPForSalesforceSettings__c settings = XRPForSalesforceSettingsService.settings;
             settings.AssetTokensInitialized__c = true;
