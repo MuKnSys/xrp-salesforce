@@ -1,7 +1,9 @@
 import setup_api_key from "@salesforce/label/c.setup_api_key";
 import setup_api_secret from "@salesforce/label/c.setup_api_secret";
+import setup_asset_tokens from "@salesforce/label/c.setup_asset_tokens";
 import setup_delete_webhook from "@salesforce/label/c.setup_delete_webhook";
 import setup_error_title from "@salesforce/label/c.setup_error_title";
+import setup_initialize_asset_tokens from "@salesforce/label/c.setup_initialize_asset_tokens";
 import setup_loading from "@salesforce/label/c.setup_loading";
 import setup_register_webhook from "@salesforce/label/c.setup_register_webhook";
 import setup_save from "@salesforce/label/c.setup_save";
@@ -14,8 +16,10 @@ import setup_subtitle_webhooks from "@salesforce/label/c.setup_subtitle_webhooks
 export const labels = {
     apiKey: setup_api_key,
     apiSecret: setup_api_secret,
+    assetTokens: setup_asset_tokens,
     deleteWebhook: setup_delete_webhook,
     errorTitle: setup_error_title,
+    initializeAssetTokens: setup_initialize_asset_tokens,
     loading: setup_loading,
     registerWebhook: setup_register_webhook,
     save: setup_save,
