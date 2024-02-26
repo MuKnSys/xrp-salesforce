@@ -1,10 +1,4 @@
 public with sharing class SetupCtrl {
-    private static final String RIPPLE_NAME = 'XRP (FKA Ripple)';
-    private static final String RIPPLE_ASSET = 'XRP';
-    @TestVisible
-    private static final String RIPPLE_COIN_GECKO_API_NAME = 'ripple';
-    private static final Decimal RIPPLE_DEFAULT_EXCHANGE_RATE = 0.50;
-
     @AuraEnabled
     public static Settings getSettings() {
         try {
@@ -84,25 +78,7 @@ public with sharing class SetupCtrl {
     @AuraEnabled
     public static Settings initializeAssetTokens() {
         try {
-            Decimal exchangeRate;
-            try {
-                exchangeRate = new CoinGeckoService()
-                    .getExchangeRate(
-                        RIPPLE_COIN_GECKO_API_NAME,
-                        CurrencyService.defaultCurrencyCode
-                    );
-            } catch (Exception error) {
-                exchangeRate = RIPPLE_DEFAULT_EXCHANGE_RATE;
-            }
-
-            Asset_Token__c assetToken = new Asset_Token__c();
-            assetToken.Name = RIPPLE_NAME;
-            assetToken.Asset__c = RIPPLE_ASSET;
-            assetToken.Active__c = true;
-            assetToken.CoinGeckoAPIName__c = RIPPLE_COIN_GECKO_API_NAME;
-            assetToken.ConversionRate__c = exchangeRate;
-            assetToken.ConversionRateLastSet__c = Datetime.now();
-            insert as user assetToken;
+            new AssetTokenService().initializeAssetTokens();
 
             XRPForSalesforceSettings__c settings = XRPForSalesforceSettingsService.settings;
             settings.AssetTokensInitialized__c = true;

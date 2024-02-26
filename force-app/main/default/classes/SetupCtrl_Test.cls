@@ -134,7 +134,7 @@ private class SetupCtrl_Test {
                 String.format(
                     CoinGeckoService.GET_EXCHANGE_RATE_ENDPOINT,
                     new List<String>{
-                        SetupCtrl.RIPPLE_COIN_GECKO_API_NAME,
+                        AssetTokenService.RIPPLE_COIN_GECKO_API_NAME,
                         transactionCurrencyCode
                     }
                 ),
