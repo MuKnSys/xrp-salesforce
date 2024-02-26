@@ -24,8 +24,7 @@ export default class Setup extends LightningElement {
         if (
             !this.settings.apiKey ||
             !this.settings.apiSecret ||
-            !this.settings.siteDomain ||
-            !this.settings.webhookId
+            !this.settings.siteDomain
         ) {
             return [labels.credentials];
         } else if (
