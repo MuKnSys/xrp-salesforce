@@ -87,15 +87,36 @@ public without sharing class XrpPaymentService {
         Map<String, Object> paymentData,
         Map<String, Object> transcationData
     ) {
+        try {
+            Map<String, Object> amountData = (Map<String, Object>) transcationData.get(
+                'Amount'
+            );
+
+            paymentTransaction.put(
+                'Asset__c',
+                (String) amountData.get('currency')
+            );
+            paymentTransaction.put(
+                'Value__c',
+                Decimal.valueOf((String) amountData.get('value'))
+            );
+            paymentTransaction.put(
+                'Contract_Address__c',
+                (String) amountData.get('issuer')
+            );
+        } catch (TypeException excp) {
+            paymentTransaction.put('Asset__c', 'XRP');
+            paymentTransaction.put(
+                'Value__c',
+                Decimal.valueOf((String) transcationData.get('Amount'))
+            );
+        }
+
         paymentTransaction.put(
             'From_Address__c',
             (String) transcationData.get('Account')
         );
         paymentTransaction.put('Network_Name__c', 'XRP_Mainnet');
-        paymentTransaction.put(
-            'Value__c',
-            Decimal.valueOf((String) transcationData.get('Amount'))
-        );
         paymentTransaction.put(
             'BlockNum__c',
             String.valueOf((Integer) paymentData.get('ledger_index'))
