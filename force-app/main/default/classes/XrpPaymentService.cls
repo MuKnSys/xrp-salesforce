@@ -126,6 +126,10 @@ public without sharing class XrpPaymentService {
             convertRippleTimestamptoDatetime((Long) transcationData.get('date'))
         );
         paymentTransaction.put(
+            'Transaction_Hash__c',
+            (String) transcationData.get('hash')
+        );
+        paymentTransaction.put(
             'To_Address__c',
             (String) transcationData.get('Destination')
         );
