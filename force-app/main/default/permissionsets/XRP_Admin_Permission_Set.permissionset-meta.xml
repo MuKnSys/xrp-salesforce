@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <applicationVisibilities>
         <application>XRP_for_Salesforce</application>
@@ -16,6 +16,10 @@
         <apexClass>SetupCtrl</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <customSettingAccesses>
+        <enabled>true</enabled>
+        <name>XRPForSalesforceSettings__c</name>
+    </customSettingAccesses>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account_Wallet__c.Account__c</field>
@@ -103,6 +107,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Inbound_Blockchain_Transaction__c.Org_Wallet__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Inbound_Blockchain_Transaction__c.System_Notes__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -128,8 +137,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field
-        >Inbound_Blockchain_Transaction__c.Transaction_Timestamp__c</field>
+        <field>Inbound_Blockchain_Transaction__c.Transaction_Timestamp__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -209,6 +217,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Outbound_Blockchain_Transaction__c.Org_Wallet__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Outbound_Blockchain_Transaction__c.System_Notes__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -234,8 +247,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field
-        >Outbound_Blockchain_Transaction__c.Transaction_Timestamp__c</field>
+        <field>Outbound_Blockchain_Transaction__c.Transaction_Timestamp__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

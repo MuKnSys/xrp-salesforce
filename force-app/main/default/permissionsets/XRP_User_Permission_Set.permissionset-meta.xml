@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <applicationVisibilities>
         <application>XRP_for_Salesforce</application>
@@ -49,7 +49,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Asset_Token__c.TokenInformation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Inbound_Blockchain_Transaction__c.Account_Wallet__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Inbound_Blockchain_Transaction__c.Asset_Quantity__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -89,6 +99,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Inbound_Blockchain_Transaction__c.Org_Wallet__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Inbound_Blockchain_Transaction__c.System_Notes__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -114,13 +129,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field
-        >Inbound_Blockchain_Transaction__c.Transaction_Timestamp__c</field>
+        <field>Inbound_Blockchain_Transaction__c.Transaction_Timestamp__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Inbound_Blockchain_Transaction__c.Transaction_Value__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Inbound_Blockchain_Transaction__c.User_Notes__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -146,6 +165,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Outbound_Blockchain_Transaction__c.Account_Wallet__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Outbound_Blockchain_Transaction__c.Asset_Quantity__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -185,6 +209,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Outbound_Blockchain_Transaction__c.Org_Wallet__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Outbound_Blockchain_Transaction__c.System_Notes__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -210,8 +239,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field
-        >Outbound_Blockchain_Transaction__c.Transaction_Timestamp__c</field>
+        <field>Outbound_Blockchain_Transaction__c.Transaction_Timestamp__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -221,7 +249,32 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Outbound_Blockchain_Transaction__c.User_Notes__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Outbound_Blockchain_Transaction__c.Value__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>TokenContract__c.Contract_Address__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>TokenContract__c.Contract_Detail__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>TokenContract__c.Issuer__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>TokenContract__c.Network__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
@@ -269,6 +322,15 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>Outbound_Blockchain_Transaction__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>TokenContract__c</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <recordTypeVisibilities>
