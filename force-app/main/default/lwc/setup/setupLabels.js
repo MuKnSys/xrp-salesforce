@@ -4,6 +4,9 @@ import setup_asset_tokens from "@salesforce/label/c.setup_asset_tokens";
 import setup_delete_webhook from "@salesforce/label/c.setup_delete_webhook";
 import setup_error_title from "@salesforce/label/c.setup_error_title";
 import setup_initialize_asset_tokens from "@salesforce/label/c.setup_initialize_asset_tokens";
+import setup_instruction_title from "@salesforce/label/c.setup_instruction_title";
+import setup_instruction_line_1 from "@salesforce/label/c.setup_instruction_line_1";
+import setup_instruction_line_2 from "@salesforce/label/c.setup_instruction_line_2";
 import setup_loading from "@salesforce/label/c.setup_loading";
 import setup_register_webhook from "@salesforce/label/c.setup_register_webhook";
 import setup_save from "@salesforce/label/c.setup_save";
@@ -20,6 +23,9 @@ export const labels = {
     deleteWebhook: setup_delete_webhook,
     errorTitle: setup_error_title,
     initializeAssetTokens: setup_initialize_asset_tokens,
+    instructionTitle: setup_instruction_title,
+    instructionLine1: setup_instruction_line_1,
+    instructionLine2: setup_instruction_line_2,
     loading: setup_loading,
     registerWebhook: setup_register_webhook,
     save: setup_save,

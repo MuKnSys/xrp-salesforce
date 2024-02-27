@@ -3,14 +3,13 @@
         <lightning-spinner alternative-text={labels.loading} lwc:if={isLoading} size="x-small"></lightning-spinner>
         <div class="slds-card__body slds-card__body_inner">
             <div class="slds-var-m-top_small slds-var-m-bottom_small">
-                <div class="slds-text-heading_large">Setup your Webhooks</div>
-
+                <div class="slds-text-heading_large">{labels.instructionTitle}</div>
                 <div class="slds-text-body_regular slds-var-m-top_small">
-                    Data connection requires using the XRPL Webhooks, available <a href="https://webhook.xrpayments.co/">webhook.xrpayments.co</a>.
-                    A free account is required to receive notifications. Generate your API Key.
+                    {labels.instructionLine1}
+                    Available. <a href="https://webhook.xrpayments.co/">webhook.xrpayments.co</a>
                 </div>
                 <div class="slds-text-body_regular slds-var-m-top_small">
-                    Instructions on landing page configuration and running webhooks directly from Github is pending.
+                    {labels.instructionLine2}
                 </div>
             </div>
             

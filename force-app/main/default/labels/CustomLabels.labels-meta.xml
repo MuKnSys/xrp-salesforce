@@ -179,6 +179,33 @@
         <value>Initialize Asset Tokens</value>
     </labels>
     <labels>
+        <fullName>setup_instruction_title</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup instruction title</shortDescription>
+        <value>Setup your Webhooks</value>
+    </labels>
+    <labels>
+        <fullName>setup_instruction_line_1</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup instruction line 1</shortDescription>
+        <value
+        >Data connection requires using the XRPL Webhooks. A free account is required to receive notifications. Generate your credentials.</value>
+    </labels>
+    <labels>
+        <fullName>setup_instruction_line_2</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup instruction line 2</shortDescription>
+        <value
+        >Instructions on landing page configuration and running webhooks directly from Github is pending.
+        </value>
+    </labels>
+    <labels>
         <fullName>setup_loading</fullName>
         <categories>lwc, setup</categories>
         <language>en_US</language>
