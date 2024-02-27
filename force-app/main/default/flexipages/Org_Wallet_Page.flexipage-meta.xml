@@ -57,8 +57,18 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Test_Networks__c</fieldItem>
-                <identifier>RecordTest_Networks_cField</identifier>
+                <fieldItem>Record.Wallet_Connected__c</fieldItem>
+                <identifier>RecordWallet_Connected_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.RecordTypeId</fieldItem>
+                <identifier>RecordRecordTypeIdField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-9ffa6ee3-1aa5-4d36-9b79-8f2712eda1d8</name>
