@@ -24,11 +24,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Account_Wallet__c.Test_Wallet__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Account_Wallet__c.Wallet_Address__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -131,11 +126,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Inbound_Blockchain_Transaction__c.Value__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Org_Wallet__c.Test_Networks__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

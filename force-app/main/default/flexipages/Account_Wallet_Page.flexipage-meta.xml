@@ -73,16 +73,6 @@
             </fieldInstance>
         </itemInstances>
 -->
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Test_Wallet__c</fieldItem>
-                <identifier>RecordTest_Wallet_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-9b8d1e63-e5df-437d-9acc-c890671b950f</name>
         <type>Facet</type>
     </flexiPageRegions>

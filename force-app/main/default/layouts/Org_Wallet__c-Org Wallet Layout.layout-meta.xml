@@ -21,10 +21,6 @@
                 <behavior>Edit</behavior>
                 <field>Wallet_Address__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Test_Networks__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
