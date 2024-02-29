@@ -48,25 +48,13 @@ public with sharing class AssetTokenService {
     ) {
         SObject chainTransaction;
         try {
-            if (transactionIds.isEmpty()) {
+            if (transactionIds.isEmpty() || newExchangeRate == null) {
                 throw new AssetTokenException();
             }
             Id transactionId = transactionIds[0];
 
-            String transactionType = transactionId.getSObjectType()
-                .getDescribe()
-                .getName();
-
-            Map<String, Object> queryBinds = new Map<String, Object>{
-                'transactionId' => transactionId
-            };
-
-            List<SObject> chainTransactions = Database.queryWithBinds(
-                'SELECT Value__c, Transaction_Value__c, System_Notes__c FROM ' +
-                    transactionType +
-                    ' WHERE Id = :transactionId',
-                queryBinds,
-                AccessLevel.USER_MODE
+            List<SObject> chainTransactions = TransactionSelector.getTransactionById(
+                transactionId
             );
 
             if (chainTransactions.isEmpty()) {
@@ -74,9 +62,6 @@ public with sharing class AssetTokenService {
             }
             chainTransaction = chainTransactions[0];
 
-            if (newExchangeRate == null) {
-                throw new AssetTokenException();
-            }
             chainTransaction.put(
                 'Transaction_Value__c',
                 (Decimal) chainTransaction.get('Value__c') * newExchangeRate
