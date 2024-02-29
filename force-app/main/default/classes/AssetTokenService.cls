@@ -57,10 +57,16 @@ public with sharing class AssetTokenService {
                 .getDescribe()
                 .getName();
 
-            List<SObject> chainTransactions = Database.query(
+            Map<String, Object> queryBinds = new Map<String, Object>{
+                'transactionId' => transactionId
+            };
+
+            List<SObject> chainTransactions = Database.queryWithBinds(
                 'SELECT Value__c, Transaction_Value__c, System_Notes__c FROM ' +
                     transactionType +
-                    ' WHERE Id = :transactionId'
+                    ' WHERE Id = :transactionId',
+                queryBinds,
+                AccessLevel.USER_MODE
             );
 
             if (chainTransactions.isEmpty()) {
