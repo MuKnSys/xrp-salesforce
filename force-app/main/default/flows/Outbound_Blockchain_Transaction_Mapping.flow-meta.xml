@@ -189,13 +189,6 @@
     </decisions>
     <description>Connect the Data from Raw Chain information to Real Data. Error Messages Logged on Token Lookup Failure.</description>
     <environments>Default</environments>
-    <formulas>
-        <description>Calculated Value</description>
-        <name>ConvertedCurrencyValue</name>
-        <dataType>Currency</dataType>
-        <expression>{!$Record.Value__c} * {!Token_Asset.ConversionRate__c}</expression>
-        <scale>6</scale>
-    </formulas>
     <interviewLabel>Outbound Blockchain Transaction Mapping {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Outbound Blockchain Transaction Mapping</label>
     <processMetadataValues>
@@ -392,13 +385,7 @@
         <inputAssignments>
             <field>System_Notes__c</field>
             <value>
-                <stringValue>Transaction Recorded</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Transaction_Value__c</field>
-            <value>
-                <elementReference>ConvertedCurrencyValue</elementReference>
+                <elementReference>$Label.flow_exchange_rate_being_calculated</elementReference>
             </value>
         </inputAssignments>
         <inputReference>$Record</inputReference>
@@ -436,13 +423,7 @@
         <inputAssignments>
             <field>System_Notes__c</field>
             <value>
-                <stringValue>Transaction Recorded</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Transaction_Value__c</field>
-            <value>
-                <elementReference>ConvertedCurrencyValue</elementReference>
+                <elementReference>$Label.flow_exchange_rate_being_calculated</elementReference>
             </value>
         </inputAssignments>
         <inputReference>$Record</inputReference>
