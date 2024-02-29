@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
         <fullName>api_app_not_correctly_configred</fullName>
@@ -45,8 +45,7 @@
         <categories>lwc, connect_org_wallet</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription
-        >connect org wallet success icon text</shortDescription>
+        <shortDescription>connect org wallet success icon text</shortDescription>
         <value>Success</value>
     </labels>
     <labels>
@@ -70,8 +69,7 @@
         <categories>apex, dis_connect_org_wallet</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription
-        >dis connect org wallet error not connected</shortDescription>
+        <shortDescription>dis connect org wallet error not connected</shortDescription>
         <value>Org Wallet is not connected</value>
     </labels>
     <labels>
@@ -97,6 +95,30 @@
         <protected>true</protected>
         <shortDescription>dis connect org wallet title</shortDescription>
         <value>Disconnecting your Wallet</value>
+    </labels>
+    <labels>
+        <fullName>flow_exchange_rate_being_calculated</fullName>
+        <categories>flow, Inbound / Outbound Blockchain Transaction Exchange Rate Calculation / Transaction Mapping</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>flow_exchange_rate_being_calculated</shortDescription>
+        <value>Transaction Recorded. The transaction value is calculated.</value>
+    </labels>
+    <labels>
+        <fullName>flow_exchange_rate_error_calculated</fullName>
+        <categories>flow, Inbound / Outbound Blockchain Transaction Exchange Rate Calculation / Transaction Mapping</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>flow_exchange_rate_error_calculated</shortDescription>
+        <value>Transaction Recorded. The Conversion Rate update failed, please verify the conversion rate.</value>
+    </labels>
+    <labels>
+        <fullName>flow_exchange_rate_success_calculated</fullName>
+        <categories>flow, Inbound / Outbound Blockchain Transaction Exchange Rate Calculation / Transaction Mapping</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>flow_exchange_rate_success_calculated</shortDescription>
+        <value>Transaction Recorded.</value>
     </labels>
     <labels>
         <fullName>settings_api_key_setted</fullName>
@@ -179,21 +201,12 @@
         <value>Initialize Asset Tokens</value>
     </labels>
     <labels>
-        <fullName>setup_instruction_title</fullName>
-        <categories>lwc, setup</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>setup instruction title</shortDescription>
-        <value>Setup your Webhooks</value>
-    </labels>
-    <labels>
         <fullName>setup_instruction_line_1</fullName>
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>setup instruction line 1</shortDescription>
-        <value
-        >Data connection requires using the XRPL Webhooks. A free account is required to receive notifications. Generate your credentials.</value>
+        <value>Data connection requires using the XRPL Webhooks. A free account is required to receive notifications. Generate your credentials.</value>
     </labels>
     <labels>
         <fullName>setup_instruction_line_2</fullName>
@@ -201,9 +214,15 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>setup instruction line 2</shortDescription>
-        <value
-        >Instructions on landing page configuration and running webhooks directly from Github is pending.
-        </value>
+        <value>Instructions on landing page configuration and running webhooks directly from Github is pending.</value>
+    </labels>
+    <labels>
+        <fullName>setup_instruction_title</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup instruction title</shortDescription>
+        <value>Setup your Webhooks</value>
     </labels>
     <labels>
         <fullName>setup_loading</fullName>

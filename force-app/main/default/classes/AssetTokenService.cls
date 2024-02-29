@@ -9,11 +9,24 @@ public with sharing class AssetTokenService {
     private static final Decimal RIPPLE_DEFAULT_EXCHANGE_RATE = 0.50;
 
     @InvocableMethod(
-        label='Update Ripple Asset Token Exchange Rate'
-        description='Fetches current exchange rate for Ripple and updates Asset Token record'
-        callout=true
+        label='Update Ripple Asset Token Exchange Rate / Transaction Value'
+        description='Fetches current exchange rate for Ripple and updates Asset Token / Transaction records'
     )
-    public static List<Decimal> updateRippleAssetTokenExchangeRate() {
+    public static void updateRippleAssetTokenExchangeRate(
+        List<Id> transactionIds
+    ) {
+        updateRippleAssetTokenExchangeRateAsyncWrapper(transactionIds);
+    }
+
+    @future(callout=true)
+    public static void updateRippleAssetTokenExchangeRateAsyncWrapper(
+        List<Id> transactionIds
+    ) {
+        Decimal newExchangeRate = updateAssetTokenExchangeRate();
+        updateTransactionValue(transactionIds, newExchangeRate);
+    }
+
+    private static Decimal updateAssetTokenExchangeRate() {
         Decimal newExchangeRate = getRippleExchangeRate(false);
         Asset_Token__c rippleAssetToken = AssetTokenSelector.getAssetTokenByAsset(
             RIPPLE_ASSET
@@ -26,7 +39,48 @@ public with sharing class AssetTokenService {
             update as user rippleAssetToken;
         }
 
-        return new List<Decimal>{ rippleAssetToken.ConversionRate__c };
+        return newExchangeRate;
+    }
+
+    private static void updateTransactionValue(
+        List<Id> transactionIds,
+        Decimal newExchangeRate
+    ) {
+        SObject chainTransaction;
+        try {
+            if (transactionIds.isEmpty() || newExchangeRate == null) {
+                throw new AssetTokenException();
+            }
+            Id transactionId = transactionIds[0];
+
+            List<SObject> chainTransactions = TransactionSelector.getTransactionById(
+                transactionId
+            );
+
+            if (chainTransactions.isEmpty()) {
+                throw new AssetTokenException();
+            }
+            chainTransaction = chainTransactions[0];
+
+            chainTransaction.put(
+                'Transaction_Value__c',
+                (Decimal) chainTransaction.get('Value__c') * newExchangeRate
+            );
+            chainTransaction.put(
+                'System_Notes__c',
+                System.Label.flow_exchange_rate_success_calculated
+            );
+
+            update chainTransaction;
+        } catch (AssetTokenException error) {
+            if (chainTransaction != null) {
+                chainTransaction.put(
+                    'System_Notes__c',
+                    System.Label.flow_exchange_rate_error_calculated
+                );
+                update chainTransaction;
+            }
+        }
     }
 
     public static void initializeAssetTokens() {
@@ -63,5 +117,8 @@ public with sharing class AssetTokenService {
             }
             return result;
         }
+    }
+
+    public class AssetTokenException extends Exception {
     }
 }

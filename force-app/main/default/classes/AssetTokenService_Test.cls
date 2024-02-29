@@ -18,7 +18,14 @@ private class AssetTokenService_Test {
         rippleAssetToken.ConversionRateLastSet__c = Datetime.now();
         insert rippleAssetToken;
 
-        Decimal rate = AssetTokenService.RIPPLE_DEFAULT_EXCHANGE_RATE + 0.2;
+        Inbound_Blockchain_Transaction__c chainTransaction = new Inbound_Blockchain_Transaction__c();
+        chainTransaction.Asset__c = 'XRP';
+        chainTransaction.Value__c = 1000;
+        chainTransaction.Transaction_Value__c = null;
+        chainTransaction.System_Notes__c = 'test_sytem_notes';
+        insert chainTransaction;
+
+        Decimal rate = 0.7;
         String transactionCurrencyCode = 'usd';
 
         CurrencyService.defaultCurrencyCode = transactionCurrencyCode;
@@ -41,10 +48,30 @@ private class AssetTokenService_Test {
             .mock();
 
         Test.startTest();
-        List<Decimal> result = AssetTokenService.updateRippleAssetTokenExchangeRate();
+        AssetTokenService.updateRippleAssetTokenExchangeRate(
+            new List<Id>{ chainTransaction.Id }
+        );
         Test.stopTest();
 
-        Assert.areEqual(1, result.size());
-        Assert.areEqual(rate, result[0]);
+        List<Asset_Token__c> assetToken = [
+            SELECT ConversionRate__c
+            FROM Asset_Token__c
+        ];
+
+        List<Inbound_Blockchain_Transaction__c> chainTransactions = [
+            SELECT Transaction_Value__c, System_Notes__c
+            FROM Inbound_Blockchain_Transaction__c
+            WHERE Id = :chainTransaction.Id
+        ];
+
+        Assert.areEqual(1, assetToken.size());
+        Assert.areEqual(0.7, assetToken[0].ConversionRate__c);
+
+        Assert.areEqual(1, chainTransactions.size());
+        Assert.areEqual(700, chainTransactions[0].Transaction_Value__c);
+        Assert.areEqual(
+            System.Label.flow_exchange_rate_success_calculated,
+            chainTransactions[0].System_Notes__c
+        );
     }
 }
