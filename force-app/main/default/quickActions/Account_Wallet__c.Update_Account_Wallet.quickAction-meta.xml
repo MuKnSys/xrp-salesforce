@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Update the Account Wallet Action.</description>
     <optionsCreateFeedItem>false</optionsCreateFeedItem>
@@ -25,20 +25,8 @@
                 <field>Wallet_Address__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
-<!--
-            <quickActionLayoutItems>
-                <emptySpace>false</emptySpace>
-                <field>CurrencyIsoCode</field>
-                <uiBehavior>Edit</uiBehavior>
-            </quickActionLayoutItems>
--->
-            <quickActionLayoutItems>
-                <emptySpace>false</emptySpace>
-                <field>Test_Wallet__c</field>
-                <uiBehavior>Edit</uiBehavior>
-            </quickActionLayoutItems>
         </quickActionLayoutColumns>
-        <quickActionLayoutColumns/>
+        <quickActionLayoutColumns />
     </quickActionLayout>
     <standardLabel>Update</standardLabel>
     <type>Update</type>

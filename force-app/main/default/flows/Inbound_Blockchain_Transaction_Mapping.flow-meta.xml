@@ -5,7 +5,7 @@
         <description>Is this a digital asset that we work with?</description>
         <name>Does_Asset_Exist</name>
         <label>Does Coin or Token Exist</label>
-        <locationX>842</locationX>
+        <locationX>1106</locationX>
         <locationY>611</locationY>
         <defaultConnector>
             <targetReference>Token_doesn_t_exist_in_system</targetReference>
@@ -29,16 +29,23 @@
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>Token_Asset.Network__c</leftValueReference>
+                <leftValueReference>$Record.Asset__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <elementReference>$Record.Network_Name__c</elementReference>
+                    <stringValue>XRP</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Network_Name__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>XRP_Mainnet</stringValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>Save_Successful_Coin_Transaction</targetReference>
             </connector>
-            <label>Native Digital Coin is Active</label>
+            <label>XRP Native Coin</label>
         </rules>
         <rules>
             <name>Token_Exists_and_is_Active</name>
@@ -53,13 +60,6 @@
             <conditions>
                 <leftValueReference>Token_Asset.Active__c</leftValueReference>
                 <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Token_Asset.Network__c</leftValueReference>
-                <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
@@ -96,7 +96,7 @@
         <description>If it is a test transaction, we basically do nothing but match the account wallet.</description>
         <name>Is_Test_Transaction</name>
         <label>Is Test Transaction</label>
-        <locationX>446</locationX>
+        <locationX>578</locationX>
         <locationY>395</locationY>
         <defaultConnector>
             <targetReference>Token_Asset</targetReference>
@@ -115,14 +115,57 @@
             <connector>
                 <targetReference>RecordTestTransaction</targetReference>
             </connector>
-            <label>TEST Transaction</label>
+            <label>TEST Transaction (set via Webhook)</label>
+        </rules>
+        <rules>
+            <name>TEST_Transaction_Webhook_Test</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Network_Name__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>XRP_Mainnet</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.BlockNum__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>45184774</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Value__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>1.15821286E8</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Transaction_Timestamp__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <dateTimeValue>2019-02-15T08:00:00.000Z</dateTimeValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Transaction_Timestamp__c</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <dateTimeValue>2019-02-18T07:59:00.000Z</dateTimeValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Test_Transaction_Webhook</targetReference>
+            </connector>
+            <label>TEST Transaction - Webhook Test</label>
         </rules>
     </decisions>
     <decisions>
         <description>Checking if we have a matching Token Contract</description>
         <name>Token_Contract_Query</name>
         <label>Token Contract Query</label>
-        <locationX>710</locationX>
+        <locationX>974</locationX>
         <locationY>827</locationY>
         <defaultConnector>
             <targetReference>No_Token_Contract</targetReference>
@@ -146,13 +189,6 @@
     </decisions>
     <description>Connect the Data from Raw Chain information to Real Data. Error Messages Logged on Token Lookup Failure.</description>
     <environments>Default</environments>
-    <formulas>
-        <description>Calculated Value</description>
-        <name>ConvertedCurrencyValue</name>
-        <dataType>Currency</dataType>
-        <expression>{!$Record.Value__c} * {!Token_Asset.ConversionRate__c}</expression>
-        <scale>6</scale>
-    </formulas>
     <interviewLabel>Inbound Blockchain Transaction Mapping {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Inbound Blockchain Transaction Mapping</label>
     <processMetadataValues>
@@ -178,7 +214,7 @@
         <description>Get the Account Wallet. For Inbound Transactions this is the From Address.</description>
         <name>Account_Wallet</name>
         <label>Account Wallet</label>
-        <locationX>446</locationX>
+        <locationX>578</locationX>
         <locationY>287</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -201,7 +237,7 @@
         <description>Get the contract that matches.</description>
         <name>Get_Token_Contract</name>
         <label>Get Token Contract</label>
-        <locationX>710</locationX>
+        <locationX>974</locationX>
         <locationY>719</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -216,14 +252,7 @@
             </value>
         </filters>
         <filters>
-            <field>Network__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.Network_Name__c</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>Contract_Address__c</field>
+            <field>Issuer__c</field>
             <operator>EqualTo</operator>
             <value>
                 <elementReference>$Record.Contract_Address__c</elementReference>
@@ -239,7 +268,7 @@
         <description>Lookup the Matching Token Data</description>
         <name>Token_Asset</name>
         <label>Token-Asset</label>
-        <locationX>842</locationX>
+        <locationX>1106</locationX>
         <locationY>503</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -262,14 +291,13 @@
         <queriedFields>ConversionRate__c</queriedFields>
         <queriedFields>Name</queriedFields>
         <queriedFields>Active__c</queriedFields>
-        <queriedFields>Network__c</queriedFields>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
         <description>Lookup of the token failed. It doesn&apos;t exist or isn&apos;t active.</description>
         <name>Failure_to_Find_Token</name>
         <label>Failure to Find Token</label>
-        <locationX>1634</locationX>
+        <locationX>1898</locationX>
         <locationY>611</locationY>
         <inputAssignments>
             <field>Account_Wallet__c</field>
@@ -289,7 +317,7 @@
         <description>This can occur because the Network is garbage, the Token doesn&apos;t have a valid contract on that Network, or the Token&apos;s contract didn&apos;t exist at time Web3 Enabler was installed.</description>
         <name>No_Token_Contract</name>
         <label>No Token Contract</label>
-        <locationX>842</locationX>
+        <locationX>1106</locationX>
         <locationY>935</locationY>
         <inputAssignments>
             <field>Account_Wallet__c</field>
@@ -300,7 +328,7 @@
         <inputAssignments>
             <field>System_Notes__c</field>
             <value>
-                <stringValue>Unable to verify the token contract. If this is a valid token, add the Contract to the Token and re-assign this transaction. Future transactions will detect it.</stringValue>
+                <stringValue>Unable to verify the token issuer. If this is a valid token, add the Issuer to the Token and re-assign this transaction. Future transactions will detect it.</stringValue>
             </value>
         </inputAssignments>
         <inputReference>$Record</inputReference>
@@ -329,7 +357,7 @@
         <description>Happy path completed. We have a valid transaction on a real network.</description>
         <name>Save_Successful_Coin_Transaction</name>
         <label>Save Successful Coin Transaction</label>
-        <locationX>314</locationX>
+        <locationX>578</locationX>
         <locationY>719</locationY>
         <inputAssignments>
             <field>Account_Wallet__c</field>
@@ -352,19 +380,13 @@
         <inputAssignments>
             <field>Network__c</field>
             <value>
-                <elementReference>Token_Asset.Network__c</elementReference>
+                <elementReference>$Record.Network_Name__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>System_Notes__c</field>
             <value>
-                <stringValue>Transaction Recorded</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Transaction_Value__c</field>
-            <value>
-                <elementReference>ConvertedCurrencyValue</elementReference>
+                <elementReference>$Label.flow_exchange_rate_being_calculated</elementReference>
             </value>
         </inputAssignments>
         <inputReference>$Record</inputReference>
@@ -373,7 +395,7 @@
         <description>Happy path completed. We have a valid transaction on a real network.</description>
         <name>Save_Successful_Transaction</name>
         <label>Save Successful Transaction</label>
-        <locationX>578</locationX>
+        <locationX>842</locationX>
         <locationY>935</locationY>
         <inputAssignments>
             <field>Account_Wallet__c</field>
@@ -396,19 +418,39 @@
         <inputAssignments>
             <field>Network__c</field>
             <value>
-                <elementReference>Get_Token_Contract.Network__c</elementReference>
+                <elementReference>$Record.Network_Name__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>System_Notes__c</field>
             <value>
-                <stringValue>Transaction Recorded</stringValue>
+                <elementReference>$Label.flow_exchange_rate_being_calculated</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Set Test transaction, uust update system notes and move on.</description>
+        <name>Test_Transaction_Webhook</name>
+        <label>Test Transaction - Webhook</label>
+        <locationX>314</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>Account_Wallet__c</field>
+            <value>
+                <elementReference>Account_Wallet.Id</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>Transaction_Value__c</field>
+            <field>System_Notes__c</field>
             <value>
-                <elementReference>ConvertedCurrencyValue</elementReference>
+                <stringValue>Webhook Test Transaction</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Test_Transaction__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
             </value>
         </inputAssignments>
         <inputReference>$Record</inputReference>
@@ -417,7 +459,7 @@
         <description>No reference to that token exists.</description>
         <name>Token_doesn_t_exist_in_system</name>
         <label>Token doesn&apos;t exist in system</label>
-        <locationX>1370</locationX>
+        <locationX>1634</locationX>
         <locationY>719</locationY>
         <inputAssignments>
             <field>Account_Wallet__c</field>
@@ -437,7 +479,7 @@
         <description>The token in the transaction is inactive.</description>
         <name>Token_is_Inactive</name>
         <label>Token is Inactive</label>
-        <locationX>1106</locationX>
+        <locationX>1370</locationX>
         <locationY>719</locationY>
         <inputAssignments>
             <field>Account_Wallet__c</field>
@@ -454,7 +496,7 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>320</locationX>
+        <locationX>452</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Account_Wallet</targetReference>
@@ -506,5 +548,5 @@
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
 </Flow>

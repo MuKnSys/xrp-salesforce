@@ -2,12 +2,23 @@
     <section class="slds-card">
         <lightning-spinner alternative-text={labels.loading} lwc:if={isLoading} size="x-small"></lightning-spinner>
         <div class="slds-card__body slds-card__body_inner">
+            <div class="slds-var-m-top_small slds-var-m-bottom_small">
+                <div class="slds-text-heading_large">{labels.instructionTitle}</div>
+                <div class="slds-text-body_regular slds-var-m-top_small">
+                    {labels.instructionLine1}
+                    Available. <a href="https://webhook.xrpayments.co/">webhook.xrpayments.co</a>
+                </div>
+                <div class="slds-text-body_regular slds-var-m-top_small">
+                    {labels.instructionLine2}
+                </div>
+            </div>
+            
             <lightning-accordion
                 allow-multiple-sections-open
                 active-section-name={activeSections}
             >
             <lightning-accordion-section name={labels.credentials} label={labels.credentials}>
-                <lightning-layout multiple-rows class="slds-var-p-top_medium">
+                <lightning-layout multiple-rows>
                     <lightning-layout-item size="4">
                         <lightning-input
                             class="slds-var-p-left_medium"
@@ -61,8 +72,8 @@
                 </lightning-layout>
             </lightning-accordion-section>
             <lightning-accordion-section name={labels.webhook} label={labels.webhook}>
-                <lightning-layout multiple-rows class="slds-var-p-top_medium">
-                    <lightning-layout-item size="11" class="slds-var-p-top_medium" lwc:if={registerWebhookSuccess}>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="12" class="slds-var-p-top_medium" lwc:if={registerWebhookSuccess}>
                         <lightning-icon
                             alternative-text={labels.success}
                             class="slds-var-m-left_medium"
@@ -93,6 +104,22 @@
                             label={labels.deleteWebhook}
                             onclick={handleDeleteWebhook}
                             title={labels.deleteWebhook}
+                            variant="brand"
+                        ></lightning-button>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="8"><!-- skip to next row -->
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-accordion-section>
+            <lightning-accordion-section name={labels.assetTokens} label={labels.assetTokens}>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="2" class="slds-var-p-top_medium">
+                        <lightning-button
+                            class="slds-var-p-left_medium"
+                            disabled={initializeAssetTokensDisabled}
+                            label={labels.initializeAssetTokens}
+                            onclick={handleInitializeAssetTokens}
+                            title={labels.initializeAssetTokens}
                             variant="brand"
                         ></lightning-button>
                     </lightning-layout-item>

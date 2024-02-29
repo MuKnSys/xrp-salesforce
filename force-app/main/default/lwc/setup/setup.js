@@ -5,6 +5,7 @@ import getSettings from "@salesforce/apex/SetupCtrl.getSettings";
 import saveSettings from "@salesforce/apex/SetupCtrl.saveSettings";
 import subscribeWebhook from "@salesforce/apex/SetupCtrl.subscribeWebhook";
 import deleteWebhook from "@salesforce/apex/SetupCtrl.deleteWebhook";
+import initializeAssetTokens from "@salesforce/apex/SetupCtrl.initializeAssetTokens";
 
 import { labels } from "./setupLabels";
 
@@ -26,8 +27,15 @@ export default class Setup extends LightningElement {
             !this.settings.siteDomain
         ) {
             return [labels.credentials];
-        } else {
+        } else if (
+            this.settings.apiKey &&
+            this.settings.apiSecret &&
+            this.settings.siteDomain &&
+            !this.settings.webhookId
+        ) {
             return [labels.credentials, labels.webhook];
+        } else {
+            return [labels.credentials, labels.webhook, labels.assetTokens];
         }
     }
 
@@ -51,6 +59,10 @@ export default class Setup extends LightningElement {
 
     get registerWebhookSuccess() {
         return this.settings.webhookId;
+    }
+
+    get initializeAssetTokensDisabled() {
+        return this.settings.assetTokensInitialized;
     }
 
     async refreshSettings() {
@@ -96,6 +108,17 @@ export default class Setup extends LightningElement {
     handleExcpetion(excp) {
         const errorMessage = excp.body?.message || excp.message;
         this.showToastNotification(errorMessage);
+    }
+
+    async handleInitializeAssetTokens() {
+        try {
+            this.isLoading = true;
+            this.settings = await initializeAssetTokens();
+        } catch (excp) {
+            this.handleExcpetion(excp);
+        } finally {
+            this.isLoading = false;
+        }
     }
 
     async handleSave() {
