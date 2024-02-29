@@ -28,7 +28,8 @@ public with sharing class SetupCtrl {
                 settings.XRPSiteDomainUrl__c = settingValues.get('siteDomain');
             }
 
-            // False Positive - Only Admin can perform this
+            // False Positive - Custom Settings need to be hidden
+            // but need to be accessible through Apex - action performed only by Admin on Setup Stage
             upsert as system settings;
 
             return new Settings(settings);
@@ -74,6 +75,24 @@ public with sharing class SetupCtrl {
         }
     }
 
+    @AuraEnabled
+    public static Settings initializeAssetTokens() {
+        try {
+            AssetTokenService.initializeAssetTokens();
+
+            XRPForSalesforceSettings__c settings = XRPForSalesforceSettingsService.settings;
+            settings.AssetTokensInitialized__c = true;
+
+            // False Positive - Custom Settings need to be hidden
+            // but need to be accessible through Apex - action performed only by Admin on Setup Stage
+            update as system settings;
+
+            return new Settings(settings);
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
     public class Settings {
         @AuraEnabled
         public String apiKey;
@@ -83,6 +102,8 @@ public with sharing class SetupCtrl {
         public String webhookId;
         @AuraEnabled
         public String siteDomain;
+        @AuraEnabled
+        public Boolean assetTokensInitialized;
 
         public Settings() {
         }
@@ -100,6 +121,9 @@ public with sharing class SetupCtrl {
             this.siteDomain = isBlank(settings.XRPSiteDomainUrl__c)
                 ? null
                 : System.Label.settings_site_domain_setted;
+            this.assetTokensInitialized = isBlank(settings.XRPSiteDomainUrl__c)
+                ? false
+                : settings.AssetTokensInitialized__c;
         }
 
         private Boolean isBlank(String value) {

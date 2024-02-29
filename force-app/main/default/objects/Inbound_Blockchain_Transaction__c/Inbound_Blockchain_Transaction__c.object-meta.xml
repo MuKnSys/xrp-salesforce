@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionOverrides>
         <actionName>Accept</actionName>
@@ -143,7 +143,8 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>Inbound Transactions on the Blockchain. From is an Org Wallet. To is an Account Wallet.</description>
+    <description
+    >Inbound Transactions on the Blockchain. From is an Org Wallet. To is an Account Wallet.</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
@@ -153,7 +154,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <label>Inbound Blockchain Transaction</label>
     <nameField>
         <displayFormat>IBC-TXN-{00000000}</displayFormat>
@@ -162,7 +163,7 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Inbound Blockchain Transactions</pluralLabel>
-    <searchLayouts></searchLayouts>
-    <sharingModel>ControlledByParent</sharingModel>
+    <searchLayouts />
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

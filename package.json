@@ -2,7 +2,7 @@
   "name": "salesforce-app",
   "private": true,
   "version": "1.0.0",
-  "description": "Salesforce App",
+  "description": "XRP for Salesforce - Milestone 2",
   "scripts": {
     "lint": "eslint **/{aura,lwc}/**",
     "test": "npm run test:unit",
