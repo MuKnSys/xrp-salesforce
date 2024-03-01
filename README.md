@@ -24,6 +24,10 @@ https://developer.salesforce.com/signup
 1. Push the code to the Scratch Org: `sf project deploy start`
 1. Connect to the Salesforce Scratch Org: `sf org open`
 
+## User/Admin Story Documentation
+Admin Stories: [Visual Representation](https://github.com/MuKnSys/xrp-salesforce/blob/main/Documentation%20and%20Images/XRP%20for%20Salesforce%20Admin%20Story%20Map.png)
+
+User Stories: [Visual Representation](https://github.com/MuKnSys/xrp-salesforce/blob/main/Documentation%20and%20Images/XRP%20for%20Salesforce%20User%20Story%20Map.png)
 
 ## Interested in Multichain Options?
 
