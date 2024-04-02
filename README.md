@@ -1,4 +1,4 @@
-# XRP for Salesforce Project
+# XRP-Salesforce Project
 
 This is a basic demonstration Salesforce DX Project. Using the [SF CLI](https://developer.salesforce.com/tools/sfdxcli) tools, you can deploy to a Developer Edition Scratch Org.
 
@@ -24,18 +24,17 @@ https://developer.salesforce.com/signup
 1. Push the code to the Scratch Org: `sf project deploy start`
 1. Connect to the Salesforce Scratch Org: `sf org open`
 
+Once you've set up your Salesforce Scratch Org, you can follow the steps outlined in our [user manual](https://mukn.com/wp-content/uploads/2023/07/Web3-Enabler-for-Salesforce-User-Guide.pdf) to make and receive payments using Web3 Enabler on Salesforce. You can also use our [demo](https://www.youtube.com/watch?v=lkAp2vqQVTA) as a guide.  
+
+We launched Web3 Enabler on the Salesforce App Exchange in July, 2023.  See our [AppExchange listing](https://appexchange.salesforce.com/appxListingDetail?listingId=ee4c011b-7a5b-4a50-91fb-f28049390858) for further details.
+
 ## User/Admin Story Documentation
+User Guide: [XRP for Salesforce User Guide](https://github.com/MuKnSys/xrp-salesforce/blob/main/Documentation%20and%20Images/Web3%20Enabler%20XRP%20for%20Salesforce%20User%20Guide.pdf)
+
 Admin Stories: [Visual Representation](https://github.com/MuKnSys/xrp-salesforce/blob/main/Documentation%20and%20Images/XRP%20for%20Salesforce%20Admin%20Story%20Map.png)
 
 User Stories: [Visual Representation](https://github.com/MuKnSys/xrp-salesforce/blob/main/Documentation%20and%20Images/XRP%20for%20Salesforce%20User%20Story%20Map.png)
 
-## Interested in Multichain Options?
-
-Our Multichain product Web3 Enabler for Salesforce has more official support channels. The documentation and information may help you.
-
-Once you've set up your Salesforce Scratch Org, you can follow the steps outlined in our [user manual](https://mukn.com/wp-content/uploads/2023/07/Web3-Enabler-for-Salesforce-User-Guide.pdf) to make and receive payments using Web3 Enabler on Salesforce. You can also use our [demo](https://www.youtube.com/watch?v=lkAp2vqQVTA) as a guide.  
-
-We launched Web3 Enabler on the Salesforce App Exchange in July, 2023.  See our [AppExchange listing](https://appexchange.salesforce.com/appxListingDetail?listingId=ee4c011b-7a5b-4a50-91fb-f28049390858) for further details.
 
 ## Submitting changes to GitHub
 
@@ -50,4 +49,4 @@ We launched Web3 Enabler on the Salesforce App Exchange in July, 2023.  See our 
 
 ## Copyright and License
 
-Copyright 2023-2024 Web3 Enabler, Inc.  XRP for Salesforce is distributed under the GPL licence, version 3.0.  For more information, see the [LICENSE file](LICENSE).
+Copyright 2023 Mutual Knowledge Systems, Inc.  XRP Salesforce is distributed under the GPL licence, version 3.0.  For more information, see the [LICENSE file](LICENSE).
