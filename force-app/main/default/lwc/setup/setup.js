@@ -9,6 +9,11 @@ import initializeAssetTokens from "@salesforce/apex/SetupCtrl.initializeAssetTok
 
 import { labels } from "./setupLabels";
 
+const TOAST_VARIANT = {
+    error : "error",
+    success: "success"
+};
+
 export default class Setup extends LightningElement {
     @track settings = {};
 
@@ -61,8 +66,8 @@ export default class Setup extends LightningElement {
         return this.settings.webhookId;
     }
 
-    get initializeAssetTokensDisabled() {
-        return this.settings.assetTokensInitialized;
+    get initializeAssetTokenLabel() {
+        return this.settings.assetTokensInitialized ? labels.reinitializeAssetTokens : labels.initializeAssetTokens;
     }
 
     async refreshSettings() {
@@ -86,7 +91,7 @@ export default class Setup extends LightningElement {
     showToastNotification(
         message,
         title = labels.errorTitle,
-        variant = "error"
+        variant = TOAST_VARIANT.error
     ) {
         const toast = new ShowToastEvent({
             title: title,
@@ -114,6 +119,7 @@ export default class Setup extends LightningElement {
         try {
             this.isLoading = true;
             this.settings = await initializeAssetTokens();
+            this.showToastNotification(labels.successAssetTokenMessage, labels.successTitle, TOAST_VARIANT.success);
         } catch (excp) {
             this.handleExcpetion(excp);
         } finally {

@@ -87,7 +87,7 @@ public with sharing class AssetTokenService {
 
     public static void initializeAssetTokens() {
         List<Asset_Token__c> assetTokens = getAssetTokens();
-        insert as user assetTokens;
+        upsert as user assetTokens Asset__c;
     }
 
     private static List<Asset_Token__c> getAssetTokens() {
