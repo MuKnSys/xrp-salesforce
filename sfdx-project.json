@@ -6,7 +6,12 @@
       "package": "XRP-Salesforce",
       "versionName": "ver 0.1",
       "versionNumber": "0.1.0.NEXT",
-      "versionDescription": "XRP-Salesforce-Package"
+      "versionDescription": "XRP-Salesforce-Unlocked-Package",
+      "apexTestAccess": {
+        "permissionSets": [
+          "XRP_Admin_Permission_Set"
+        ]
+      }
     }
   ],
   "name": "xrp-salesforce",
