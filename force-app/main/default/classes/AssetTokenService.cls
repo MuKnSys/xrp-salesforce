@@ -6,6 +6,8 @@ public with sharing class AssetTokenService {
     @TestVisible
     private static final String RIPPLE_COIN_GECKO_API_NAME = 'ripple';
     @TestVisible
+    private static final String RIPPLE_COIN_GECKO_TOKEN_INFO = 'https://xrpl.org/';
+    @TestVisible
     private static final Decimal RIPPLE_DEFAULT_EXCHANGE_RATE = 0.50;
 
     @InvocableMethod(
@@ -85,7 +87,7 @@ public with sharing class AssetTokenService {
 
     public static void initializeAssetTokens() {
         List<Asset_Token__c> assetTokens = getAssetTokens();
-        insert as user assetTokens;
+        upsert as user assetTokens Asset__c;
     }
 
     private static List<Asset_Token__c> getAssetTokens() {
@@ -98,6 +100,7 @@ public with sharing class AssetTokenService {
         rippleAssetToken.CoinGeckoAPIName__c = RIPPLE_COIN_GECKO_API_NAME;
         rippleAssetToken.ConversionRate__c = getRippleExchangeRate(true);
         rippleAssetToken.ConversionRateLastSet__c = Datetime.now();
+        rippleAssetToken.TokenInformation__c = RIPPLE_COIN_GECKO_TOKEN_INFO;
 
         assetTokens.add(rippleAssetToken);
         return assetTokens;

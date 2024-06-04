@@ -249,6 +249,14 @@
         <value>Register Webhook</value>
     </labels>
     <labels>
+        <fullName>setup_reinitialize_asset_tokens</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup reinitialize asset tokens</shortDescription>
+        <value>Reinitialize Asset Tokens</value>
+    </labels>
+    <labels>
         <fullName>setup_save</fullName>
         <categories>lwc, setup</categories>
         <language>en_US</language>
@@ -289,11 +297,27 @@
         <value>Success</value>
     </labels>
     <labels>
+        <fullName>setup_success_asset_token_message</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup success asset token message</shortDescription>
+        <value>Successful initialization of Asset Tokens</value>
+    </labels>
+    <labels>
         <fullName>setup_success_message</fullName>
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>setup success message</shortDescription>
         <value>XRP Payment Webhook Registered</value>
+    </labels>
+    <labels>
+        <fullName>setup_success_title</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup success title</shortDescription>
+        <value>Success</value>
     </labels>
 </CustomLabels>

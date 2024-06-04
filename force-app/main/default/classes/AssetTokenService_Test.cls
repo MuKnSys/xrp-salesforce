@@ -16,6 +16,7 @@ private class AssetTokenService_Test {
         rippleAssetToken.CoinGeckoAPIName__c = AssetTokenService.RIPPLE_COIN_GECKO_API_NAME;
         rippleAssetToken.ConversionRate__c = AssetTokenService.RIPPLE_DEFAULT_EXCHANGE_RATE;
         rippleAssetToken.ConversionRateLastSet__c = Datetime.now();
+        rippleAssetToken.TokenInformation__c = AssetTokenService.RIPPLE_COIN_GECKO_TOKEN_INFO;
         insert rippleAssetToken;
 
         Inbound_Blockchain_Transaction__c chainTransaction = new Inbound_Blockchain_Transaction__c();

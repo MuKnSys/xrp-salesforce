@@ -2,11 +2,24 @@
   "packageDirectories": [
     {
       "path": "force-app",
-      "default": true
+      "default": true,
+      "package": "XRP-Salesforce",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "versionDescription": "XRP-Salesforce-Unlocked-Package",
+      "apexTestAccess": {
+        "permissionSets": [
+          "XRP_Admin_Permission_Set"
+        ]
+      }
     }
   ],
   "name": "xrp-salesforce",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "59.0"
+  "sourceApiVersion": "59.0",
+  "packageAliases": {
+    "XRP-Salesforce": "0HoTO0000000ADt0AM",
+    "XRP-Salesforce@0.1.0-2": "04tTO0000001S8jYAE"
+  }
 }
