@@ -119,8 +119,8 @@
     <tabs>standard-Account</tabs>
     <tabs>Org_Wallet__c</tabs>
     <tabs>Account_Wallet__c</tabs>
-    <tabs>Asset_Token__c</tabs>
     <tabs>Inbound_Blockchain_Transaction__c</tabs>
     <tabs>Outbound_Blockchain_Transaction__c</tabs>
+    <tabs>Asset_Token__c</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>
