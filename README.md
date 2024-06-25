@@ -10,8 +10,8 @@ You can get a free Salesforce Developer Edition account from Salesforce. Sign up
 
 https://developer.salesforce.com/signup
 
-## How To Test the App - Unlocked Package
-1. Install the app using this link: https://login.salesforce.com/packaging/installPackage.apexp?p0=04tTO0000001S8jYAE
+## How To Test the App - Unlocked Package v1.0.0
+1. Install the app using this link: https://login.salesforce.com/packaging/installPackage.apexp?p0=04tTO0000001ZerYAE
 
 ## How To Test the App - Using Repository
 
