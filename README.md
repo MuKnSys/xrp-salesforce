@@ -41,6 +41,31 @@ Admin Stories: [Visual Representation](https://github.com/MuKnSys/xrp-salesforce
 User Stories: [Visual Representation](https://github.com/MuKnSys/xrp-salesforce/blob/main/Documentation%20and%20Images/XRP%20for%20Salesforce%20User%20Story%20Map.png)
 
 
+## The Code Integration
+
+We offer up REST Endpoints in Salesforce that are used with the [XRPL Webhook project](https://webhook.xrpayments.co/) to receive the data.
+
+We register an endpoint on our Salesforce Installation to receive the data from the Webhook.
+We then subscribe any company addresses to the webhook.
+The data is then parsed inside of Salesforce for business logic.
+
+
+## Plans for XRP for Salesforce V2
+
+We will provide unlocked and managed packages for the main XRP for Salesforce application plus the Cloud Specific add ons, as part of our commercial offering, as a Salesforce ISV partner. main XRP for Salesforce plus the Cloud Specific add ons (6 packages in total).  See our [technical architecture diagram](https://github.com/MuKnSys/xrp-salesforce/blob/main/Documentation%20and%20Images/xrp-for-salesforce-v2-technical-architecture.png), as a reference.
+
+Unlocked Packages (the 2GP Packaging system improvement on the 1GP Unmanaged Packages) provides open installation. Managed Packages must go through the extensive security review for Salesforce.
+
+To be comparable with the 2GP Packaging system, we offer a base package, usable on ANY Salesforce Org (also called a Force.com or Platform installation), plus add-ons for the common and logical Salesforce “Clouds” - their name for products.
+
+Most Salesforce installations include:
+* [Sales or Service Cloud](https://www.salesforce.com/sales)
+* Ecommerce solutions, which utilize [Commerce Cloud](https://www.salesforce.com/commerce)
+* [Accounting Seed](https://www.accountingseed.com): a third party product that offers a full General Ledger/ERP (Enterprise Resource Planning) environment in Salesforce.
+
+Part of the v2 Project is to submit the base package and the addons into the Security Review process. While the actual cost for submission is inexpensive (approximately $3,000 including listing fees), the compliance portion of this is time consuming. We will have to document and clear the Webhooks project with Salesforce Security Review. For Web3 Enabler, it was a 2 month project for our internal application.
+
+
 ## Submitting changes to GitHub
 
 1. Create a feature / change branch - you will need to fork the project
