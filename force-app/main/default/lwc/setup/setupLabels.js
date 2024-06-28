@@ -18,6 +18,8 @@ import setup_success_message from "@salesforce/label/c.setup_success_message";
 import setup_success_title from "@salesforce/label/c.setup_success_title";
 import setup_subtitle_credentials from "@salesforce/label/c.setup_subtitle_credentials";
 import setup_subtitle_webhooks from "@salesforce/label/c.setup_subtitle_webhooks";
+import setup_subtitle_site_domain from "@salesforce/label/c.setup_subtitle_site_domain";
+import setup_site_domain_info from "@salesforce/label/c.setup_site_domain_info";
 
 export const labels = {
     apiKey: setup_api_key,
@@ -40,4 +42,6 @@ export const labels = {
     successTitle: setup_success_title,
     credentials: setup_subtitle_credentials,
     webhook: setup_subtitle_webhooks,
+    site_domain: setup_subtitle_site_domain,
+    site_domain_info: setup_site_domain_info
 };

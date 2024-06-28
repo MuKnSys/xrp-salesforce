@@ -273,12 +273,31 @@
         <value>Site Domain</value>
     </labels>
     <labels>
+        <fullName>setup_site_domain_info</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup site domain_info</shortDescription>
+        <value>You can find Site Domain by going to Setup -&gt; Sites -&gt; 
+            select the site you created earlier (XrpForSalesforce) -&gt; 
+            click on Site URL -&gt; The site will open in a new tab, 
+            please copy the entire url.</value>
+    </labels>
+    <labels>
         <fullName>setup_subtitle_credentials</fullName>
         <categories>lwc, setup</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>setup subtitle credentials</shortDescription>
-        <value>Credentials</value>
+        <value>XRPL Webhook Credentials</value>
+    </labels>
+    <labels>
+        <fullName>setup_subtitle_site_domain</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup subtitle site domain</shortDescription>
+        <value>Salesforce Site Domain</value>
     </labels>
     <labels>
         <fullName>setup_subtitle_webhooks</fullName>
