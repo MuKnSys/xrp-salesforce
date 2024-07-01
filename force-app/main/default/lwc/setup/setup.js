@@ -58,6 +58,10 @@ export default class Setup extends LightningElement {
         );
     }
 
+    get saveCredentialsDisabled() {
+        return this.settings.webhookId;
+    }
+
     get deleteWebhookDisabled() {
         return !(
             this.settings.apiKey &&

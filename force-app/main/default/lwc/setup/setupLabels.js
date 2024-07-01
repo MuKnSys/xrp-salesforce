@@ -20,6 +20,10 @@ import setup_subtitle_credentials from "@salesforce/label/c.setup_subtitle_crede
 import setup_subtitle_webhooks from "@salesforce/label/c.setup_subtitle_webhooks";
 import setup_subtitle_site_domain from "@salesforce/label/c.setup_subtitle_site_domain";
 import setup_site_domain_info from "@salesforce/label/c.setup_site_domain_info";
+import setup_webhooks_info from "@salesforce/label/c.setup_webhooks_info";
+import setup_credentials_info from "@salesforce/label/c.setup_credentials_info";
+import setup_asset_token_info_1 from "@salesforce/label/c.setup_asset_token_info_1";
+import setup_asset_token_info_2 from "@salesforce/label/c.setup_asset_token_info_2";
 
 export const labels = {
     apiKey: setup_api_key,
@@ -43,5 +47,9 @@ export const labels = {
     credentials: setup_subtitle_credentials,
     webhook: setup_subtitle_webhooks,
     site_domain: setup_subtitle_site_domain,
-    site_domain_info: setup_site_domain_info
+    site_domain_info: setup_site_domain_info,
+    webhooks_info: setup_webhooks_info,
+    credentials_info: setup_credentials_info,
+    asset_token_info_1: setup_asset_token_info_1,
+    asset_token_info_2: setup_asset_token_info_2
 };

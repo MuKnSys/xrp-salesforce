@@ -18,6 +18,7 @@
                 active-section-name={activeSections}
             >
             <lightning-accordion-section name={labels.credentials} label={labels.credentials}>
+                <lightning-formatted-rich-text class="slds-var-p-left_medium" value={labels.credentials_info}></lightning-formatted-rich-text>
                 <lightning-layout multiple-rows>
                     <lightning-layout-item size="4">
                         <lightning-input
@@ -48,6 +49,7 @@
                     <lightning-layout-item size="1" class="slds-var-p-top_medium">
                         <lightning-button
                             class="slds-var-p-left_medium"
+                            disabled={saveCredentialsDisabled}
                             label={labels.save}
                             onclick={handleSave}
                             title={labels.save}
@@ -78,6 +80,7 @@
                     <lightning-layout-item size="1" class="slds-var-p-top_medium">
                         <lightning-button
                             class="slds-var-p-left_medium"
+                            disabled={saveCredentialsDisabled}
                             label={labels.save}
                             onclick={handleSave}
                             title={labels.save}
@@ -90,6 +93,7 @@
             </lightning-accordion-section>
 
             <lightning-accordion-section name={labels.webhook} label={labels.webhook}>
+                <lightning-formatted-rich-text class="slds-var-p-left_medium" value={labels.webhooks_info}></lightning-formatted-rich-text>
                 <lightning-layout multiple-rows>
                     <lightning-layout-item size="12" class="slds-var-p-top_medium" lwc:if={registerWebhookSuccess}>
                         <lightning-icon
@@ -131,6 +135,12 @@
             </lightning-accordion-section>
 
             <lightning-accordion-section name={labels.assetTokens} label={labels.assetTokens}>
+                <div>
+                    <lightning-formatted-rich-text class="slds-var-m-left_medium" value={labels.asset_token_info_1}></lightning-formatted-rich-text>
+                </div>
+                <div>
+                    <lightning-formatted-rich-text class="slds-var-m-left_medium" value={labels.asset_token_info_2}></lightning-formatted-rich-text>
+                </div>
                 <lightning-layout multiple-rows>
                     <lightning-layout-item size="2" class="slds-var-p-top_medium">
                         <lightning-button
