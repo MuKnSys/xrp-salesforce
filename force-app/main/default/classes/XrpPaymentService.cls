@@ -1,7 +1,7 @@
 // False Positive: This class needs to work in System Mode - callback from Webhook App
 public without sharing class XrpPaymentService {
     public static final Long RIPPLE_EPOCH_TO_TIMESTAM_SECONDS_ADJUSTMENT = 946684800;
-    public static final Long RIPPLE_DROP = 1000000;
+    public static final Decimal RIPPLE_DROP = 1000000;
 
     public static void processIncomingPayment(String requestBody) {
         Map<String, Object> paymentData = (Map<String, Object>) JSON.deserializeUntyped(
@@ -99,7 +99,7 @@ public without sharing class XrpPaymentService {
             );
             paymentTransaction.put(
                 'Value__c',
-                Decimal.valueOf((String) amountData.get('value')) / RIPPLE_DROP
+                convertRippleDrop(Decimal.valueOf((String) amountData.get('value')))
             );
             paymentTransaction.put(
                 'Contract_Address__c',
@@ -109,7 +109,7 @@ public without sharing class XrpPaymentService {
             paymentTransaction.put('Asset__c', 'XRP');
             paymentTransaction.put(
                 'Value__c',
-                Decimal.valueOf((String) transcationData.get('Amount'))
+                convertRippleDrop(Decimal.valueOf((String) transcationData.get('Amount')))
             );
         }
 
@@ -144,5 +144,9 @@ public without sharing class XrpPaymentService {
             (RIPPLE_EPOCH_TO_TIMESTAM_SECONDS_ADJUSTMENT + rippleTimestamp) *
             1000
         );
+    }
+
+    private static Decimal convertRippleDrop(Decimal chainAmount) {
+        return chainAmount / RIPPLE_DROP;
     }
 }
