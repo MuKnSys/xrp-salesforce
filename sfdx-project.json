@@ -4,8 +4,8 @@
       "path": "force-app",
       "default": true,
       "package": "XRP-Salesforce",
-      "versionName": "ver 1.0.0",
-      "versionNumber": "1.0.0.NEXT",
+      "versionName": "ver 1.0.2",
+      "versionNumber": "1.0.2.NEXT",
       "versionDescription": "XRP-Salesforce-Unlocked-Package",
       "apexTestAccess": {
         "permissionSets": [
@@ -21,6 +21,8 @@
   "packageAliases": {
     "XRP-Salesforce": "0HoTO0000000ADt0AM",
     "XRP-Salesforce@0.1.0-2": "04tTO0000001S8jYAE",
-    "XRP-Salesforce@1.0.0-1": "04tTO0000001ZerYAE"
+    "XRP-Salesforce@1.0.0-1": "04tTO0000001ZerYAE",
+    "XRP-Salesforce@1.0.1-1": "04tTO0000001d5lYAA",
+    "XRP-Salesforce@1.0.2-1": "04tTO0000001d8zYAA"
   }
 }

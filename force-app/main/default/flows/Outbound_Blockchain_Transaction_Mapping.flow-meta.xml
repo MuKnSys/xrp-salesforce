@@ -121,38 +121,10 @@
             <name>TEST_Transaction_Webhook_Test</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.Network_Name__c</leftValueReference>
+                <leftValueReference>$Record.Transaction_Hash__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>XRP_Mainnet</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.BlockNum__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>45184774</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Value__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <numberValue>1.15821286E8</numberValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Transaction_Timestamp__c</leftValueReference>
-                <operator>GreaterThanOrEqualTo</operator>
-                <rightValue>
-                    <dateTimeValue>2019-02-15T08:00:00.000Z</dateTimeValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Transaction_Timestamp__c</leftValueReference>
-                <operator>LessThanOrEqualTo</operator>
-                <rightValue>
-                    <dateTimeValue>2019-02-18T07:59:00.000Z</dateTimeValue>
+                    <stringValue>D8C12166A6ECCCE097B059168CF3DE869573D358F65DD6B687365F8CCB439CD6</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -348,6 +320,12 @@
             <field>System_Notes__c</field>
             <value>
                 <stringValue>Test Transaction</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Test_Transaction__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
             </value>
         </inputAssignments>
         <inputReference>$Record</inputReference>
