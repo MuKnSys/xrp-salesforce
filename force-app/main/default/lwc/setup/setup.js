@@ -28,19 +28,24 @@ export default class Setup extends LightningElement {
     get activeSections() {
         if (
             !this.settings.apiKey ||
-            !this.settings.apiSecret ||
-            !this.settings.siteDomain
+            !this.settings.apiSecret
         ) {
             return [labels.credentials];
+        } else if (
+            this.settings.apiKey &&
+            this.settings.apiSecret &&
+            !this.settings.siteDomain
+        ) {
+            return [labels.credentials, labels.site_domain];
         } else if (
             this.settings.apiKey &&
             this.settings.apiSecret &&
             this.settings.siteDomain &&
             !this.settings.webhookId
         ) {
-            return [labels.credentials, labels.webhook];
+            return [labels.credentials, labels.site_domain, labels.webhook];
         } else {
-            return [labels.credentials, labels.webhook, labels.assetTokens];
+            return [labels.credentials, labels.site_domain, labels.webhook, labels.assetTokens];
         }
     }
 
@@ -51,6 +56,10 @@ export default class Setup extends LightningElement {
             this.settings.siteDomain &&
             !this.settings.webhookId
         );
+    }
+
+    get saveCredentialsDisabled() {
+        return this.settings.webhookId;
     }
 
     get deleteWebhookDisabled() {

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>Update_Exchange_Rate_Calculate_Transaction_Value</name>
-        <label>Update Exchange Rate / Calculate Transaction Value</label>
+        <name>Update_Exchange_Rate_for_Asset_Token_Transaction</name>
+        <label>Update Exchange Rate for Asset Token / Transaction</label>
         <locationX>176</locationX>
         <locationY>323</locationY>
-        <actionName>AssetTokenService</actionName>
+        <actionName>AssetTokenInvocable</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
@@ -14,7 +14,7 @@
                 <elementReference>$Record.Id</elementReference>
             </value>
         </inputParameters>
-        <nameSegment>AssetTokenService</nameSegment>
+        <nameSegment>AssetTokenInvocable</nameSegment>
         <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>60.0</apiVersion>
@@ -44,7 +44,7 @@
         <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Update_Exchange_Rate_Calculate_Transaction_Value</targetReference>
+            <targetReference>Update_Exchange_Rate_for_Asset_Token_Transaction</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -55,13 +55,6 @@
             </value>
         </filters>
         <filters>
-            <field>Transaction_Value__c</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
             <field>System_Notes__c</field>
             <operator>EqualTo</operator>
             <value>
@@ -69,7 +62,7 @@
             </value>
         </filters>
         <object>Outbound_Blockchain_Transaction__c</object>
-        <recordTriggerType>Update</recordTriggerType>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>

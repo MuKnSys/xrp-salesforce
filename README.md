@@ -10,10 +10,10 @@ You can get a free Salesforce Developer Edition account from Salesforce. Sign up
 
 https://developer.salesforce.com/signup
 
-## How To Test the App - Unlocked Package v1.0.0
+## How To Test the App - Unlocked Package v1.0.2
 1. Install the app using one of these links:
-    - https://login.salesforce.com/packaging/installPackage.apexp?p0=04tTO0000001ZerYAE - Production
-    - https://test.salesforce.com/packaging/installPackage.apexp?p0=04tTO0000001ZerYAE - Sandbox
+    - https://login.salesforce.com/packaging/installPackage.apexp?p0=04tTO0000001d8zYAA - Production
+    - https://test.salesforce.com/packaging/installPackage.apexp?p0=04tTO0000001d8zYAA - Sandbox
 
 ## How To Test the App - Using Repository
 
@@ -79,4 +79,4 @@ Part of the v2 Project is to submit the base package and the addons into the Sec
 
 ## Copyright and License
 
-Copyright 2023 Mutual Knowledge Systems, Inc.  XRP Salesforce is distributed under the GPL licence, version 3.0.  For more information, see the [LICENSE file](LICENSE).
+Copyright 2024 Web3 Enabler, Inc.  XRP Salesforce is distributed under the GPL licence, version 3.0.  For more information, see the [LICENSE file](LICENSE).

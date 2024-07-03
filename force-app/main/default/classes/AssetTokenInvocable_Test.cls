@@ -1,5 +1,5 @@
 @isTest
-private class AssetTokenService_Test {
+private class AssetTokenInvocable_Test {
     @isTest
     static void updateRippleAssetTokenExchangeRate_Success() {
         XRPForSalesforceSettings__c settings = new XRPForSalesforceSettings__c();
@@ -49,7 +49,7 @@ private class AssetTokenService_Test {
             .mock();
 
         Test.startTest();
-        AssetTokenService.updateRippleAssetTokenExchangeRate(
+        AssetTokenInvocable.updateRippleAssetTokenExchangeRate(
             new List<Id>{ chainTransaction.Id }
         );
         Test.stopTest();

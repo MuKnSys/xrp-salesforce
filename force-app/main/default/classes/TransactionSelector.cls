@@ -1,5 +1,5 @@
-public with sharing class TransactionSelector {
-    public static List<SObject> getTransactionById(Id transactionId) {
+public inherited sharing class TransactionSelector {
+    public static List<SObject> getTransactionByIdSystem(Id transactionId) {
         String transactionType = transactionId.getSObjectType()
             .getDescribe()
             .getName();
@@ -13,7 +13,7 @@ public with sharing class TransactionSelector {
                 transactionType +
                 ' WHERE Id = :transactionId',
             queryBinds,
-            AccessLevel.USER_MODE
+            AccessLevel.SYSTEM_MODE
         );
     }
 }
