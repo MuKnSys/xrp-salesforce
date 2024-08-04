@@ -1,4 +1,6 @@
-# XRP-Salesforce Project
+# XRP for Salesforce
+
+![](https://github.com/MuKnSys/xrp-salesforce/blob/main/Documentation%20and%20Images/XRP-For-Salesforce.png)
 
 This is a basic demonstration Salesforce DX Project. Using the [SF CLI](https://developer.salesforce.com/tools/sfdxcli) tools, you can deploy to a Developer Edition Scratch Org.
 
