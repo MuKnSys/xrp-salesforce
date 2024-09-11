@@ -14,8 +14,8 @@ https://developer.salesforce.com/signup
 
 ## How To Test the App - Unlocked Package v1.0.2
 1. Install the app using one of these links:
-    - https://login.salesforce.com/packaging/installPackage.apexp?p0=04tTO0000001d8zYAA - Production
-    - https://test.salesforce.com/packaging/installPackage.apexp?p0=04tTO0000001d8zYAA - Sandbox
+    - [Production](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tTO0000001d8zYAA)
+    - [Sandbox](https://test.salesforce.com/packaging/installPackage.apexp?p0=04tTO0000001d8zYAA)
 
 ## How To Test the App - Using Repository
 
