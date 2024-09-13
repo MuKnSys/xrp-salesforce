@@ -31,7 +31,7 @@ https://developer.salesforce.com/signup
 1. Push the code to the Scratch Org: `sf project deploy start`
 1. Connect to the Salesforce Scratch Org: `sf org open`
 
-Once you've set up your Salesforce Scratch Org, you can follow the steps outlined in our [user guide](https://github.com/MuKnSys/xrp-salesforce/blob/main/Documentation%20and%20Images/Web3%20Enabler%20XRP%20for%20Salesforce%20User%20Guide%20-%20v1.0.2.pdf), starting from the "Set up XRPL Webhooks Account" section, to proceed with the setup process.  We've also made available in [Japanese](https://docs.google.com/document/d/1kp7_nAsx4zq3D1UlrXCQlG5G1ZIAuhGrVr7ibMQsRYo), to make XRP for Salesforce as globally accessible as possible :earth_asia:. You can also use our [demo](https://www.youtube.com/watch?v=lkAp2vqQVTA) as a guide.  
+Once you've set up your Salesforce Scratch Org, you can follow the steps outlined in our [user guide](https://github.com/MuKnSys/xrp-salesforce/blob/main/Documentation%20and%20Images/Web3%20Enabler%20XRP%20for%20Salesforce%20User%20Guide%20-%20v1.0.2.pdf), starting from the "Set up XRPL Webhooks Account" section, to proceed with the setup process.  We've also made available in [Japanese](https://docs.google.com/document/d/1kp7_nAsx4zq3D1UlrXCQlG5G1ZIAuhGrVr7ibMQsRYo), to make XRP for Salesforce as globally accessible as possible :earth_asia:. 
 
 We launched Web3 Enabler on the Salesforce App Exchange in July, 2023.  See our [AppExchange listing](https://appexchange.salesforce.com/appxListingDetail?listingId=ee4c011b-7a5b-4a50-91fb-f28049390858) for further details.
 
@@ -67,7 +67,7 @@ Most Salesforce installations include:
 
 Part of the v2 Project is to submit the base package and the addons into the Security Review process. While the actual cost for submission is inexpensive (approximately $3,000 including listing fees), the compliance portion of this is time consuming. We will have to document and clear the Webhooks project with Salesforce Security Review. For Web3 Enabler, it was a 2 month project for our internal application.
 
-See this [video](https://www.youtube.com/watch?v=f1-dhhkNkII) to better understand our plans for v2.
+See this [video](https://www.youtube.com/watch?v=f1-dhhkNkII) to better understand our plans for v2 and our [Blockchain Payments v2.2 demp](https://youtu.be/njLyeOkhUqU) to get a sense of the full set of features offered by our commercial Web3 Enabler for Salesforce product.
 
 
 ## Submitting changes to GitHub
