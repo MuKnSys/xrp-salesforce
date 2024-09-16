@@ -54,7 +54,7 @@ The data is then parsed inside of Salesforce for business logic.
 
 ## Plans for XRP for Salesforce V2
 
-We will provide unlocked and managed packages for the main XRP for Salesforce application plus the Cloud Specific add ons (6 packages in total), as part of our commercial offering, as a Salesforce ISV partner.  See our [technical architecture diagram](https://github.com/MuKnSys/xrp-salesforce/blob/main/Documentation%20and%20Images/xrp-for-salesforce-v2-technical-architecture.png), as a reference.
+We will provide unlocked and managed packages for the main XRP for Salesforce application plus the Cloud specific add ons (6 packages in total), as part of our commercial offering, as a Salesforce ISV partner.  See our [technical architecture diagram](https://github.com/MuKnSys/xrp-salesforce/blob/main/Documentation%20and%20Images/xrp-for-salesforce-v2-technical-architecture.png), as a reference.
 
 Unlocked Packages (the 2GP Packaging system improvement on the 1GP Unmanaged Packages) provides open installation. Managed Packages must go through the extensive security review for Salesforce.
 
