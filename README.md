@@ -67,7 +67,7 @@ Most Salesforce installations include:
 
 Part of the v2 Project is to submit the base package and the addons into the Security Review process. While the actual cost for submission is inexpensive (approximately $3,000 including listing fees), the compliance portion of this is time consuming. We will have to document and clear the Webhooks project with Salesforce Security Review. For Web3 Enabler, it was a 2 month project for our internal application.
 
-See this [video](https://www.youtube.com/watch?v=f1-dhhkNkII) to better understand our plans for v2 and our [Blockchain Payments v2.2 demp](https://youtu.be/njLyeOkhUqU) to get a sense of the full set of features offered by our commercial Web3 Enabler for Salesforce product.
+See this [video](https://www.youtube.com/watch?v=f1-dhhkNkII) to better understand our plans for v2 and our [Blockchain Payments v2.2 demo](https://youtu.be/njLyeOkhUqU) to get a sense of the full set of features offered by our commercial Web3 Enabler for Salesforce product.
 
 
 ## Submitting changes to GitHub
