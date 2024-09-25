@@ -17,6 +17,8 @@ https://developer.salesforce.com/signup
     - [Production](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tTO0000001d8zYAA)
     - [Sandbox](https://test.salesforce.com/packaging/installPackage.apexp?p0=04tTO0000001d8zYAA)
 
+2. Log in using existing Salesforce login credentials to access the app as an [unlocked package](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_pkg_whats_a_package.htm).
+
 ## How To Test the App - Using Repository
 
 1. Checkout the Main Branch
