@@ -47,7 +47,7 @@ User Stories: [Visual Representation](https://github.com/MuKnSys/xrp-salesforce/
 
 ## The Code Integration
 
-We offer up REST Endpoints in Salesforce that are used with the [XRPL Webhook project](https://webhook.xrpayments.co/) to receive the data.
+We offer up REST Endpoints in Salesforce to receive the data.
 
 We register an endpoint on our Salesforce Installation to receive the data from the Webhook.
 We then subscribe any company addresses to the Webhook.
