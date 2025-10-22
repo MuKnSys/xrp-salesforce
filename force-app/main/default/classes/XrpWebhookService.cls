@@ -32,6 +32,7 @@ public with sharing class XrpWebhookService {
     }
 
     public static void deleteWebhook(String webhookId) {
+        System.debug(LoggingLevel.INFO, 'Deleting XRPL webhook with id: ' + webhookId);
         XrpWebhookApi request = new XrpWebhookApi(
                 String.format(
                     DELETE_WEBHOOK_SUFFIX,
@@ -57,8 +58,15 @@ public with sharing class XrpWebhookService {
             .body(payload);
         HttpResponse response = request.callout();
 
+        String rawBody = response.getBody();
+        // Some backend responses append stray '%' or other chars after the JSON object.
+        Integer lastCurly = rawBody.lastIndexOf('}');
+        if (lastCurly > 0) {
+            rawBody = rawBody.substring(0, lastCurly + 1);
+        }
+
         return (RegisterSubscriptionResponse) JSON.deserialize(
-            response.getBody(),
+            rawBody,
             RegisterSubscriptionResponse.class
         );
     }

@@ -25,7 +25,27 @@ public with sharing class SetupCtrl {
             }
 
             if (settingValues.get('siteDomain') != null) {
-                settings.XRPSiteDomainUrl__c = settingValues.get('siteDomain');
+                String domainVal = settingValues.get('siteDomain');
+                // Strip trailing slash if present
+                if (domainVal.endsWith('/')) {
+                    domainVal = domainVal.substring(0, domainVal.length() - 1);
+                }
+
+                if (!isValidUrl(domainVal)) {
+                    throw new AuraHandledException('Site Domain URL is not valid. It must start with http:// or https:// and include a host name.');
+                }
+                settings.XRPSiteDomainUrl__c = domainVal;
+            }
+
+            if (settingValues.get('baseUrl') != null) {
+                String baseVal = settingValues.get('baseUrl');
+                if (baseVal.endsWith('/')) {
+                    baseVal = baseVal.substring(0, baseVal.length() - 1);
+                }
+                if (!isValidUrl(baseVal)) {
+                    throw new AuraHandledException('Webhook Server URL is not valid.');
+                }
+                settings.XRPWebhookBaseUrl__c = baseVal;
             }
 
             // False Positive - Custom Settings need to be hidden
@@ -76,6 +96,24 @@ public with sharing class SetupCtrl {
     }
 
     @AuraEnabled
+    public static void clearSettings() {
+        try {
+            XRPForSalesforceSettings__c settings = XRPForSalesforceSettingsService.settings;
+            settings.XRPWebhookApiKey__c = null;
+            settings.XRPWebhookApiSecret__c = null;
+            settings.XRPSiteDomainUrl__c = null;
+            settings.XRPWebhookBaseUrl__c = null;
+            settings.XRPWebhookId__c = null;
+            settings.AssetTokensInitialized__c = false;
+
+            // False Positive - Custom Settings need to be hidden but accessible via Apex
+            upsert as system settings;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
+    @AuraEnabled
     public static Settings initializeAssetTokens() {
         try {
             AssetTokenService.initializeAssetTokens();
@@ -93,6 +131,12 @@ public with sharing class SetupCtrl {
         }
     }
 
+    private static Boolean isValidUrl(String url) {
+        if (url == null) return false;
+        Pattern p = Pattern.compile('^https?://[A-Za-z0-9._%+-]+(?:\\:[0-9]+)?(?:/.*)?$');
+        return p.matcher(url).matches();
+    }
+
     public class Settings {
         @AuraEnabled
         public String apiKey;
@@ -100,6 +144,8 @@ public with sharing class SetupCtrl {
         public String apiSecret;
         @AuraEnabled
         public String webhookId;
+        @AuraEnabled
+        public String baseUrl;
         @AuraEnabled
         public String siteDomain;
         @AuraEnabled
@@ -118,6 +164,7 @@ public with sharing class SetupCtrl {
             this.webhookId = isBlank(settings.XRPWebhookId__c)
                 ? null
                 : System.Label.settings_webhook_id_setted;
+            this.baseUrl = settings.XRPWebhookBaseUrl__c;
             this.siteDomain = isBlank(settings.XRPSiteDomainUrl__c)
                 ? null
                 : System.Label.settings_site_domain_setted;

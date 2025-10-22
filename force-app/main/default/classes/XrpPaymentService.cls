@@ -53,10 +53,10 @@ public without sharing class XrpPaymentService {
             ) {
                 Inbound_Blockchain_Transaction__c inboundTransaction = new Inbound_Blockchain_Transaction__c();
                 inboundTransaction.Org_Wallet__c = wallet.Id;
-                inboundTransaction.Account_Wallet__c = accountWalletsByWalletAddress.get(
-                        (String) transcationData.get('Account')
-                    )
-                    .Id;
+                // Make wallet lookup null-safe. If the sender wallet is unknown we leave the field blank instead of throwing NPE.
+                inboundTransaction.Account_Wallet__c = accountWalletsByWalletAddress
+                    .get((String) transcationData.get('Account'))
+                    ?.Id;
 
                 inboundTransaction = (Inbound_Blockchain_Transaction__c) setGeneralTransactionProperties(
                     inboundTransaction,
@@ -129,6 +129,11 @@ public without sharing class XrpPaymentService {
         paymentTransaction.put(
             'Transaction_Hash__c',
             (String) transcationData.get('hash')
+        );
+        // Link to public explorer for quick reference
+        paymentTransaction.put(
+            'Transaction_Detail__c',
+            'https://xrpscan.com/tx/' + (String) transcationData.get('hash')
         );
         paymentTransaction.put(
             'To_Address__c',

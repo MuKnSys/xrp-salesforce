@@ -310,10 +310,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>setup site domain_info</shortDescription>
-        <value>Required. You can find Site Domain by going to Setup -&gt; Sites -&gt; 
-            select the site you created earlier (XrpForSalesforce) -&gt; 
-            click on Site URL -&gt; The site will open in a new tab, 
-            please copy the entire url.</value>
+        <value>Required. Follow these steps to copy your Site Domain and grant webhook access:&#xa;&#xa;1. In Salesforce Setup, search for and open “Sites”.&#xa;2. Click the Site you created earlier (XrpForSalesforce).&#xa;3. Click the link shown in the Site URL field (opens in a new tab).&#xa;4. Copy the entire URL from the browser address bar and paste it here.&#xa;&#xa;Additional one-time step (to let incoming webhooks call Apex):&#xa;• Still on the Site detail page click Public Access Settings.&#xa;• In the profile editor scroll to Apex Class Access and click Edit.&#xa;• Add XrpPaymentApi to the enabled classes and click Save.</value>
     </labels>
     <labels>
         <fullName>setup_subtitle_credentials</fullName>
@@ -378,5 +375,21 @@
         <protected>true</protected>
         <shortDescription>setup webhooks info</shortDescription>
         <value>Required. Please remember to disconnect Org Wallets before removing the XRPL Webhook.</value>
+    </labels>
+    <labels>
+        <fullName>setup_webhook_server</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup webhook server</shortDescription>
+        <value>XRP Payments API URL</value>
+    </labels>
+    <labels>
+        <fullName>setup_webhook_server_info</fullName>
+        <categories>lwc, setup</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>setup webhook server info</shortDescription>
+        <value>Enter the base URL of your own XRPL Webhook server (e.g., https://my-webhooks.example.com).&#xa;&#xa;After you click Save:&#xa;1. In Salesforce Setup, search for "Remote Site Settings" and open it.&#xa;2. Click the record named "XRP_Webhooks_API".&#xa;3. Click Edit, replace the Remote Site URL with the host you entered above, and click Save.</value>
     </labels>
 </CustomLabels>

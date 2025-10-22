@@ -3,10 +3,15 @@
         <lightning-spinner alternative-text={labels.loading} lwc:if={isLoading} size="x-small"></lightning-spinner>
         <div class="slds-card__body slds-card__body_inner">
             <div class="slds-var-m-top_small slds-var-m-bottom_small">
-                <div class="slds-text-heading_large">{labels.instructionTitle}</div>
+                <div class="slds-text-heading_large slds-grid slds-wrap">
+                    <div class="slds-col slds-size_11-of-12">{labels.instructionTitle}</div>
+                    <div class="slds-col slds-size_1-of-12">
+                        <lightning-icon icon-name="utility:refresh" class="refresh" size="x-small" onclick={handleRefresh}></lightning-icon>
+                    </div>
+                </div>
                 <div class="slds-text-body_regular slds-var-m-top_small">
                     {labels.instructionLine1}
-                    Available. <a href="https://webhook.xrpayments.co/">webhook.xrpayments.co</a>
+                    Available. <a href={dynamicBaseUrl} target="_blank" rel="noopener noreferrer">{displayBaseUrl}</a>
                 </div>
                 <div class="slds-text-body_regular slds-var-m-top_small">
                     {labels.instructionLine2}
@@ -17,44 +22,125 @@
                 allow-multiple-sections-open
                 active-section-name={activeSections}
             >
+            <lightning-accordion-section name={labels.webhookServer} label={labels.webhookServer}>
+                <lightning-formatted-rich-text class="slds-var-p-left_medium" value={labels.webhookServerInfo}></lightning-formatted-rich-text>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="4" class="slds-var-p-top_small">
+                        <template if:false={baseUrlConnected}>
+                            <lightning-input type="url" label={labels.webhookServer} value={settings.baseUrl} onchange={handleBaseUrl} placeholder="https://..."></lightning-input>
+                        </template>
+                        <template if:true={baseUrlConnected}>
+                            <div class="success-container">
+                                <lightning-icon icon-name="action:approval" size="x-small" class="slds-var-m-right_xx-small" alternative-text={labels.success}></lightning-icon>
+                                <span>{labels.success}</span>
+                            </div>
+                        </template>
+                        <template if:true={showBaseUrlActions}>
+                            <lightning-button label="Edit" variant="brand-outline" class="slds-m-left_xx-small" onclick={handleEditBaseUrl} if:true={baseUrlConnected}></lightning-button>
+                            <p class="slds-var-p-top_small">
+                                <lightning-button label={labels.save} variant="brand" onclick={handleSaveBaseUrl} if:true={showSaveBaseUrl}></lightning-button>
+                            </p>
+                        </template>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-accordion-section>
             <lightning-accordion-section name={labels.credentials} label={labels.credentials}>
                 <lightning-formatted-rich-text class="slds-var-p-left_medium" value={labels.credentials_info}></lightning-formatted-rich-text>
                 <lightning-layout multiple-rows>
                     <lightning-layout-item size="4">
-                        <lightning-input
-                            class="slds-var-p-left_medium"
-                            label={labels.apiKey}
-                            onchange={handleApiKey}
-                            placeholder={settings.apiKey}
-                            type="password"
-                            value={settingValues.apiKey}
-                        ></lightning-input>
+                        <template if:false={apiKeyConnected}>
+                            <lightning-input
+                                class="slds-var-p-left_medium"
+                                label={labels.apiKey}
+                                onchange={handleApiKey}
+                                placeholder="****"
+                                type="password"
+                                value={settings.apiKey}
+                                disabled={apiKeyDisabled}
+                            ></lightning-input>
+                        </template>
+                        <template if:true={apiCredsAllSet}>
+                            <div class="success-container">
+                                <lightning-icon icon-name="action:approval" size="x-small" class="slds-var-m-right_xx-small" alternative-text={labels.success}></lightning-icon>
+                                <span>{labels.success}</span>
+                            </div>
+                        </template>
+                        <template if:false={apiCredsAllSet}>
+                            <!-- keep individual input or success for key -->
+                            <template if:true={apiKeyConnected}>
+                                <lightning-icon icon-name="action:approval" size="x-small" class="slds-var-m-right_xx-small" alternative-text={labels.success}></lightning-icon>
+                                <span>{labels.success}</span>
+                            </template>
+                        </template>
+                        <template if:true={showApiKeyActions}>
+                            <lightning-button
+                                label="Edit"
+                                class="slds-m-left_xx-small"
+                                variant="brand-outline"
+                                onclick={handleEditApiKey}
+                                if:true={apiKeyDisabled}
+                            ></lightning-button>
+                            <lightning-button
+                                label={labels.save}
+                                variant="brand"
+                                class="slds-m-left_xx-small"
+                                onclick={handleSaveApiKey}
+                                if:true={isEditingApiKey}
+                            ></lightning-button>
+                        </template>
                     </lightning-layout-item>
                     <lightning-layout-item size="8"><!-- skip to next row -->
                     </lightning-layout-item>
 
                     <lightning-layout-item size="4" class="slds-var-p-top_medium">
-                        <lightning-input
-                            class="slds-var-p-left_medium"
-                            label={labels.apiSecret}
-                            onchange={handleApiSecret}
-                            placeholder={settings.apiSecret}
-                            type="password"
-                            value={settingValues.apiSecret}
-                        ></lightning-input>
+                        <template if:false={apiSecretConnected}>
+                            <lightning-input
+                                class="slds-var-p-left_medium"
+                                label={labels.apiSecret}
+                                onchange={handleApiSecret}
+                                placeholder="****"
+                                type="password"
+                                value={settings.apiSecret}
+                                disabled={apiSecretDisabled}
+                            ></lightning-input>
+                        </template>
+                        <template if:false={apiCredsAllSet}>
+                            <template if:true={apiSecretConnected}>
+                                <lightning-icon icon-name="action:approval" size="x-small" class="slds-var-m-right_xx-small" alternative-text={labels.success}></lightning-icon>
+                                <span>{labels.success}</span>
+                            </template>
+                        </template>
+                        <template if:true={showApiSecretActions}>
+                            <lightning-button
+                                label="Edit"
+                                class="slds-m-left_xx-small"
+                                variant="brand-outline"
+                                onclick={handleEditApiSecret}
+                                if:true={apiSecretDisabled}
+                            ></lightning-button>
+                            <lightning-button
+                                label={labels.save}
+                                variant="brand"
+                                class="slds-m-left_xx-small"
+                                onclick={handleSaveApiSecret}
+                                if:true={isEditingApiSecret}
+                            ></lightning-button>
+                        </template>
                     </lightning-layout-item>
                     <lightning-layout-item size="8"><!-- skip to next row -->
                     </lightning-layout-item>
 
                     <lightning-layout-item size="1" class="slds-var-p-top_medium">
-                        <lightning-button
-                            class="slds-var-p-left_medium"
-                            disabled={saveCredentialsDisabled}
-                            label={labels.save}
-                            onclick={handleSave}
-                            title={labels.save}
-                            variant="brand"
-                        ></lightning-button>
+                        <template if:false={apiCredsAllSet}>
+                            <lightning-button
+                                class="slds-var-p-left_medium"
+                                disabled={saveCredentialsDisabled}
+                                label={labels.save}
+                                onclick={handleSave}
+                                title={labels.save}
+                                variant="brand"
+                            ></lightning-button>
+                        </template>
                     </lightning-layout-item>
                     <lightning-layout-item size="11"><!-- skip to next row -->
                     </lightning-layout-item>
@@ -65,28 +151,58 @@
                 <lightning-formatted-rich-text class="slds-var-p-left_medium" value={labels.site_domain_info}></lightning-formatted-rich-text>
                 <lightning-layout multiple-rows>   
                     <lightning-layout-item size="4" class="slds-var-p-top_medium">
-                        <lightning-input
-                            class="slds-var-p-left_medium"
-                            label={labels.site_domain}
-                            onchange={handleSiteDomain}
-                            placeholder={settings.siteDomain}
-                            type="text"
-                            value={settingValues.siteDomain}
-                        ></lightning-input>
+                        <template if:false={siteDomainConnected}>
+                            <lightning-input
+                                class="slds-var-p-left_medium"
+                                label={labels.site_domain}
+                                onchange={handleSiteDomain}
+                                placeholder="https://..."
+                                type="text"
+                                value={settings.siteDomain}
+                                disabled={siteDomainDisabled}
+                            ></lightning-input>
+                        </template>
+                        <template if:true={siteDomainConnected}>
+                            <lightning-icon
+                                icon-name="action:approval"
+                                size="x-small"
+                                class="slds-var-m-right_xx-small"
+                                alternative-text={labels.success}
+                            ></lightning-icon>
+                            <span>{labels.success}</span>
+                        </template>
+                        <template if:true={showSiteDomainActions}>
+                            <lightning-button
+                                label="Edit"
+                                class="slds-m-left_xx-small"
+                                variant="brand-outline"
+                                onclick={handleEditSiteDomain}
+                                if:true={siteDomainDisabled}
+                            ></lightning-button>
+                            <lightning-button
+                                label={labels.save}
+                                variant="brand"
+                                class="slds-m-left_xx-small"
+                                onclick={handleSaveSiteDomain}
+                                if:true={isEditingSiteDomain}
+                            ></lightning-button>
+                        </template>
                     </lightning-layout-item>
                     <lightning-layout-item size="8"><!-- skip to next row -->
                     </lightning-layout-item>
 
-                    <lightning-layout-item size="1" class="slds-var-p-top_medium">
-                        <lightning-button
-                            class="slds-var-p-left_medium"
-                            disabled={saveCredentialsDisabled}
-                            label={labels.save}
-                            onclick={handleSave}
-                            title={labels.save}
-                            variant="brand"
-                        ></lightning-button>
-                    </lightning-layout-item>
+                    <template if:false={siteDomainConnected}>
+                        <lightning-layout-item size="1" class="slds-var-p-top_medium">
+                            <lightning-button
+                                class="slds-var-p-left_medium"
+                                disabled={saveCredentialsDisabled}
+                                label={labels.save}
+                                onclick={handleSave}
+                                title={labels.save}
+                                variant="brand"
+                            ></lightning-button>
+                        </lightning-layout-item>
+                    </template>
                     <lightning-layout-item size="11"><!-- skip to next row -->
                     </lightning-layout-item>
                 </lightning-layout>
