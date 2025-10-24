@@ -41,7 +41,9 @@ public with sharing class AssetTokenService {
         // Re-query to capture Ids for both new and pre-existing asset tokens
         Map<String, Id> assetIdByCode = new Map<String, Id>();
         for (Asset_Token__c at : [SELECT Id, Asset__c FROM Asset_Token__c]) {
-            assetIdByCode.put(at.Asset__c, at.Id);
+            if (at.Asset__c != null) {
+                assetIdByCode.put(at.Asset__c.toUpperCase(), at.Id);
+            }
         }
 
         // Prepare TokenContract records – upsert by Contract_Address__c to avoid duplicates
@@ -72,8 +74,9 @@ public with sharing class AssetTokenService {
                 continue;
             }
 
-            List<IssuerInfo> infos = ISSUERS_BY_ASSET.containsKey(tkn.Asset__c)
-                ? ISSUERS_BY_ASSET.get(tkn.Asset__c)
+            String assetKeyUC = tkn.Asset__c != null ? tkn.Asset__c.toUpperCase() : null;
+            List<IssuerInfo> infos = assetKeyUC != null && ISSUERS_BY_ASSET.containsKey(assetKeyUC)
+                ? ISSUERS_BY_ASSET.get(assetKeyUC)
                 : new List<IssuerInfo>();
 
             if (infos.isEmpty()) {
