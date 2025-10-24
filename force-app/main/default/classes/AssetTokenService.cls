@@ -8,10 +8,12 @@ public with sharing class AssetTokenService {
     public static final String RLUSD_ASSET = 'RLUSD';
     public static final String RLUSD_COIN_GECKO_API_NAME = 'rlusd';
     public static final Decimal RLUSD_DEFAULT_EXCHANGE_RATE = 1;
+    public static final String RLUSD_TOKEN_INFO = 'https://ripple.com/solutions/stablecoin/';
     public static final String USDC_NAME = 'Circle - USDC';
     public static final String USDC_ASSET = 'USDC';
     public static final String USDC_COIN_GECKO_API_NAME = 'usd-coin';
     public static final Decimal USDC_DEFAULT_EXCHANGE_RATE = 1;
+    public static final String USDC_TOKEN_INFO = 'https://www.circle.com/blog/now-available-usdc-on-the-xrpl';
     public static final String NETWORK_MAINNET = 'XRP_Mainnet';
     public static final String NETWORK_TESTNET = 'XRP_Testnet';
 
@@ -36,7 +38,7 @@ public with sharing class AssetTokenService {
 
     public static void initializeAssetTokens() {
         List<Asset_Token__c> assetTokens = getAssetTokens();
-        upsert as user assetTokens Asset__c;
+        upsert assetTokens Asset__c;
 
         // Re-query to capture Ids for both new and pre-existing asset tokens
         Map<String, Id> assetIdByCode = new Map<String, Id>();
@@ -53,15 +55,21 @@ public with sharing class AssetTokenService {
             for (IssuerInfo i : lst) addrSet.add(i.address);
         }
 
-        Map<String, TokenContract__c> existingByKey = new Map<String, TokenContract__c>([
-            SELECT Id, Contract_Address__c, AssetToken__c FROM TokenContract__c
+        // Build a map of existing TokenContract records keyed by the composite key
+        // "<AssetTokenId>-<ContractAddress>" so we can reliably detect and update
+        // any previously created contract records.
+        Map<String, TokenContract__c> existingByKey = new Map<String, TokenContract__c>();
+        for (TokenContract__c e : [
+            SELECT Id, Contract_Address__c, AssetToken__c
+            FROM TokenContract__c
             WHERE AssetToken__c IN :assetIdByCode.values()
-        ]);
-
-        Set<String> existingKeys = new Set<String>();
-        for (TokenContract__c e : existingByKey.values()) {
-            existingKeys.add(e.AssetToken__c + '-' + String.valueOf(e.Contract_Address__c));
+        ]) {
+            String compositeKey = e.AssetToken__c + '-' + String.valueOf(e.Contract_Address__c);
+            existingByKey.put(compositeKey, e);
         }
+
+        // Convenience set for quick existence checks
+        Set<String> existingKeys = new Set<String>(existingByKey.keySet());
 
         List<TokenContract__c> contractsToInsert = new List<TokenContract__c>();
         List<TokenContract__c> contractsToUpdate = new List<TokenContract__c>();
@@ -71,6 +79,11 @@ public with sharing class AssetTokenService {
             Id tokenId = assetIdByCode.get(tkn.Asset__c);
             if (tokenId == null) {
                 // Skip this asset to avoid null dereference
+                continue;
+            }
+
+            // Native XRP does not rely on issuer contracts, so do not create TokenContract records
+            if (tkn.Asset__c != null && tkn.Asset__c.toUpperCase() == RIPPLE_ASSET) {
                 continue;
             }
 
@@ -94,7 +107,10 @@ public with sharing class AssetTokenService {
 
                     tc.Contract_Address__c = info.address;
                     tc.Name               = info.name + ' - ' + tkn.Asset__c + ' ' + netLabel;
-                    tc.AssetToken__c      = tokenId;
+                    // AssetToken__c can be set only on insert (field is not writeable after insert)
+                    if (!exists) {
+                        tc.AssetToken__c = tokenId;
+                    }
                     tc.Network__c         = info.network;
                     tc.Issuer__c          = info.name;
                     String base           = info.network == NETWORK_MAINNET ? 'https://xrpscan.com/account/' : 'https://testnet.xrpscan.com/account/';
@@ -111,10 +127,10 @@ public with sharing class AssetTokenService {
         }
 
         if (!contractsToInsert.isEmpty()) {
-            insert as user contractsToInsert;
+            insert contractsToInsert;
         }
         if (!contractsToUpdate.isEmpty()) {
-            update as user contractsToUpdate;
+            update contractsToUpdate;
         }
     }
 
@@ -139,6 +155,7 @@ public with sharing class AssetTokenService {
         rlusdToken.CoinGeckoAPIName__c = RLUSD_COIN_GECKO_API_NAME;
         rlusdToken.ConversionRate__c = RLUSD_DEFAULT_EXCHANGE_RATE;
         rlusdToken.ConversionRateLastSet__c = Datetime.now();
+        rlusdToken.TokenInformation__c = RLUSD_TOKEN_INFO;
 
         assetTokens.add(rlusdToken);
 
@@ -149,6 +166,7 @@ public with sharing class AssetTokenService {
         usdcToken.CoinGeckoAPIName__c = USDC_COIN_GECKO_API_NAME;
         usdcToken.ConversionRate__c = USDC_DEFAULT_EXCHANGE_RATE;
         usdcToken.ConversionRateLastSet__c = Datetime.now();
+        usdcToken.TokenInformation__c = USDC_TOKEN_INFO;
 
         assetTokens.add(usdcToken);
         return assetTokens;

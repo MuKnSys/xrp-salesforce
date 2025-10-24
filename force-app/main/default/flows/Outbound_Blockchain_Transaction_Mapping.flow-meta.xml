@@ -224,7 +224,7 @@
             </value>
         </filters>
         <filters>
-            <field>Issuer__c</field>
+            <field>Contract_Address__c</field>
             <operator>EqualTo</operator>
             <value>
                 <elementReference>$Record.Contract_Address__c</elementReference>

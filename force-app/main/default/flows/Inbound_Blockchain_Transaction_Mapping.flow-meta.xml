@@ -217,23 +217,21 @@
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
+            <field>Contract_Address__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Contract_Address__c</elementReference>
+            </value>
+        </filters>
+        <filters>
             <field>AssetToken__c</field>
             <operator>EqualTo</operator>
             <value>
                 <elementReference>Token_Asset.Id</elementReference>
             </value>
         </filters>
-        <filters>
-            <field>Issuer__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.Contract_Address__c</elementReference>
-            </value>
-        </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>TokenContract__c</object>
-        <queriedFields>Id</queriedFields>
-        <queriedFields>Network__c</queriedFields>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>

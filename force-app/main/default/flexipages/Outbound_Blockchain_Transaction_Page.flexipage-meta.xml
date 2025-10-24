@@ -213,6 +213,16 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
+                <fieldItem>Record.Contract_Address__c</fieldItem>
+                <identifier>RecordContract_Address_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Transaction_Detail__c</fieldItem>
                 <identifier>RecordTransaction_Detail_cField</identifier>
                 <visibilityRule>
@@ -265,16 +275,6 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.To_Address__c</fieldItem>
                 <identifier>RecordTo_Address_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Contract_Address__c</fieldItem>
-                <identifier>RecordContract_Address_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>

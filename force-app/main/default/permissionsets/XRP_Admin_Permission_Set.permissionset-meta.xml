@@ -132,6 +132,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Inbound_Blockchain_Transaction__c.Contract_Address__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Inbound_Blockchain_Transaction__c.Transaction_Hash__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -238,6 +243,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Outbound_Blockchain_Transaction__c.Transaction_Detail__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Outbound_Blockchain_Transaction__c.Contract_Address__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
