@@ -32,29 +32,18 @@ export default class Setup extends LightningElement {
     isEditingSiteDomain = false;
     isEditingBaseUrl = false;
 
-    get activeSections() {
-        if (
-            !this.settings.apiKey ||
-            !this.settings.apiSecret
-        ) {
-            return [labels.credentials];
-        } else if (
-            this.settings.apiKey &&
-            this.settings.apiSecret &&
-            !this.settings.siteDomain
-        ) {
-            return [labels.credentials, labels.site_domain];
-        } else if (
-            this.settings.apiKey &&
-            this.settings.apiSecret &&
-            this.settings.siteDomain &&
-            !this.settings.webhookId
-        ) {
-            return [labels.credentials, labels.site_domain, labels.webhook];
-        } else {
-            return [labels.credentials, labels.site_domain, labels.webhook, labels.assetTokens];
-        }
+    // return array with all accordion section names so they start open
+    get allSections() {
+        return [
+            this.labels.webhookServer,
+            this.labels.credentials,
+            this.labels.site_domain,
+            this.labels.webhook,
+            this.labels.assetTokens
+        ];
     }
+
+    // No activeSections logic; accordion defaults to all sections open
 
     get registerWebhookDisabled() {
         return !(

@@ -18,10 +18,7 @@
                 </div>
             </div>
             
-            <lightning-accordion
-                allow-multiple-sections-open
-                active-section-name={activeSections}
-            >
+            <lightning-accordion allow-multiple-sections-open active-section-name={allSections}>
             <lightning-accordion-section name={labels.webhookServer} label={labels.webhookServer}>
                 <lightning-formatted-rich-text class="slds-var-p-left_medium" value={labels.webhookServerInfo}></lightning-formatted-rich-text>
                 <lightning-layout multiple-rows>
@@ -44,6 +41,7 @@
                     </lightning-layout-item>
                 </lightning-layout>
             </lightning-accordion-section>
+
             <lightning-accordion-section name={labels.credentials} label={labels.credentials}>
                 <lightning-formatted-rich-text class="slds-var-p-left_medium" value={labels.credentials_info}></lightning-formatted-rich-text>
                 <lightning-layout multiple-rows>

@@ -382,7 +382,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>setup webhook server</shortDescription>
-        <value>XRP Payments API URL</value>
+        <value>XRP Payments API URL (optional)</value>
     </labels>
     <labels>
         <fullName>setup_webhook_server_info</fullName>
@@ -390,6 +390,6 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>setup webhook server info</shortDescription>
-        <value>Enter the base URL of your own XRPL Webhook server (e.g., https://my-webhooks.example.com).&#xa;&#xa;After you click Save:&#xa;1. In Salesforce Setup, search for "Remote Site Settings" and open it.&#xa;2. Click the record named "XRP_Webhooks_API".&#xa;3. Click Edit, replace the Remote Site URL with the host you entered above, and click Save.</value>
+        <value>If you plan to run your own XRP&nbsp;Payments Node, enter the base URL of that XRPL Webhook server (e.g., https://my-webhooks.example.com).&#xa;&#xa;After you click Save:&#xa;1.&nbsp;In Salesforce Setup, search for "Remote Site Settings" and open it.&#xa;2.&nbsp;Click the record named "XRP_Webhooks_API".&#xa;3.&nbsp;Click Edit, replace the Remote&nbsp;Site URL with the host you entered above, and click Save.</value>
     </labels>
 </CustomLabels>
