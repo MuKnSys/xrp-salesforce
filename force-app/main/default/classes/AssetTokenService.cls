@@ -65,6 +65,13 @@ public with sharing class AssetTokenService {
         List<TokenContract__c> contractsToUpdate = new List<TokenContract__c>();
 
         for (Asset_Token__c tkn : assetTokens) {
+            // map Asset code -> Id (may be null if token upsert failed)
+            Id tokenId = assetIdByCode.get(tkn.Asset__c);
+            if (tokenId == null) {
+                // Skip this asset to avoid null dereference
+                continue;
+            }
+
             List<IssuerInfo> infos = ISSUERS_BY_ASSET.containsKey(tkn.Asset__c)
                 ? ISSUERS_BY_ASSET.get(tkn.Asset__c)
                 : new List<IssuerInfo>();
@@ -83,7 +90,7 @@ public with sharing class AssetTokenService {
 
                     tc.Contract_Address__c = info.address;
                     tc.Name               = info.name + ' - ' + tkn.Asset__c + ' ' + netLabel;
-                    tc.AssetToken__c      = assetIdByCode.get(tkn.Asset__c);
+                    tc.AssetToken__c      = tokenId;
                     tc.Network__c         = info.network;
                     tc.Issuer__c          = info.name;
                     String base           = info.network == NETWORK_MAINNET ? 'https://xrpscan.com/account/' : 'https://testnet.xrpscan.com/account/';
