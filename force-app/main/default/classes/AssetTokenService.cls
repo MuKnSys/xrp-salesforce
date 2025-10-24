@@ -38,14 +38,31 @@ public with sharing class AssetTokenService {
         List<Asset_Token__c> assetTokens = getAssetTokens();
         upsert as user assetTokens Asset__c;
 
-        // Map asset code to Asset_Token__c Id for foreign key reference
+        // Re-query to obtain Ids populated by DML
         Map<String, Id> assetIdByCode = new Map<String, Id>();
-        for (Asset_Token__c at : [SELECT Id, Asset__c FROM Asset_Token__c WHERE Asset__c IN :new List<String>{ RIPPLE_ASSET, RLUSD_ASSET, USDC_ASSET }]) {
+        for (Asset_Token__c at : [SELECT Id, Asset__c FROM Asset_Token__c WHERE Asset__c IN :new List<String>{RIPPLE_ASSET, RLUSD_ASSET, USDC_ASSET}]) {
             assetIdByCode.put(at.Asset__c, at.Id);
         }
 
         // Prepare TokenContract records – upsert by Contract_Address__c to avoid duplicates
-        List<TokenContract__c> contractsToUpsert = new List<TokenContract__c>();
+        // Collect addresses up front to query existing contracts once
+        Set<String> addrSet = new Set<String>();
+        for (List<IssuerInfo> lst : ISSUERS_BY_ASSET.values()) {
+            for (IssuerInfo i : lst) addrSet.add(i.address);
+        }
+
+        Map<String, TokenContract__c> existingByKey = new Map<String, TokenContract__c>([
+            SELECT Id, Contract_Address__c, AssetToken__c FROM TokenContract__c
+            WHERE AssetToken__c IN :assetIdByCode.values()
+        ]);
+
+        Set<String> existingKeys = new Set<String>();
+        for (TokenContract__c e : existingByKey.values()) {
+            existingKeys.add(e.AssetToken__c + '-' + String.valueOf(e.Contract_Address__c));
+        }
+
+        List<TokenContract__c> contractsToInsert = new List<TokenContract__c>();
+        List<TokenContract__c> contractsToUpdate = new List<TokenContract__c>();
 
         for (Asset_Token__c tkn : assetTokens) {
             List<IssuerInfo> infos = ISSUERS_BY_ASSET.containsKey(tkn.Asset__c)
@@ -53,31 +70,39 @@ public with sharing class AssetTokenService {
                 : new List<IssuerInfo>();
 
             if (infos.isEmpty()) {
-                // generic contract entry without an issuer address – use Name as external key
                 TokenContract__c generic = new TokenContract__c();
                 generic.Name = tkn.Name;
                 generic.AssetToken__c = assetIdByCode.get(tkn.Asset__c);
-                contractsToUpsert.add(generic);
+                contractsToInsert.add(generic);
             } else {
                 for (IssuerInfo info : infos) {
                     String netLabel = info.network == NETWORK_MAINNET ? 'Mainnet' : 'Testnet';
 
-                    TokenContract__c tc = new TokenContract__c();
-                    tc.Contract_Address__c = info.address; // upsert key
+                    Boolean exists = existingKeys.contains(tkn.Id + '-' + info.address);
+                    TokenContract__c tc = exists ? existingByKey.get(tkn.Id + '-' + info.address) : new TokenContract__c();
+
+                    tc.Contract_Address__c = info.address;
                     tc.Name               = info.name + ' - ' + tkn.Asset__c + ' ' + netLabel;
                     tc.AssetToken__c      = assetIdByCode.get(tkn.Asset__c);
                     tc.Network__c         = info.network;
                     tc.Issuer__c          = info.name;
                     String base           = info.network == NETWORK_MAINNET ? 'https://xrpscan.com/account/' : 'https://testnet.xrpscan.com/account/';
                     tc.Contract_Detail__c = base + info.address;
-                    contractsToUpsert.add(tc);
+
+                    if (exists) {
+                        contractsToUpdate.add(tc);
+                    } else {
+                        contractsToInsert.add(tc);
+                    }
                 }
             }
         }
 
-        if (!contractsToUpsert.isEmpty()) {
-            // For records without Contract_Address__c (generic ones) we still need insert, use Database.upsert with externalId field when present
-            upsert as user contractsToUpsert Contract_Address__c;
+        if (!contractsToInsert.isEmpty()) {
+            insert as user contractsToInsert;
+        }
+        if (!contractsToUpdate.isEmpty()) {
+            update as user contractsToUpdate;
         }
     }
 
