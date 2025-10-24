@@ -78,15 +78,16 @@ public with sharing class AssetTokenService {
 
             if (infos.isEmpty()) {
                 TokenContract__c generic = new TokenContract__c();
-                generic.Name = tkn.Name;
-                generic.AssetToken__c = assetIdByCode.get(tkn.Asset__c);
+                generic.Name          = tkn.Name;
+                generic.AssetToken__c = tokenId;
                 contractsToInsert.add(generic);
             } else {
                 for (IssuerInfo info : infos) {
                     String netLabel = info.network == NETWORK_MAINNET ? 'Mainnet' : 'Testnet';
 
-                    Boolean exists = existingKeys.contains(tkn.Id + '-' + info.address);
-                    TokenContract__c tc = exists ? existingByKey.get(tkn.Id + '-' + info.address) : new TokenContract__c();
+                    String assetKey = tokenId + '-' + info.address;
+                    Boolean exists = existingKeys.contains(assetKey);
+                    TokenContract__c tc = exists ? existingByKey.get(assetKey) : new TokenContract__c();
 
                     tc.Contract_Address__c = info.address;
                     tc.Name               = info.name + ' - ' + tkn.Asset__c + ' ' + netLabel;
@@ -100,6 +101,7 @@ public with sharing class AssetTokenService {
                         contractsToUpdate.add(tc);
                     } else {
                         contractsToInsert.add(tc);
+                        existingKeys.add(assetKey); // prevent duplicates in same run
                     }
                 }
             }
