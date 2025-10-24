@@ -88,29 +88,24 @@ public without sharing class XrpPaymentService {
         Map<String, Object> paymentData,
         Map<String, Object> transcationData
     ) {
-        try {
-            Map<String, Object> amountData = (Map<String, Object>) transcationData.get(
-                'Amount'
-            );
+        // Prefer delivered_amount; fallback to Amount
+        Object rawAmt = paymentData.containsKey('delivered_amount') && paymentData.get('delivered_amount')!=null
+            ? paymentData.get('delivered_amount')
+            : transcationData.get('Amount');
 
-            paymentTransaction.put(
-                'Asset__c',
-                (String) amountData.get('currency')
-            );
-            paymentTransaction.put(
-                'Value__c',
-                convertRippleDrop(Decimal.valueOf((String) amountData.get('value')))
-            );
-            paymentTransaction.put(
-                'Contract_Address__c',
-                (String) amountData.get('issuer')
-            );
-        } catch (TypeException excp) {
+        if (rawAmt instanceof String) {
+            // Native XRP in drops (string integer)
             paymentTransaction.put('Asset__c', 'XRP');
-            paymentTransaction.put(
-                'Value__c',
-                convertRippleDrop(Decimal.valueOf((String) transcationData.get('Amount')))
-            );
+            paymentTransaction.put('Value__c', convertRippleDrop(Decimal.valueOf((String)rawAmt)));
+        } else if (rawAmt instanceof Map<String,Object>) {
+            Map<String,Object> amt = (Map<String,Object>)rawAmt;
+            paymentTransaction.put('Asset__c', (String)amt.get('currency'));
+            paymentTransaction.put('Value__c', Decimal.valueOf((String)amt.get('value')));
+            paymentTransaction.put('Contract_Address__c', (String)amt.get('issuer'));
+        } else {
+            // unknown format – default 0
+            paymentTransaction.put('Asset__c','UNKNOWN');
+            paymentTransaction.put('Value__c',0);
         }
 
         paymentTransaction.put(
