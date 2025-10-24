@@ -44,36 +44,40 @@ public with sharing class AssetTokenService {
             assetIdByCode.put(at.Asset__c, at.Id);
         }
 
-        // Initialize TokenContract records for each asset token (placeholder defaults)
-        List<TokenContract__c> contracts = new List<TokenContract__c>();
+        // Prepare TokenContract records – upsert by Contract_Address__c to avoid duplicates
+        List<TokenContract__c> contractsToUpsert = new List<TokenContract__c>();
+
         for (Asset_Token__c tkn : assetTokens) {
             List<IssuerInfo> infos = ISSUERS_BY_ASSET.containsKey(tkn.Asset__c)
                 ? ISSUERS_BY_ASSET.get(tkn.Asset__c)
                 : new List<IssuerInfo>();
 
             if (infos.isEmpty()) {
-                // create a generic contract without issuer details
+                // generic contract entry without an issuer address – use Name as external key
                 TokenContract__c generic = new TokenContract__c();
                 generic.Name = tkn.Name;
                 generic.AssetToken__c = assetIdByCode.get(tkn.Asset__c);
-                contracts.add(generic);
+                contractsToUpsert.add(generic);
             } else {
                 for (IssuerInfo info : infos) {
-                    TokenContract__c tc = new TokenContract__c();
                     String netLabel = info.network == NETWORK_MAINNET ? 'Mainnet' : 'Testnet';
-                    tc.Name = info.name + ' - ' + tkn.Asset__c + ' ' + netLabel;
-                    tc.AssetToken__c = assetIdByCode.get(tkn.Asset__c);
-                    tc.Network__c = info.network;
-                    tc.Issuer__c = info.name;
-                    tc.Contract_Address__c = info.address;
-                    String base = info.network == NETWORK_MAINNET ? 'https://xrpscan.com/account/' : 'https://testnet.xrpscan.com/account/';
+
+                    TokenContract__c tc = new TokenContract__c();
+                    tc.Contract_Address__c = info.address; // upsert key
+                    tc.Name               = info.name + ' - ' + tkn.Asset__c + ' ' + netLabel;
+                    tc.AssetToken__c      = assetIdByCode.get(tkn.Asset__c);
+                    tc.Network__c         = info.network;
+                    tc.Issuer__c          = info.name;
+                    String base           = info.network == NETWORK_MAINNET ? 'https://xrpscan.com/account/' : 'https://testnet.xrpscan.com/account/';
                     tc.Contract_Detail__c = base + info.address;
-                    contracts.add(tc);
+                    contractsToUpsert.add(tc);
                 }
             }
         }
-        if (!contracts.isEmpty()) {
-            insert as user contracts;
+
+        if (!contractsToUpsert.isEmpty()) {
+            // For records without Contract_Address__c (generic ones) we still need insert, use Database.upsert with externalId field when present
+            upsert as user contractsToUpsert Contract_Address__c;
         }
     }
 
