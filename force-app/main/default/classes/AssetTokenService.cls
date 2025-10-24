@@ -38,9 +38,9 @@ public with sharing class AssetTokenService {
         List<Asset_Token__c> assetTokens = getAssetTokens();
         upsert as user assetTokens Asset__c;
 
-        // Re-query to obtain Ids populated by DML
+        // Build map from upserted list (Ids are now populated)
         Map<String, Id> assetIdByCode = new Map<String, Id>();
-        for (Asset_Token__c at : [SELECT Id, Asset__c FROM Asset_Token__c WHERE Asset__c IN :new List<String>{RIPPLE_ASSET, RLUSD_ASSET, USDC_ASSET}]) {
+        for (Asset_Token__c at : assetTokens) {
             assetIdByCode.put(at.Asset__c, at.Id);
         }
 
