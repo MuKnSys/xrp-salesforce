@@ -1,0 +1,24 @@
+:host {
+    --slds-c-card-heading-font-size: 1rem;
+    --slds-c-accordion-heading-font-size: 1.25rem;
+    --slds-c-accordion-heading-text-color: rgb(3, 45, 96);
+    --slds-c-accordion-summary-color-background: rgb(243, 243, 243);
+}
+
+.color {
+    color: rgb(3, 45, 96);
+}
+
+.refresh {
+    float: right;
+}
+
+.success-container {
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0 0.25rem 0.75rem;
+}
+
+.save-btn-spacing {
+    margin-top: 0.5rem;
+}

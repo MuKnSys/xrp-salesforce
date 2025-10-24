@@ -24,6 +24,8 @@ import setup_webhooks_info from "@salesforce/label/c.setup_webhooks_info";
 import setup_credentials_info from "@salesforce/label/c.setup_credentials_info";
 import setup_asset_token_info_1 from "@salesforce/label/c.setup_asset_token_info_1";
 import setup_asset_token_info_2 from "@salesforce/label/c.setup_asset_token_info_2";
+import setup_webhook_server from "@salesforce/label/c.setup_webhook_server";
+import setup_webhook_server_info from "@salesforce/label/c.setup_webhook_server_info";
 
 export const labels = {
     apiKey: setup_api_key,
@@ -51,5 +53,7 @@ export const labels = {
     webhooks_info: setup_webhooks_info,
     credentials_info: setup_credentials_info,
     asset_token_info_1: setup_asset_token_info_1,
-    asset_token_info_2: setup_asset_token_info_2
+    asset_token_info_2: setup_asset_token_info_2,
+    webhookServer: setup_webhook_server,
+    webhookServerInfo: setup_webhook_server_info
 };
