@@ -54,4 +54,4 @@ User Stories: [Visual Representation](https://github.com/MuKnSys/xrp-salesforce/
 
 ## Copyright and License
 
-Copyright 2023 Mutual Knowledge Systems, Inc.  XRP Salesforce is distributed under the GPL licence, version 3.0.  For more information, see the [LICENSE file](LICENSE).
+Copyright 2023 Web3 Enabler, Inc.  XRP Salesforce is distributed under the GPL licence, version 3.0.  For more information, see the [LICENSE file](LICENSE).
