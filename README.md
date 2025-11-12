@@ -34,7 +34,7 @@ Once you've set up your Salesforce Scratch Org, you can follow the steps outline
 We launched Web3 Enabler on the Salesforce App Exchange in July, 2023.  See our [AppExchange listing](https://appexchange.salesforce.com/appxListingDetail?listingId=ee4c011b-7a5b-4a50-91fb-f28049390858) for further details.
 
 ## User/Admin Story Documentation
-User Guide: [XRP for Salesforce User Guide](https://github.com/MuKnSys/xrp-salesforce/blob/main/Documentation%20and%20Images/Web3%20Enabler%20XRP%20for%20Salesforce%20User%20Guide.pdf)
+User Guide: [XRP for Salesforce User Guide](https://github.com/MuKnSys/xrp-salesforce/blob/main/Documentation%20and%20Images/Web3-Enabler-XRP-for-Salesforce-User-Guide-v1.0.pdf)
 
 Admin Stories: [Visual Representation](https://github.com/MuKnSys/xrp-salesforce/blob/main/Documentation%20and%20Images/XRP%20for%20Salesforce%20Admin%20Story%20Map.png)
 
