@@ -1,0 +1,64 @@
+name: Salesforce DX Matrix CI
+
+on:
+  push:
+    branches: ["main", "develop"]
+  pull_request:
+    branches: ["main", "develop"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    name: sf ${{ matrix.sf-cli-version }} / node 24
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        sf-cli-version: ["2.121.7", "2.128.5", "latest"]
+
+    env:
+      HUSKY: "0"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+
+      - name: Cache Salesforce CLI state
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.sf
+            ~/.local/share/sf
+          key: ${{ runner.os }}-sf-${{ matrix.sf-cli-version }}
+          restore-keys: |
+            ${{ runner.os }}-sf-
+
+      - name: Install Salesforce CLI
+        run: |
+          if [ "${{ matrix.sf-cli-version }}" = "latest" ]; then
+            npm install --global @salesforce/cli@latest
+          else
+            npm install --global @salesforce/cli@${{ matrix.sf-cli-version }}
+          fi
+
+      - name: Show Salesforce CLI version
+        run: sf version
+
+      - name: Clean install project dependencies
+        run: npm ci
+
+      - name: Build source code (if script exists)
+        run: npm run build --if-present
+
+      - name: Run tests
+        run: npm test
